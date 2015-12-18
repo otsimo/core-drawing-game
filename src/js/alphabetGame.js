@@ -1,11 +1,13 @@
 Game.AlphabetGame = function () {
+  this.painting = null;
 };
 
 Game.AlphabetGame.prototype = {
   create: function () {
     console.log("AlphabetGame create");
-    game.stage.backgroundColor = '#ff00FF';
+    game.stage.backgroundColor = '#ffffff';
     this.input.onDown.add(this.onInputDown, this);
+    this.painting = new OtsimoPainting(game, 1024, 768);
   },
 
   update: function () {
@@ -13,7 +15,7 @@ Game.AlphabetGame.prototype = {
   },
 
   onInputDown: function () {
-    this.game.state.start('alphabetMenu');
+    //  this.game.state.start('alphabetMenu');
   }
 };
 
