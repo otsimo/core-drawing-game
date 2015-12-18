@@ -2,7 +2,7 @@ window.addEventListener('load', function () {
   'use strict';
 
   var ns = window['draw-prototype'];
-  var game = new Phaser.Game(640, 480, Phaser.AUTO, 'draw-prototype-game');
+  var game = new Phaser.Game(1024, 768, Phaser.AUTO, 'draw-prototype-game');
   game.state.add('boot', ns.Boot);
   game.state.add('preloader', ns.Preloader);
   game.state.add('menu', ns.Menu);
