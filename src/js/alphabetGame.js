@@ -1,23 +1,19 @@
-(function () {
-  'use strict';
+Game.AlphabetGame = function () {
+};
 
-  function AlphabetGame() {
+Game.AlphabetGame.prototype = {
+  create: function () {
+    console.log("AlphabetGame create");
+    game.stage.backgroundColor = '#ff00FF';
+    this.input.onDown.add(this.onInputDown, this);
+  },
+
+  update: function () {
+
+  },
+
+  onInputDown: function () {
+    this.game.state.start('alphabetMenu');
   }
+};
 
-  AlphabetGame.prototype = {
-    create: function () {
-      this.input.onDown.add(this.onInputDown, this);
-    },
-
-    update: function () {
-
-    },
-
-    onInputDown: function () {
-      this.game.state.start('menu');
-    }
-  };
-
-  window['draw-prototype'] = window['draw-prototype'] || {};
-  window['draw-prototype'].AlphabetGame = AlphabetGame;
-}());

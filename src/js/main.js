@@ -1,15 +1,10 @@
-window.addEventListener('load', function () {
-  'use strict';
+var game = new Phaser.Game(1024, 768, Phaser.AUTO, 'draw-prototype-game');
+game.state.add('boot', Game.Boot);
+game.state.add('preloader', Game.Preloader);
+game.state.add('mainMenu', Game.MainMenu);
+game.state.add('alphabetMenu', Game.AlphabetMenu);
+game.state.add('game', Game.Game);
+game.state.add('alphabetGame', Game.AlphabetGame);
 
-  var ns = window['draw-prototype'];
-  var game = new Phaser.Game(1024, 768, Phaser.AUTO, 'draw-prototype-game');
-  game.state.add('boot', ns.Boot);
-  game.state.add('preloader', ns.Preloader);
-  game.state.add('mainMenu', ns.MainMenu);
-  game.state.add('alphabetMenu', ns.AlphabetMenu);
-  game.state.add('game', ns.Game);
-  game.state.add('alphabetGame', ns.AlphabetGame);
-
-  /* yo phaser:state new-state-files-put-here */
-  game.state.start('boot');
-}, false);
+/* yo phaser:state new-state-files-put-here */
+game.state.start('boot');
