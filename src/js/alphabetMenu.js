@@ -1,27 +1,67 @@
 var alphabet_categories = [
   {
     char: "A",
-    icon_url: "char_A.png"
+    icon_url: "char_A.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png",
+    steps: [
+      [
+        {x: 138, y: 15},
+        {x: 107, y: 64},
+        {x: 80, y: 133},
+        {x: 56, y: 194},
+        {x: 34, y: 254},
+        {x: 12, y: 313}
+      ], [
+        {x: 145, y: 15},
+        {x: 176, y: 64},
+        {x: 203, y: 133},
+        {x: 227, y: 194},
+        {x: 249, y: 254},
+        {x: 271, y: 313}
+      ], [
+        {x: 46, y: 229},
+        {x: 93, y: 229},
+        {x: 142, y: 229},
+        {x: 191, y: 229},
+        {x: 238, y: 229}]
+    ]
   },
   {
     char: "B",
-    icon_url: "char_B.png"
+    icon_url: "char_B.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png"
   },
   {
     char: "C",
-    icon_url: "char_B.png"
+    icon_url: "char_C.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png"
   },
   {
     char: "Ç",
-    icon_url: "char_Ch.png"
+    icon_url: "char_Ch.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png"
   },
   {
     char: "D",
-    icon_url: "char_D.png"
+    icon_url: "char_D.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png"
   },
   {
     char: "E",
-    icon_url: "char_E.png"
+    icon_url: "char_E.png",
+    big: "big_A.png",
+    object: "Ayakkabı",
+    objectImg: "shoes.png"
   }
 ];
 
@@ -55,6 +95,7 @@ Game.AlphabetMenu.prototype = {
 
 function addButtonToAlphabet(menuGroup, category, x, y) {
   function buttonClicked() {
+    Game.nextAlpha = category;
     this.game.state.start("alphabetGame");
   }
 
