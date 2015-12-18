@@ -3,17 +3,19 @@ Game.MainMenu = function () {
 
 var image_categories = [
   {
-    icon_url: "alphabet_menu.png",
+    icon_url: "alphabet_button.png",
     game_name: "alphabetMenu"
   },
   {
-    icon_url: "digits_menu.png",
+    icon_url: "numbers_button.png",
     game_name: "alphabetMenu"
   }
 ];
 
 Game.MainMenu.prototype = {
   create: function () {
+    var backgroundImg = game.add.image(0, 0, "background.png");
+
     var menuGroup = game.add.group();
 
     //HEADER
@@ -24,7 +26,7 @@ Game.MainMenu.prototype = {
 
     for (var i = 0; i < image_categories.length; i++) {
       var category = image_categories[i];
-      addButtonToMenu(menuGroup, category, i * 100)
+      addButtonToMenu(menuGroup, category, i * 200)
     }
   }
 };

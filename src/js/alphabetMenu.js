@@ -6,6 +6,22 @@ var alphabet_categories = [
   {
     char: "B",
     icon_url: "char_B.png"
+  },
+  {
+    char: "C",
+    icon_url: "char_B.png"
+  },
+  {
+    char: "Ç",
+    icon_url: "char_Ch.png"
+  },
+  {
+    char: "D",
+    icon_url: "char_D.png"
+  },
+  {
+    char: "E",
+    icon_url: "char_E.png"
   }
 ];
 
@@ -15,6 +31,8 @@ Game.AlphabetMenu = function () {
 
 Game.AlphabetMenu.prototype = {
   create: function () {
+    var backgroundImg = game.add.image(0, 0, "background.png");
+
     var menuGroup = game.add.group();
 
     //HEADER
@@ -24,8 +42,8 @@ Game.AlphabetMenu.prototype = {
     text.anchor.set(0.5, 0.5);
 
     for (var i = 0; i < alphabet_categories.length; i++) {
-      var category = image_categories[i];
-      addButtonToAlphabet(menuGroup, category, game.world.centerX + (((i % 6) - 6) * 100), game.world.centerY)
+      var category = alphabet_categories[i];
+      addButtonToAlphabet(menuGroup, category, game.world.centerX + 80 + (i - 3) * 170, game.world.centerY)
     }
   },
 
