@@ -1,7 +1,8 @@
 (function () {
   'use strict';
 
-  function Boot() {}
+  function Boot() {
+  }
 
   Boot.prototype = {
     preload: function () {
@@ -16,7 +17,7 @@
         this.game.scale.pageAlignHorizontally = true;
       } else {
         this.game.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;
-        this.game.scale.minWidth =  1024;
+        this.game.scale.minWidth = 1024;
         this.game.scale.minHeight = 768;
         this.game.scale.maxWidth = 1024;
         this.game.scale.maxHeight = 768;

@@ -1,10 +1,10 @@
 (function () {
   'use strict';
 
-  function MainMenu() {
+  function AlphabetMenu() {
   }
 
-  MainMenu.prototype = {
+  AlphabetMenu.prototype = {
     create: function () {
       var text = this.add.text(this.game.width * 0.5, this.game.height * 0.5,
         'MENU', {
@@ -24,5 +24,5 @@
   };
 
   window['draw-prototype'] = window['draw-prototype'] || {};
-  window['draw-prototype'].MainMenu = MainMenu;
+  window['draw-prototype'].AlphabetMenu = AlphabetMenu;
 }());

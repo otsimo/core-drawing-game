@@ -1,4 +1,4 @@
-(function() {
+(function () {
   'use strict';
 
   function Preloader() {
@@ -27,7 +27,7 @@
 
     update: function () {
       // if (!!this.ready) {
-        this.game.state.start('menu');
+      this.game.state.start('mainMenu');
       // }
     },
 

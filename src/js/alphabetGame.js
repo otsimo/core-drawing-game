@@ -1,10 +1,10 @@
 (function () {
   'use strict';
 
-  function Game() {
+  function AlphabetGame() {
   }
 
-  Game.prototype = {
+  AlphabetGame.prototype = {
     create: function () {
       this.input.onDown.add(this.onInputDown, this);
     },
@@ -14,10 +14,10 @@
     },
 
     onInputDown: function () {
-      this.game.state.start('mainMenu');
+      this.game.state.start('menu');
     }
   };
 
   window['draw-prototype'] = window['draw-prototype'] || {};
-  window['draw-prototype'].Game = Game;
+  window['draw-prototype'].AlphabetGame = AlphabetGame;
 }());
