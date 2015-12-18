@@ -13,12 +13,12 @@ var gulp = require('gulp')
 
 paths = {
   assets: 'src/assets/**/*',
-  css:    'src/css/*.css',
-  libs:   [
+  css: 'src/css/*.css',
+  libs: [
     'src/bower_components/phaser-official/build/custom/phaser-no-physics.min.js'
   ],
-  js:     ['src/js/**/*.js'],
-  dist:   './dist/'
+  js: ['src/js/**/*.js'],
+  dist: './dist/'
 };
 
 gulp.task('clean', function (cb) {
@@ -37,7 +37,7 @@ gulp.task('copy-vendor', ['clean'], function () {
     .on('error', gutil.log);
 });
 
-gulp.task('uglify', ['clean','lint'], function () {
+gulp.task('uglify', ['clean', 'lint'], function () {
   gulp.src(paths.js)
     .pipe(concat('main.min.js'))
     .pipe(gulp.dest(paths.dist))
@@ -46,7 +46,7 @@ gulp.task('uglify', ['clean','lint'], function () {
 });
 
 gulp.task('minifycss', ['clean'], function () {
- gulp.src(paths.css)
+  gulp.src(paths.css)
     .pipe(minifycss({
       keepSpecialComments: false,
       removeEmpty: true
@@ -56,28 +56,28 @@ gulp.task('minifycss', ['clean'], function () {
     .on('error', gutil.log);
 });
 
-gulp.task('processhtml', ['clean'], function() {
+gulp.task('processhtml', ['clean'], function () {
   gulp.src('src/index.html')
     .pipe(processhtml({}))
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
 });
 
-gulp.task('minifyhtml', ['clean'], function() {
+gulp.task('minifyhtml', ['clean'], function () {
   gulp.src('dist/index.html')
     .pipe(minifyhtml())
     .pipe(gulp.dest(paths.dist))
     .on('error', gutil.log);
 });
 
-gulp.task('lint', function() {
+gulp.task('lint', function () {
   gulp.src(paths.js)
     .pipe(jshint('.jshintrc'))
     .pipe(jshint.reporter('default'))
     .on('error', gutil.log);
 });
 
-gulp.task('html', function(){
+gulp.task('html', function () {
   gulp.src('src/*.html')
     .pipe(connect.reload())
     .on('error', gutil.log);
@@ -87,6 +87,7 @@ gulp.task('connect', function () {
   connect.server({
     root: [__dirname + '/src'],
     port: 9000,
+    host: "0.0.0.0",
     livereload: true
   });
 });

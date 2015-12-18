@@ -9,12 +9,16 @@ Game.Preloader.prototype = {
     this.load.setPreloadSprite(this.asset);
 
     // this.load.onLoadComplete.addOnce(this.onLoadComplete, this);
-    // this.loadResources();
+    this.loadResources();
 
     this.ready = true;
   },
 
   loadResources: function () {
+    game.load.image('background.png', "img/background.png");
+    game.load.image('game_background.png', "img/game_background.png");
+
+    game.load.atlas('atlas', 'img/atlas.png', 'img/atlas.json');
     // load your assets here
   },
 
