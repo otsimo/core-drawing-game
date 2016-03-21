@@ -1,0 +1,215 @@
+{
+    "settings/show_hint/title": "Show Hint",
+    "settings/show_hint/description": "Show hint",
+    "settings/hint_duration/title": "Hint Duration",
+    "settings/hint_duration/description": "Hint duration",
+    "loadingText": "Loading...",
+    "loadingFont": "60px Arial",
+    "loadingBackground": "#18B9F2",
+    "loadingColor": "#fff",
+    "announceText": "Match cards with same colors",
+    "announceTextStyle": {
+        "strokeThickness": 4,
+        "stroke": "#FFFFFF",
+        "font": "65px Arial",
+        "align": "center"
+    },
+    "homeBackgroundColor": "#18B9F2",
+    "preload": [
+        {
+            "name": "playButton",
+            "type": "image",
+            "path": "img/tr/basla.png"
+        },
+        {
+            "name": "back",
+            "type": "image",
+            "path": "img/back.png"
+        },
+        {
+            "name": "hand",
+            "type": "image",
+            "path": "img/hand.png"
+        },
+        {
+            "name": "congratulations",
+            "type": "audio",
+            "path": "audio/tr/congratulations.wav"
+        },
+        {
+            "name": "applause",
+            "type": "audio",
+            "path": "audio/applause.wav"
+        },
+        {
+            "name": "try_again",
+            "type": "audio",
+            "path": "audio/tr/try_again.wav"
+        },
+        {
+            "name": "ballon_body",
+            "type": "image",
+            "path": "img/ballon/ballon_body.png"
+        },
+        {
+            "name": "ballon_light",
+            "type": "image",
+            "path": "img/ballon/ballon_light.png"
+        },
+        {
+            "name": "ballon_rope",
+            "type": "image",
+            "path": "img/ballon/ballon_rope.png"
+        },
+        {
+            "name": "ballon_star",
+            "type": "image",
+            "path": "img/ballon/ballon_star.png"
+        },
+        {
+            "name": "background.png",
+            "type": "image",
+            "path": "img/background.png"
+        },
+        {
+            "name": "game_background.png",
+            "type": "image",
+            "path": "img/game_background.png"
+        },
+        {
+            "name": "atlas",
+            "type": "atlas",
+            "path": "img/tr/atlas.png",
+            "data": "img/tr/atlas.json"
+        }
+    ],
+    "game": {
+        "session_step": 10,
+        "items": "alphabet",
+        "scene_enter_duration": 500,
+        "scene_leave_duration": 500,
+        "balloon_color_options": {
+            "luminosity": "bright"
+        }
+    },
+    "alphabet": [
+        {
+            "char": "A",
+            "icon_url": "char_A.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png",
+            "steps": [
+                [
+                    {
+                        "x": 138,
+                        "y": 15
+                    },
+                    {
+                        "x": 107,
+                        "y": 64
+                    },
+                    {
+                        "x": 80,
+                        "y": 133
+                    },
+                    {
+                        "x": 56,
+                        "y": 194
+                    },
+                    {
+                        "x": 34,
+                        "y": 254
+                    },
+                    {
+                        "x": 12,
+                        "y": 313
+                    }
+                ],
+                [
+                    {
+                        "x": 145,
+                        "y": 15
+                    },
+                    {
+                        "x": 176,
+                        "y": 64
+                    },
+                    {
+                        "x": 203,
+                        "y": 133
+                    },
+                    {
+                        "x": 227,
+                        "y": 194
+                    },
+                    {
+                        "x": 249,
+                        "y": 254
+                    },
+                    {
+                        "x": 271,
+                        "y": 313
+                    }
+                ],
+                [
+                    {
+                        "x": 46,
+                        "y": 229
+                    },
+                    {
+                        "x": 93,
+                        "y": 229
+                    },
+                    {
+                        "x": 142,
+                        "y": 229
+                    },
+                    {
+                        "x": 191,
+                        "y": 229
+                    },
+                    {
+                        "x": 238,
+                        "y": 229
+                    }
+                ]
+            ]
+        },
+        {
+            "char": "B",
+            "icon_url": "char_B.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png"
+        },
+        {
+            "char": "C",
+            "icon_url": "char_C.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png"
+        },
+        {
+            "char": "Ç",
+            "icon_url": "char_Ch.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png"
+        },
+        {
+            "char": "D",
+            "icon_url": "char_D.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png"
+        },
+        {
+            "char": "E",
+            "icon_url": "char_E.png",
+            "big": "big_A.png",
+            "object": "Ayakkabı",
+            "objectImg": "shoes.png"
+        }
+    ]
+}

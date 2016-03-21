@@ -1,0 +1,43 @@
+{
+    "unique_name": "core-drawing-game",
+    "version": "---",
+    "main": "index.html",
+    "licence": "Apache 2",
+    "languages": [
+        "en"
+    ],
+    "default_language": "en",
+    "developer_name": "Otsimo",
+    "homepage": "https://github.com/otsimo/core-drawing-game",
+    "repository": "git@github.com:otsimo/core-drawing-game.git",
+    "authors": [
+        {
+            "name": "Sercan Değirmenci",
+            "email": "sercan@otsimo.com"
+        }
+    ],
+    "exclude": [],
+    "settings": "settings.json",
+    "kv_path": "data",
+    "metadata": [
+        {
+            "language": "en",
+            "visible_name": "Core Drawing Game",
+            "summary": "a short description",
+            "description": "an awesome game, this is long description",
+            "keywords": [
+                "drawing"
+            ],
+            "logo": "i18n/en/logo_en_450x300.png",
+            "icon": "i18n/en/icon_en_512.png",
+            "images": [
+                "i18n/en/screenshoot1.png",
+                "i18n/en/screenshoot2.png"
+            ],
+            "assets": [
+                "img/en",
+                "audio/en"
+            ]
+        }
+    ]
+}

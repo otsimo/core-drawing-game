@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Drawing Game</title>
+
+    <!--build:lib(./) js/phaser.js-->
+    <script src="node_modules/phaser/build/phaser.js"></script>
+    <!-- endbuild -->
+    
+    <!--build:libotsimo(./) js/otsimo.js-->
+    <script src="node_modules/otsimo/otsimo.js"></script>
+    <!-- endbuild -->
+ 
+    <!--build:libsprintf(./) js/sprintf.js-->
+    <script src="node_modules/sprintf-js/src/sprintf.js"></script>
+    <!-- endbuild -->
+    
+</head>
+
+<body style="padding:0;margin:0">
+
+
+<!--build:js js/game.js-->
+<script src="js/game.js"></script>
+<!-- endbuild -->
+
+    <script type="text/javascript">
+        otsimo.init();
+    </script>
+</body>
+
+</html>
