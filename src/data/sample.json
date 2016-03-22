@@ -7,7 +7,7 @@
     "loadingFont": "60px Arial",
     "loadingBackground": "#18B9F2",
     "loadingColor": "#fff",
-    "announceText": "Match cards with same colors",
+    "announceText": "The word %s begins with the letter %s.",
     "announceTextStyle": {
         "strokeThickness": 4,
         "stroke": "#FFFFFF",
@@ -88,17 +88,19 @@
         "items": "alphabet",
         "scene_enter_duration": 500,
         "scene_leave_duration": 500,
-        "balloon_color_options": {
+        "balloon_options": {
+            "count": 15,
             "luminosity": "bright"
         }
     },
     "alphabet": [
         {
-            "char": "A",
-            "icon_url": "char_A.png",
-            "big": "big_A.png",
+            "id": "char_A_ayakkabi",
+            "kind": "A",
             "object": "Ayakkabı",
-            "objectImg": "shoes.png",
+            "object_img": "shoes.png",
+            "audio": "ayakkabi_audio",
+            "image": "big_A.png",
             "steps": [
                 [
                     {
@@ -175,41 +177,6 @@
                     }
                 ]
             ]
-        },
-        {
-            "char": "B",
-            "icon_url": "char_B.png",
-            "big": "big_A.png",
-            "object": "Ayakkabı",
-            "objectImg": "shoes.png"
-        },
-        {
-            "char": "C",
-            "icon_url": "char_C.png",
-            "big": "big_A.png",
-            "object": "Ayakkabı",
-            "objectImg": "shoes.png"
-        },
-        {
-            "char": "Ç",
-            "icon_url": "char_Ch.png",
-            "big": "big_A.png",
-            "object": "Ayakkabı",
-            "objectImg": "shoes.png"
-        },
-        {
-            "char": "D",
-            "icon_url": "char_D.png",
-            "big": "big_A.png",
-            "object": "Ayakkabı",
-            "objectImg": "shoes.png"
-        },
-        {
-            "char": "E",
-            "icon_url": "char_E.png",
-            "big": "big_A.png",
-            "object": "Ayakkabı",
-            "objectImg": "shoes.png"
         }
     ]
 }

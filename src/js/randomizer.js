@@ -1,0 +1,44 @@
+export class Randomizer {
+    constructor() {
+        let kinds = new Set();
+        let itemList = otsimo.kv[otsimo.kv.game.items];
+
+        for (let i of itemList) {
+            kinds.add(i.kind)
+        }
+
+        this.itemList = itemList;
+        this.values = new Set(kinds.values());
+        this.kinds = kinds;
+    }
+
+    randomKind() {
+        let randomNumber = Math.floor(Math.random() * this.values.size);
+        return [...this.values][randomNumber];
+    }
+
+    randomItemOfKind(set, kind, excluded) {
+        let f = [...set].filter(l => {
+            if (kind != null && l.kind != kind) {
+                return false;
+            }
+            if (excluded != null && excluded.indexOf(l.kind) >= 0) {
+                return false;
+            }
+            return true;
+        });
+
+        return f[Math.floor(Math.random() * f.length)]
+    }
+
+    next(callback) {
+        if (this.values.size == 0) {
+            this.values = new Set(this.kinds.values());
+        }
+        let s = this.randomKind();
+        this.values.delete(s);
+
+        let correct = this.randomItemOfKind(this.itemList, s, []);
+        return callback(item);
+    }
+}

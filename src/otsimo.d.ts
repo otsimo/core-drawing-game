@@ -16,20 +16,13 @@ interface Asset {
     path: string;
     type: string;
 }
-/*
-"char": "A",
-"icon_url": "char_A.png",
-"big": "big_A.png",
-"text": "Ayakkabı",
-"objectImg": "shoes.png",
-"steps":
-*/
+
 interface GameItem {
     id: string;
     kind: string;
     audio: string;
-    tint: string;
-    text: string;
+    object: string;
+    object_img: string;
     image: string;
     steps: Array<Array<Phaser.Point>>;
 }
@@ -58,7 +51,7 @@ interface OtsimoGame {
 
 interface KeyValue {
     preload: Array<Asset>;
-    items: Array<GameItem>;
+    alphabet: Array<GameItem>;
     game: OtsimoGame;
     announceTextStyle: any;
     announceText: string;
