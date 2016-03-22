@@ -9,7 +9,6 @@ interface Child {
 interface Settings {
     show_hint: boolean;
     hint_duration: number;
-    difficulty: string;
 }
 
 interface Asset {
@@ -17,78 +16,50 @@ interface Asset {
     path: string;
     type: string;
 }
-
+/*
+"char": "A",
+"icon_url": "char_A.png",
+"big": "big_A.png",
+"text": "Ayakkabı",
+"objectImg": "shoes.png",
+"steps":
+*/
 interface GameItem {
     id: string;
     kind: string;
     audio: string;
-    question: string;
     tint: string;
     text: string;
     image: string;
+    steps: Array<Array<Phaser.Point>>;
 }
-
-interface OtsimoGame {
-    easy_size: number;
-    medium_size: number;
-    hard_size: number;
-
-    add_outline: boolean;
-    outline_image: string;
-
-    answer_type: string;
-    session_step: number;
-    question_from: string;
-    answers_from: string;
-
-    hint_type: string;
-    hide_item_on: number;
-    hiding_type: string;
-
-    hiding_fade_alpha: number;
-    hiding_fade_duration: number;
-
-    hiding_move_duration: number;
-
-    table_leave_duration: number;
-    table_show_duration: number;
-
-    balloon_color_options: any;
-}
-
 
 interface GameLayoutAxisEntry {
     multiplier: number;
     constant: number;
 }
 
-interface GameLayoutAxis {
-    width: GameLayoutAxisEntry;
-    height: GameLayoutAxisEntry;
-    x: GameLayoutAxisEntry;
-    y: GameLayoutAxisEntry;
-}
-
-interface AnswerLayout {
+interface QuestionLayout {
     anchor: Phaser.Point;
     x: GameLayoutAxisEntry;
     y: GameLayoutAxisEntry;
 }
 
-interface GameLayout {
-    fixed_size: boolean;
-    max_item: number;
-    cell_anchor: Phaser.Point;
-    horizontal: GameLayoutAxis;
-    vertical: GameLayoutAxis;
-    answer_box: AnswerLayout;
+interface OtsimoGame {
+    session_step: number;
+    items: string;
+
+    scene_leave_duration: number;
+    scene_enter_duration: number;
+
+    balloon_options: any;
+    question_layout: QuestionLayout;
 }
 
 interface KeyValue {
     preload: Array<Asset>;
     items: Array<GameItem>;
     game: OtsimoGame;
-    layout: GameLayout;
     announceTextStyle: any;
     announceText: string;
     homeBackgroundColor: string;
