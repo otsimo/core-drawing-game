@@ -1,33 +1,3 @@
-/*
-    Ayakkabı
-    kelimesi
-       A 
-harfi ile başlar.
- ~~~~~
-      Hadi
-       A
-   harfini çizelim
-----------------------------
-    The word
-     Shoose
-   starts with
-       S
-     letter.
- ~~~~~
-     Now let's draw
-          S
-        letter.
-------------------------------
-
-[
-{"text":"$(object)s",audio:"$(audio)s","style":"sty1"},
-{"text":"kelimesi",audio:"sound_line_2","style":"sty2"},
-{"text":"$(letter)s",audio:"$(letter_audio)s","style":"sty1"},
-{"text":"harfi ile başlar",audio:"sound_line_4","style":"str2"},
-]
-
-*/
-
 import {calculateConstraint} from '../utils'
 
 export default class Introduction extends Phaser.Group {
@@ -51,7 +21,9 @@ export default class Introduction extends Phaser.Group {
             if (this.currentPage < this.pageTweens.length) {
                 last.chain(this.pageTweens[this.currentPage])
             } else {
-                this.onComplete.dispatch();
+                last.onComplete.addOnce(() => {
+                    this.onComplete.dispatch();
+                }, this)
             }
         }, this);
     }
@@ -102,7 +74,11 @@ export default class Introduction extends Phaser.Group {
     }
 
     hide() {
+        let img = this.objectImage;
+        let t = otsimo.game.add.tween(img)
+            .to({ x: otsimo.game.width + img.width }, 300, Phaser.Easing.Cubic.In, true);
 
+        t.onComplete.addOnce(this.destroy, this);
     }
 
     makeObjectImageSmall() {

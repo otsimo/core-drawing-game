@@ -1,15 +1,100 @@
-/**
- * Created by sercand on 18/12/15.
- */
+
+export class OtsimoPainting {
 
 
-function newPaintingStep(game) {
-    var myBitmap = self.game.add.bitmapData(game.width, game.height);
-    game.add.sprite(0, 0, myBitmap);
+    constructor({game, parent}) {
+        this.game = game;
+        this.parentGroup = parent;
+        this.drawing = false;
+        this.steps = [];
+        this.onfinishdrawing = null;
 
-    var ctx = myBitmap.context;
+        this.steps.push(newPaintingStep(parent));
+        this.game.input.addMoveCallback(this.input.bind(this));
+    }
+
+    getLastStep() {
+        return this.steps[this.steps.length - 1];
+    }
+
+    input(pointer, x, y) {
+        if (!this.drawing && pointer.isDown) {
+            this.drawing = true;
+            this.onDown(pointer, x, y);
+        } else if (this.drawing && pointer.isDown) {
+            this.onMove(pointer, x, y);
+        } else if (this.drawing && pointer.isUp) {
+            this.onUp(pointer, x, y);
+        }
+    };
+
+
+    newStep() {
+        this.steps.push(newPaintingStep(this.parentGroup));
+    };
+
+    clearCtx() {
+        var step = this.getLastStep();
+        clearStep(step);
+        this.steps.pop();
+    };
+
+    clear() {
+        this.game.input.deleteMoveCallback(this.input);
+    }
+
+    onDown(pointer, x, y) {
+
+        let step = this.getLastStep();
+        step.lastPoint = { x: x, y: y };
+        step.points.push(step.lastPoint);
+    }
+
+    onMove(pointer, x, y) {
+        var step = this.getLastStep();
+
+        var currentPoint = { x: x, y: y };
+        var dist = distanceBetween(step.lastPoint, currentPoint);
+        var angle = angleBetween(step.lastPoint, currentPoint);
+
+        var ctx = step.ctx;
+
+        step.points.push(currentPoint);
+
+        for (var i = 0; i < dist; i += 5) {
+
+            x = step.lastPoint.x + (Math.sin(angle) * i);
+            y = step.lastPoint.y + (Math.cos(angle) * i);
+
+            var radgrad = ctx.createRadialGradient(x, y, 15, x, y, 30);
+
+            radgrad.addColorStop(0, '#FFFF00');
+            radgrad.addColorStop(0.5, 'rgba(255,255,0,0.5)');
+            radgrad.addColorStop(1, 'rgba(255,255,0,0)');
+
+            ctx.fillStyle = radgrad;
+            ctx.fillRect(x - 30, y - 30, 60, 60);
+        }
+
+        step.lastPoint = currentPoint;
+    }
+
+    onUp(pointer, x, y) {
+        this.drawing = false;
+        if (this.onfinishdrawing) {
+            this.onfinishdrawing(this.getLastStep())
+        }
+    }
+}
+
+function newPaintingStep(parent) {
+    let myBitmap = otsimo.game.add.bitmapData(otsimo.game.width, otsimo.game.height);
+    let sprite = otsimo.game.add.sprite(0, 0, myBitmap, null, parent);
+    sprite.anchor.set(0.5, 0.5);
+    
+    let ctx = myBitmap.context;
     ctx.lineJoin = ctx.lineCap = 'round';
-
+    ctx.globalAlpha = 0.2;
     return {
         points: [],
         bitmap: myBitmap,
@@ -37,94 +122,4 @@ function angleBetween(point1, point2) {
     return Math.atan2(point2.x - point1.x, point2.y - point1.y);
 }
 
-function OtsimoPainting(game) {
-    this.game = game;
-    this.drawing = false;
-    this.steps = [];
-    this.onfinishdrawing = null;
-    this.init();
-}
-
-OtsimoPainting.prototype = {};
-OtsimoPainting.prototype.init = function() {
-    var self = this;
-
-    self.steps.push(newPaintingStep(self.game));
-
-    this.game.input.addMoveCallback(self.input.bind(self));
-};
-
-
-OtsimoPainting.prototype.getLastStep = function() {
-    return this.steps[this.steps.length - 1];
-};
-
-OtsimoPainting.prototype.input = function(pointer, x, y) {
-    var self = this;
-
-    if (!self.drawing && pointer.isDown) {
-        self.drawing = true;
-        self.onDown(pointer, x, y);
-    } else if (self.drawing && pointer.isDown) {
-        self.onMove(pointer, x, y);
-    } else if (self.drawing && pointer.isUp) {
-        self.onUp(pointer, x, y);
-    }
-};
-
-
-OtsimoPainting.prototype.newStep = function() {
-    var self = this;
-    self.steps.push(newPaintingStep(self.game));
-};
-
-OtsimoPainting.prototype.clearCtx = function() {
-    var step = this.getLastStep();
-    clearStep(step);
-    this.steps.pop();
-};
-
-OtsimoPainting.prototype.clear = function() {
-    this.game.input.deleteMoveCallback(this.input);
-};
-
-OtsimoPainting.prototype.onDown = function(pointer, x, y) {
-    var step = this.getLastStep();
-    step.lastPoint = { x: x, y: y };
-    step.points.push(step.lastPoint);
-};
-
-OtsimoPainting.prototype.onMove = function(pointer, x, y) {
-    var step = this.getLastStep();
-    var currentPoint = { x: x, y: y };
-    var dist = distanceBetween(step.lastPoint, currentPoint);
-    var angle = angleBetween(step.lastPoint, currentPoint);
-
-    var ctx = step.ctx;
-
-    step.points.push(currentPoint);
-
-    for (var i = 0; i < dist; i += 5) {
-
-        x = step.lastPoint.x + (Math.sin(angle) * i);
-        y = step.lastPoint.y + (Math.cos(angle) * i);
-
-        var radgrad = ctx.createRadialGradient(x, y, 15, x, y, 30);
-
-        radgrad.addColorStop(0, '#FFFF00');
-        radgrad.addColorStop(0.5, 'rgba(255,255,0,0.5)');
-        radgrad.addColorStop(1, 'rgba(255,255,0,0)');
-
-        ctx.fillStyle = radgrad;
-        ctx.fillRect(x - 30, y - 30, 60, 60);
-    }
-
-    step.lastPoint = currentPoint;
-};
-
-OtsimoPainting.prototype.onUp = function(pointer, x, y) {
-    this.drawing = false;
-    if (this.onfinishdrawing) {
-        this.onfinishdrawing(this.getLastStep())
-    }
-};
+export {distanceBetween, angleBetween}

@@ -30,13 +30,6 @@
         }
     },
     "play_screen": {
-        "announce_text": "The word %s begins with the letter %s.",
-        "announce_text_style": {
-            "strokeThickness": 4,
-            "stroke": "#FFFFFF",
-            "font": "65px Arial",
-            "align": "center"
-        },
         "background_color": "#18B9F2",
         "background_image": "background.png",
         "intro": {
@@ -123,7 +116,7 @@
                         }
                     },
                     {
-                        "text": "kelimesini çizelim",
+                        "text": "harfini çizelim",
                         "audio": "lets_draw_audio",
                         "style": "sty2",
                         "position": {
@@ -189,6 +182,36 @@
             },
             "text_enter_duration": 100,
             "duration_each": 200
+        },
+        "bucket_constraint": {
+            "anchor": {
+                "x": 0,
+                "y": 1
+            },
+            "x": {
+                "multiplier": 0,
+                "constant": 20
+            },
+            "y": {
+                "multiplier": 1,
+                "constant": -20
+            }
+        },
+        "bucket": {
+            "atlas_or_image": "atlas",
+            "frame": "bucket.png"
+        },
+        "bucket_star_x": 0,
+        "bucket_star_y": -0.65,
+        "bucket_star_width": 140,
+        "bucket_star_height": 20,
+        "paint_constraint": {
+            "x": {
+                "multiplier": 0.5
+            },
+            "y": {
+                "multiplier": 0.5
+            }
         }
     },
     "over_screen": {},
@@ -258,6 +281,11 @@
             "type": "atlas",
             "path": "img/tr/atlas.png",
             "data": "img/tr/atlas.json"
+        },
+        {
+            "name": "big_A.png",
+            "type": "image",
+            "path": "img/big_A.png"
         }
     ],
     "game": {
@@ -313,76 +341,76 @@
             "steps": [
                 [
                     {
-                        "x": 138,
-                        "y": 15
+                        "x": 156,
+                        "y": 33
                     },
                     {
-                        "x": 107,
-                        "y": 64
+                        "x": 125,
+                        "y": 82
                     },
                     {
-                        "x": 80,
-                        "y": 133
+                        "x": 98,
+                        "y": 151
                     },
                     {
-                        "x": 56,
-                        "y": 194
+                        "x": 74,
+                        "y": 212
                     },
                     {
-                        "x": 34,
-                        "y": 254
+                        "x": 52,
+                        "y": 272
                     },
                     {
-                        "x": 12,
-                        "y": 313
+                        "x": 30,
+                        "y": 331
                     }
                 ],
                 [
                     {
-                        "x": 145,
-                        "y": 15
+                        "x": 163,
+                        "y": 33
                     },
                     {
-                        "x": 176,
-                        "y": 64
+                        "x": 194,
+                        "y": 82
                     },
                     {
-                        "x": 203,
-                        "y": 133
+                        "x": 221,
+                        "y": 151
                     },
                     {
-                        "x": 227,
-                        "y": 194
+                        "x": 245,
+                        "y": 212
                     },
                     {
-                        "x": 249,
-                        "y": 254
+                        "x": 267,
+                        "y": 272
                     },
                     {
-                        "x": 271,
-                        "y": 313
+                        "x": 289,
+                        "y": 331
                     }
                 ],
                 [
                     {
-                        "x": 46,
-                        "y": 229
+                        "x": 64,
+                        "y": 247
                     },
                     {
-                        "x": 93,
-                        "y": 229
+                        "x": 111,
+                        "y": 247
                     },
                     {
-                        "x": 142,
-                        "y": 229
+                        "x": 160,
+                        "y": 247
                     },
                     {
-                        "x": 191,
-                        "y": 229
+                        "x": 209,
+                        "y": 247
                     },
                     {
-                        "x": 238,
-                        "y": 229
+                        "x": 256,
+                        "y": 247
                     }
                 ]
             ]

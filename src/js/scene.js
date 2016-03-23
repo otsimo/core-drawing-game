@@ -1,5 +1,7 @@
 import {Randomizer} from './randomizer'
 import Introduction from './prefabs/intro'
+import {calculateConstraint} from './utils'
+import Paint from './prefabs/paint'
 
 export default class Scene {
     constructor({session, delegate}) {
@@ -41,7 +43,53 @@ export default class Scene {
     }
 
     onIntroCompleted() {
-        console.log("onIntroCompleted")        
         this.intro.makeObjectImageSmall();
+        this.show();
     }
+
+    show() {
+        let paint = new Paint({ game: otsimo.game, item: this.answerItem });
+        paint.init();
+        paint.moveIn();
+        paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
+        this.paint = paint;
+        this.showBasket();        
+    }
+
+    showBasket() {
+        let pc = calculateConstraint(otsimo.kv.play_screen.bucket_constraint);
+        let bucket = otsimo.game.add.image(pc.x, pc.y, otsimo.kv.play_screen.bucket.atlas_or_image, otsimo.kv.play_screen.bucket.frame);
+        bucket.y = otsimo.game.height + bucket.height;
+        bucket.anchor = pc.anchor;
+        
+        otsimo.game.world.bringToTop(bucket);
+        otsimo.game.add.tween(bucket).to({ y: pc.y }, 300, Phaser.Easing.Cubic.Out, true)
+
+        let wp = new Phaser.Point(pc.x, pc.y)
+        wp.y = wp.y + otsimo.kv.play_screen.bucket_star_y * bucket.height;
+        wp.x = wp.x + otsimo.kv.play_screen.bucket_star_x * bucket.width;
+
+        otsimo.starPos = wp
+        
+        this.bucket = bucket
+    }
+
+    hideBasket() {
+        let tween = otsimo.game.add.tween(this.bucket).to({ y: otsimo.game.height + this.bucket.height }, 300, Phaser.Easing.Cubic.In, true)
+        tween.onChildComplete.addOnce(this.bucket.destroy, this.bucket)
+    }
+
+    onFinishDrawing() {
+        this.paint.moveOut();
+        this.hideBasket();
+        this.intro.hide();
+
+        setTimeout(() => {
+            if (!this.next()) {
+                this.game.state.start('Over');
+            }
+        }, 400);
+
+    }
+
 }

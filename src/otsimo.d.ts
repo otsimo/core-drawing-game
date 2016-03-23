@@ -17,6 +17,11 @@ interface Asset {
     type: string;
 }
 
+interface ImageRef {
+    atlas_or_image: string;
+    frame: string;
+}
+
 interface GameItem {
     id: string;
     kind: string;
@@ -83,11 +88,16 @@ interface Intro {
 }
 
 interface PlayScreen {
-    announce_text_style: any;
-    announce_text: string;
     background_color: string;
     background_image: string;
     intro: Intro;
+    bucket_constraint: Constraint;
+    bucket: ImageRef;
+    bucket_star_x: number;
+    bucket_star_y: number;
+    bucket_star_width: number;
+    bucket_star_height: number;
+    paint_constraint: Constraint;
 }
 
 interface OtsimoGame {
