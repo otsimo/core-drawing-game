@@ -1,14 +1,20 @@
 import Balloon from '../prefabs/balloon'
+import {calculateConstraint} from '../utils'
 
 export default class Home extends Phaser.State {
 
     create() {
-        this.game.stage.backgroundColor = otsimo.kv.homeBackgroundColor;
-        this.game.add.button((this.game.width) * 0.37, (this.game.height) * 0.47, 'playButton', this.playAction, this, 2, 1, 0);
-        this.game.add.button(25, 25, 'back', otsimo.quitgame, this);
+        this.game.stage.backgroundColor = otsimo.kv.home_screen.background_color
+
+        let pb = calculateConstraint(otsimo.kv.home_screen.play_btn_constraint)
+        let btn = this.game.add.button(pb.x, pb.y, 'playButton', this.playAction, this, 2, 1, 0);
+        btn.anchor = otsimo.kv.home_screen.play_btn_constraint.anchor;
+
+        let bp = calculateConstraint(otsimo.kv.game.back_btn_constraint)
+        this.game.add.button(bp.x, bp.y, otsimo.kv.game.back_btn_image, otsimo.quitgame, this);
     }
 
-    playAction(button) {
+    playAction() {
         this.game.state.start('Play');
     }
 

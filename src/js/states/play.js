@@ -1,3 +1,6 @@
+import Session from '../session'
+import Scene from '../scene'
+
 function starContainsPoint(point, p2) {
     var minx = p2.x - 30;
     var miny = p2.y - 30;
@@ -11,13 +14,47 @@ function starContainsPoint(point, p2) {
     return bRet;
 }
 
+function moveSpriteTo(sprite) {
+    var tween = game.add.tween(sprite);
+    tween.to({ y: (game.height - 110) + (Math.random() * 20), x: 40 + Math.random() * 140 }, 300);
+    tween.start();
+}
 
 export default class Play extends Phaser.State {
+
     create() {
-        console.log("AlphabetGame create");
+        let session = new Session({ state: this });
+        let scene = new Scene({ delegate: this, session: session });
+
+        this.session = session
+        this.scene = scene
+        this.game.add.button(25, 25, 'back', this.backAction, this);
+
+        scene.next();
+    }
+
+    backAction(button) {
+        this.game.state.start('Home');
+    }
+
+    render() {
+        if (otsimo.debug) {
+            this.game.debug.text(this.game.time.fps || '--', 2, 14, "#00ff00");
+            this.session.debug(this.game);
+        }
+    }
+
+    sceneEnded() {
+        this.session.end();
+        this.game.state.start('Over');
+    }
+
+    createOLD() {
         game.stage.backgroundColor = '#ffffff';
-        this.input.onDown.add(this.onInputDown, this);
         game.add.image(0, 0, "game_background.png");
+        
+        
+        this.input.onDown.add(this.onInputDown, this);
 
 
         Game.AlphabetGame.sepet = game.add.image(game.width - 40, game.height, "atlas", Game.nextAlpha.objectImg);
@@ -140,10 +177,4 @@ export default class Play extends Phaser.State {
             Game.AlphabetGame.stepGroup.push(sepetImg);
         }
     }
-}
-
-function moveSpriteTo(sprite) {
-    var tween = game.add.tween(sprite);
-    tween.to({ y: (game.height - 110) + (Math.random() * 20), x: 40 + Math.random() * 140 }, 300);
-    tween.start();
 }

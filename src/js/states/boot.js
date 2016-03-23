@@ -1,12 +1,14 @@
 export default class Boot extends Phaser.State {
     preload() {
-        this.load.image('preloader', 'img/preloader.gif');
+        if (otsimo.kv.loading_screen.only_image) {
+            this.load.image('preloader', otsimo.kv.loading_screen.image_path);
+        }
     }
-    
+
     create() {
         // configure game
         this.game.input.maxPointers = 1;
-        this.game.stage.backgroundColor = otsimo.kv.homeBackgroundColor;
+        this.game.stage.backgroundColor = otsimo.kv.loading_screen.background_color;
 
         if (this.game.device.desktop) {
             this.game.scale.pageAlignHorizontally = true;

@@ -32,10 +32,36 @@ interface GameLayoutAxisEntry {
     constant: number;
 }
 
-interface QuestionLayout {
+interface Constraint {
     anchor: Phaser.Point;
     x: GameLayoutAxisEntry;
     y: GameLayoutAxisEntry;
+}
+
+interface LoadingScreen {
+    text: string,
+    font: string;
+    text_color: string;
+    text_constraint: Constraint;
+    background_color: string;
+    image_path: string;
+    only_image: boolean;
+}
+
+interface HomeScreen {
+    background_color: string;
+    play_btn_constraint: Constraint;
+}
+
+interface OverScreen {
+
+}
+
+interface PlayScreen {
+    announce_text_style: any;
+    announce_text: string;
+    background_color: string;
+    background_image: string;
 }
 
 interface OtsimoGame {
@@ -46,16 +72,20 @@ interface OtsimoGame {
     scene_enter_duration: number;
 
     balloon_options: any;
-    question_layout: QuestionLayout;
+    question_constraint: Constraint;
+    back_btn_constraint: Constraint;
+    back_btn_image: string;
 }
 
 interface KeyValue {
     preload: Array<Asset>;
     alphabet: Array<GameItem>;
     game: OtsimoGame;
-    announceTextStyle: any;
-    announceText: string;
-    homeBackgroundColor: string;
+
+    loading_screen: LoadingScreen;
+    home_screen: HomeScreen;
+    play_screen: PlayScreen;
+    over_screen: OverScreen;
 }
 
 interface Manifest {

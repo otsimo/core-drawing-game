@@ -30,7 +30,10 @@ export class Randomizer {
 
         return f[Math.floor(Math.random() * f.length)]
     }
-
+    /**
+     * next will generate next item
+     * @param {Function} callback the callback which will return the next item
+     */
     next(callback) {
         if (this.values.size == 0) {
             this.values = new Set(this.kinds.values());
@@ -39,6 +42,6 @@ export class Randomizer {
         this.values.delete(s);
 
         let correct = this.randomItemOfKind(this.itemList, s, []);
-        return callback(item);
+        return callback(correct);
     }
 }
