@@ -23,13 +23,20 @@ interface GameItem {
     audio: string;
     object: string;
     object_img: string;
+    object_frame: string;
     image: string;
+    frame: string;
     steps: Array<Array<Phaser.Point>>;
 }
 
 interface GameLayoutAxisEntry {
     multiplier: number;
     constant: number;
+}
+
+interface MaxSizeConstraint {
+    width: GameLayoutAxisEntry;
+    height: GameLayoutAxisEntry;
 }
 
 interface Constraint {
@@ -57,11 +64,30 @@ interface OverScreen {
 
 }
 
+interface IntroText {
+    text: string;
+    audio: string;
+    style: string;
+    position: Constraint;
+}
+
+interface Intro {
+    pages: Array<Array<IntroText>>;
+    styles: Object;
+    question_constraint: Constraint;
+    question_small_constraint: Constraint;
+    question_small_size: MaxSizeConstraint;
+
+    text_enter_duration: number;
+    duration_each: number;
+}
+
 interface PlayScreen {
     announce_text_style: any;
     announce_text: string;
     background_color: string;
     background_image: string;
+    intro: Intro;
 }
 
 interface OtsimoGame {

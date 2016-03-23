@@ -7,8 +7,10 @@ function setConstraint(item, constraint) {
     }
 }
 function calculateConstraint(constraint) {
-    let x = constraint.x.multiplier * otsimo.game.width + constraint.x.constant;
-    let y = constraint.y.multiplier * otsimo.game.height + constraint.y.constant;
+    let xc = constraint.x.constant | 0;
+    let yc = constraint.y.constant | 0;
+    let x = constraint.x.multiplier * otsimo.game.width + xc;
+    let y = constraint.y.multiplier * otsimo.game.height + yc;
     return {
         x: x,
         y: y,

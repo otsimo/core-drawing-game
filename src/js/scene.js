@@ -1,4 +1,5 @@
 import {Randomizer} from './randomizer'
+import Introduction from './prefabs/intro'
 
 export default class Scene {
     constructor({session, delegate}) {
@@ -30,8 +31,17 @@ export default class Scene {
             return false
         }
         this.random.next((item) => {
-            console.log("choosen item is", item);
+            this.answerItem = item;
+            let intro = new Introduction({ game: otsimo.game, question: item });
+            this.intro = intro;
+            intro.onComplete.addOnce(this.onIntroCompleted, this);
+            intro.show();
         })
         return true
+    }
+
+    onIntroCompleted() {
+        console.log("onIntroCompleted")        
+        this.intro.makeObjectImageSmall();
     }
 }

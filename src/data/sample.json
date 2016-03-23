@@ -38,7 +38,158 @@
             "align": "center"
         },
         "background_color": "#18B9F2",
-        "background_image": "background.png"
+        "background_image": "background.png",
+        "intro": {
+            "pages": [
+                [
+                    {
+                        "text": "%(object)s",
+                        "audio": "%(audio)s",
+                        "style": "sty1",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.3
+                            }
+                        }
+                    },
+                    {
+                        "text": "kelimesi",
+                        "audio": "sound_line_2",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.45
+                            }
+                        }
+                    },
+                    {
+                        "text": "%(letter)s",
+                        "audio": "%(letter_audio)s",
+                        "style": "sty1",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.65
+                            }
+                        }
+                    },
+                    {
+                        "text": "harfi ile başlar",
+                        "audio": "sound_line_4",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.85
+                            }
+                        }
+                    }
+                ],
+                [
+                    {
+                        "text": "Hadi",
+                        "audio": "hadi_audio",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.4
+                            }
+                        }
+                    },
+                    {
+                        "text": "%(letter)s",
+                        "audio": "%(letter_audio)s",
+                        "style": "sty1",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.6
+                            }
+                        }
+                    },
+                    {
+                        "text": "kelimesini çizelim",
+                        "audio": "lets_draw_audio",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.25
+                            },
+                            "y": {
+                                "multiplier": 0.8
+                            }
+                        }
+                    }
+                ]
+            ],
+            "styles": {
+                "sty1": {
+                    "fill": "#0000FF",
+                    "font": "112px Arial",
+                    "align": "center"
+                },
+                "sty2": {
+                    "fill": "#000000",
+                    "font": "72px Arial",
+                    "align": "center"
+                }
+            },
+            "question_constraint": {
+                "anchor": {
+                    "x": 0.5,
+                    "y": 0.5
+                },
+                "x": {
+                    "multiplier": 0.75,
+                    "constant": 0
+                },
+                "y": {
+                    "multiplier": 0.5,
+                    "constant": 0
+                }
+            },
+            "question_small_constraint": {
+                "anchor": {
+                    "x": 1,
+                    "y": 0
+                },
+                "x": {
+                    "multiplier": 1,
+                    "constant": -25
+                },
+                "y": {
+                    "multiplier": 0,
+                    "constant": 25
+                }
+            },
+            "question_small_size": {
+                "width": {
+                    "multiplier": 0.2,
+                    "constant": 0
+                },
+                "height": {
+                    "multiplier": 0.2667,
+                    "constant": 0
+                }
+            },
+            "text_enter_duration": 100,
+            "duration_each": 200
+        }
     },
     "over_screen": {},
     "preload": [
@@ -153,9 +304,12 @@
             "id": "char_A_ayakkabi",
             "kind": "A",
             "object": "Ayakkabı",
-            "object_img": "shoes.png",
+            "object_img": "atlas",
+            "object_frame": "shoes.png",
             "audio": "ayakkabi_audio",
             "image": "big_A.png",
+            "letter": "A",
+            "letter_audio": "big_a_audio",
             "steps": [
                 [
                     {
