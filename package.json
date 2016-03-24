@@ -1,16 +1,16 @@
 {
-  "name": "core-matching-game",
+  "name": "otsimo-drawing-game",
   "version": "1.0.0",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/otsimo/core-matching-game.git"
+    "url": "https://github.com/otsimo/core-drawing-game.git"
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/otsimo/core-matching-game",
+  "homepage": "https://github.com/otsimo/core-drawing-game",
   "dependencies": {
-    "otsimo": "^0.3.0",
+    "otsimo": "^1.0.0",
     "phaser": "^2.4.4",
     "sprintf-js": "^1.0.3"
   },
