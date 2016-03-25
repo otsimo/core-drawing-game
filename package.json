@@ -1,13 +1,13 @@
 {
   "name": "otsimo-drawing-game",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "repository": {
     "type": "git",
     "url": "https://github.com/otsimo/core-drawing-game.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "homepage": "https://github.com/otsimo/core-drawing-game",
   "dependencies": {
     "otsimo": "^1.0.0",
