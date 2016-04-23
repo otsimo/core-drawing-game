@@ -53,7 +53,7 @@ export default class Scene {
         paint.moveIn();
         paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
         this.paint = paint;
-        this.showBasket();        
+        this.showBasket();
     }
 
     showBasket() {
@@ -61,7 +61,7 @@ export default class Scene {
         let bucket = otsimo.game.add.image(pc.x, pc.y, otsimo.kv.play_screen.bucket.atlas_or_image, otsimo.kv.play_screen.bucket.frame);
         bucket.y = otsimo.game.height + bucket.height;
         bucket.anchor = pc.anchor;
-        
+
         otsimo.game.world.bringToTop(bucket);
         otsimo.game.add.tween(bucket).to({ y: pc.y }, 300, Phaser.Easing.Cubic.Out, true)
 
@@ -70,7 +70,7 @@ export default class Scene {
         wp.x = wp.x + otsimo.kv.play_screen.bucket_star_x * bucket.width;
 
         otsimo.starPos = wp
-        
+
         this.bucket = bucket
     }
 
@@ -79,7 +79,9 @@ export default class Scene {
         tween.onChildComplete.addOnce(this.bucket.destroy, this.bucket)
     }
 
-    onFinishDrawing() {
+
+    showEnding() {
+        this.intro.goRightForEnding()
         this.paint.moveOut();
         this.hideBasket();
         this.intro.hide();
@@ -89,7 +91,11 @@ export default class Scene {
                 this.game.state.start('Over');
             }
         }, 400);
-
     }
 
+    onFinishDrawing() {
+        setTimeout(() => {
+            this.showEnding()
+        }, 400);
+    }
 }

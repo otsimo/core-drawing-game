@@ -115,4 +115,7 @@ export default class Introduction extends Phaser.Group {
 
     }
 
+    goRightForEnding(){
+        
+    }
 }

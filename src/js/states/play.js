@@ -17,11 +17,16 @@ function starContainsPoint(point, p2) {
 export default class Play extends Phaser.State {
 
     create() {
+        this.game.stage.backgroundColor = otsimo.kv.play_screen.background_color;
+
         let session = new Session({ state: this });
         let scene = new Scene({ delegate: this, session: session });
 
         this.session = session
         this.scene = scene
+        
+        let back = this.game.add.image(this.game.world.centerX, this.game.world.centerY, otsimo.kv.play_screen.background_image)
+        back.anchor.set(0.5, 0.5)
         this.game.add.button(25, 25, 'back', this.backAction, this);
 
         scene.next();
