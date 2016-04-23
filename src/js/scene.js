@@ -29,8 +29,9 @@ export default class Scene {
      * @returns {boolean} whether a new step can be created
      */
     next() {
+        this.step = this.step + 1;
         if (this.step >= otsimo.kv.game.session_step) {
-            return false
+            return false;
         }
         this.random.next((item) => {
             this.answerItem = item;
