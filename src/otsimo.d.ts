@@ -62,11 +62,13 @@ interface LoadingScreen {
 
 interface HomeScreen {
     background_color: string;
+    background_image: string;
     play_btn_constraint: Constraint;
 }
 
 interface OverScreen {
-
+    background_color: string;
+    background_image: string;
 }
 
 interface IntroText {
