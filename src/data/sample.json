@@ -1,419 +1,3315 @@
 {
-    "settings/show_hint/title": "Show Hint",
-    "settings/show_hint/description": "Show hint",
-    "settings/hint_duration/title": "Hint Duration",
-    "settings/hint_duration/description": "Hint duration",
-    "loading_screen": {
-        "text": "Loading...",
-        "font": "60px Arial",
-        "background_color": "#18B9F2",
-        "text_color": "#fff",
-        "image_path": "img/preloader.gif",
-        "only_image": true,
-        "text_constraint": null
+  "settings/show_hint/title": "Show Hint",
+  "settings/show_hint/description": "Show hint",
+  "settings/hint_duration/title": "Hint Duration",
+  "settings/hint_duration/description": "Hint duration",
+  "loading_screen": {
+    "text": "Yükleniyor...",
+    "font": "60px Arial",
+    "background_color": "#18B9F2",
+    "text_color": "#fff",
+    "image_path": "img/preloader.gif",
+    "only_image": true,
+    "text_constraint": null
+  },
+  "home_screen": {
+    "background_color": "#18B9F2",
+    "play_btn_constraint": {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "x": {
+        "multiplier": 0.5,
+        "constant": 0
+      },
+      "y": {
+        "multiplier": 0.55,
+        "constant": 0
+      }
+    }
+  },
+  "play_screen": {
+    "background_color": "#18B9F2",
+    "background_image": "background.png",
+    "intro": {
+      "pages": [
+        [
+          {
+            "text": "%(object)s",
+            "audio": "%(audio)s",
+            "style": "sty1",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.3
+              }
+            }
+          },
+          {
+            "text": "kelimesi",
+            "audio": "sound_line_2",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.45
+              }
+            }
+          },
+          {
+            "text": "%(letter)s",
+            "audio": "%(letter_audio)s",
+            "style": "sty1",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.65
+              }
+            }
+          },
+          {
+            "text": "harfi ile başlar",
+            "audio": "sound_line_4",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.85
+              }
+            }
+          }
+        ],
+        [
+          {
+            "text": "Hadi",
+            "audio": "hadi_audio",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.4
+              }
+            }
+          },
+          {
+            "text": "%(letter)s",
+            "audio": "%(letter_audio)s",
+            "style": "sty1",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.6
+              }
+            }
+          },
+          {
+            "text": "harfini çizelim",
+            "audio": "lets_draw_audio",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.25
+              },
+              "y": {
+                "multiplier": 0.8
+              }
+            }
+          }
+        ]
+      ],
+      "styles": {
+        "sty1": {
+          "fill": "#0000FF",
+          "font": "112px Arial",
+          "align": "center"
+        },
+        "sty2": {
+          "fill": "#000000",
+          "font": "72px Arial",
+          "align": "center"
+        }
+      },
+      "question_constraint": {
+        "anchor": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "x": {
+          "multiplier": 0.75,
+          "constant": 0
+        },
+        "y": {
+          "multiplier": 0.5,
+          "constant": 0
+        }
+      },
+      "question_small_constraint": {
+        "anchor": {
+          "x": 1,
+          "y": 0
+        },
+        "x": {
+          "multiplier": 1,
+          "constant": -25
+        },
+        "y": {
+          "multiplier": 0,
+          "constant": 25
+        }
+      },
+      "question_small_size": {
+        "width": {
+          "multiplier": 0.2,
+          "constant": 0
+        },
+        "height": {
+          "multiplier": 0.2667,
+          "constant": 0
+        }
+      },
+      "text_enter_duration": 100,
+      "duration_each": 200
     },
-    "home_screen": {
-        "background_color": "#18B9F2",
-        "play_btn_constraint": {
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            },
-            "x": {
-                "multiplier": 0.5,
-                "constant": 0
-            },
-            "y": {
-                "multiplier": 0.55,
-                "constant": 0
-            }
-        }
+    "bucket_constraint": {
+      "anchor": {
+        "x": 0,
+        "y": 1
+      },
+      "x": {
+        "multiplier": 0,
+        "constant": 20
+      },
+      "y": {
+        "multiplier": 1,
+        "constant": -20
+      }
     },
-    "play_screen": {
-        "background_color": "#18B9F2",
-        "background_image": "background.png",
-        "intro": {
-            "pages": [
-                [
-                    {
-                        "text": "%(object)s",
-                        "audio": "%(audio)s",
-                        "style": "sty1",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.3
-                            }
-                        }
-                    },
-                    {
-                        "text": "kelimesi",
-                        "audio": "sound_line_2",
-                        "style": "sty2",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.45
-                            }
-                        }
-                    },
-                    {
-                        "text": "%(letter)s",
-                        "audio": "%(letter_audio)s",
-                        "style": "sty1",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.65
-                            }
-                        }
-                    },
-                    {
-                        "text": "harfi ile başlar",
-                        "audio": "sound_line_4",
-                        "style": "sty2",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.85
-                            }
-                        }
-                    }
-                ],
-                [
-                    {
-                        "text": "Hadi",
-                        "audio": "hadi_audio",
-                        "style": "sty2",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.4
-                            }
-                        }
-                    },
-                    {
-                        "text": "%(letter)s",
-                        "audio": "%(letter_audio)s",
-                        "style": "sty1",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.6
-                            }
-                        }
-                    },
-                    {
-                        "text": "harfini çizelim",
-                        "audio": "lets_draw_audio",
-                        "style": "sty2",
-                        "position": {
-                            "x": {
-                                "multiplier": 0.25
-                            },
-                            "y": {
-                                "multiplier": 0.8
-                            }
-                        }
-                    }
-                ]
-            ],
-            "styles": {
-                "sty1": {
-                    "fill": "#0000FF",
-                    "font": "112px Arial",
-                    "align": "center"
-                },
-                "sty2": {
-                    "fill": "#000000",
-                    "font": "72px Arial",
-                    "align": "center"
-                }
-            },
-            "question_constraint": {
-                "anchor": {
-                    "x": 0.5,
-                    "y": 0.5
-                },
-                "x": {
-                    "multiplier": 0.75,
-                    "constant": 0
-                },
-                "y": {
-                    "multiplier": 0.5,
-                    "constant": 0
-                }
-            },
-            "question_small_constraint": {
-                "anchor": {
-                    "x": 1,
-                    "y": 0
-                },
-                "x": {
-                    "multiplier": 1,
-                    "constant": -25
-                },
-                "y": {
-                    "multiplier": 0,
-                    "constant": 25
-                }
-            },
-            "question_small_size": {
-                "width": {
-                    "multiplier": 0.2,
-                    "constant": 0
-                },
-                "height": {
-                    "multiplier": 0.2667,
-                    "constant": 0
-                }
-            },
-            "text_enter_duration": 100,
-            "duration_each": 200
-        },
-        "bucket_constraint": {
-            "anchor": {
-                "x": 0,
-                "y": 1
-            },
-            "x": {
-                "multiplier": 0,
-                "constant": 20
-            },
-            "y": {
-                "multiplier": 1,
-                "constant": -20
-            }
-        },
-        "bucket": {
-            "atlas_or_image": "atlas",
-            "frame": "bucket.png"
-        },
-        "bucket_star_x": 0,
-        "bucket_star_y": -0.65,
-        "bucket_star_width": 140,
-        "bucket_star_height": 20,
-        "paint_constraint": {
-            "x": {
-                "multiplier": 0.5
-            },
-            "y": {
-                "multiplier": 0.5
-            }
-        }
+    "bucket": {
+      "atlas_or_image": "atlas",
+      "frame": "bucket.png"
     },
-    "over_screen": {},
-    "preload": [
-        {
-            "name": "playButton",
-            "type": "image",
-            "path": "img/tr/basla.png"
-        },
-        {
-            "name": "back",
-            "type": "image",
-            "path": "img/back.png"
-        },
-        {
-            "name": "hand",
-            "type": "image",
-            "path": "img/hand.png"
-        },
-        {
-            "name": "congratulations",
-            "type": "audio",
-            "path": "audio/tr/congratulations.wav"
-        },
-        {
-            "name": "applause",
-            "type": "audio",
-            "path": "audio/applause.wav"
-        },
-        {
-            "name": "try_again",
-            "type": "audio",
-            "path": "audio/tr/try_again.wav"
-        },
-        {
-            "name": "ballon_body",
-            "type": "image",
-            "path": "img/ballon/ballon_body.png"
-        },
-        {
-            "name": "ballon_light",
-            "type": "image",
-            "path": "img/ballon/ballon_light.png"
-        },
-        {
-            "name": "ballon_rope",
-            "type": "image",
-            "path": "img/ballon/ballon_rope.png"
-        },
-        {
-            "name": "ballon_star",
-            "type": "image",
-            "path": "img/ballon/ballon_star.png"
-        },
-        {
-            "name": "background.png",
-            "type": "image",
-            "path": "img/background.png"
-        },
-        {
-            "name": "game_background.png",
-            "type": "image",
-            "path": "img/game_background.png"
-        },
-        {
-            "name": "atlas",
-            "type": "atlas",
-            "path": "img/tr/atlas.png",
-            "data": "img/tr/atlas.json"
-        },
-        {
-            "name": "big_A.png",
-            "type": "image",
-            "path": "img/big_A.png"
-        }
-    ],
-    "game": {
-        "session_step": 10,
-        "items": "alphabet",
-        "scene_enter_duration": 500,
-        "scene_leave_duration": 500,
-        "balloon_options": {
-            "count": 15,
-            "luminosity": "bright"
-        },
-        "back_btn_image": "back",
-        "back_btn_constraint": {
-            "anchor": {
-                "x": 0,
-                "y": 0
-            },
-            "x": {
-                "multiplier": 0,
-                "constant": 25
-            },
-            "y": {
-                "multiplier": 0,
-                "constant": 25
-            }
-        },
-        "question_constraint": {
-            "anchor": {
-                "x": 0.5,
-                "y": 0.5
-            },
-            "x": {
-                "multiplier": 0.5,
-                "constant": 0
-            },
-            "y": {
-                "multiplier": 0.5,
-                "constant": 0
-            }
-        }
+    "bucket_star_x": 0,
+    "bucket_star_y": -0.65,
+    "bucket_star_width": 140,
+    "bucket_star_height": 20,
+    "paint_constraint": {
+      "x": {
+        "multiplier": 0.5
+      },
+      "y": {
+        "multiplier": 0.5
+      }
+    }
+  },
+  "over_screen": {},
+  "preload": [
+    {
+      "name": "playButton",
+      "type": "image",
+      "path": "img/tr/basla.png"
     },
-    "alphabet": [
-        {
-            "id": "char_A_ayakkabi",
-            "kind": "A",
-            "object": "Ayakkabı",
-            "object_img": "atlas",
-            "object_frame": "shoes.png",
-            "audio": "ayakkabi_audio",
-            "image": "big_A.png",
-            "letter": "A",
-            "letter_audio": "big_a_audio",
-            "steps": [
-                [
-                    {
-                        "x": 156,
-                        "y": 33
-                    },
-                    {
-                        "x": 125,
-                        "y": 82
-                    },
-                    {
-                        "x": 98,
-                        "y": 151
-                    },
-                    {
-                        "x": 74,
-                        "y": 212
-                    },
-                    {
-                        "x": 52,
-                        "y": 272
-                    },
-                    {
-                        "x": 30,
-                        "y": 331
-                    }
-                ],
-                [
-                    {
-                        "x": 163,
-                        "y": 33
-                    },
-                    {
-                        "x": 194,
-                        "y": 82
-                    },
-                    {
-                        "x": 221,
-                        "y": 151
-                    },
-                    {
-                        "x": 245,
-                        "y": 212
-                    },
-                    {
-                        "x": 267,
-                        "y": 272
-                    },
-                    {
-                        "x": 289,
-                        "y": 331
-                    }
-                ],
-                [
-                    {
-                        "x": 64,
-                        "y": 247
-                    },
-                    {
-                        "x": 111,
-                        "y": 247
-                    },
-                    {
-                        "x": 160,
-                        "y": 247
-                    },
-                    {
-                        "x": 209,
-                        "y": 247
-                    },
-                    {
-                        "x": 256,
-                        "y": 247
-                    }
-                ]
-            ]
-        }
-    ]
+    {
+      "name": "back",
+      "type": "image",
+      "path": "img/back.png"
+    },
+    {
+      "name": "hand",
+      "type": "image",
+      "path": "img/hand.png"
+    },
+    {
+      "name": "congratulations",
+      "type": "audio",
+      "path": "audio/tr/congratulations.wav"
+    },
+    {
+      "name": "applause",
+      "type": "audio",
+      "path": "audio/applause.wav"
+    },
+
+    {
+      "name": "a_audio",
+      "type": "audio",
+      "path": "audio/sound/a.mp3"
+    },
+    {
+      "name": "b_audio",
+      "type": "audio",
+      "path": "audio/sound/b.mp3"
+    },
+    {
+      "name": "c_audio",
+      "type": "audio",
+      "path": "audio/sound/c.mp3"
+    },
+    {
+      "name": "d_audio",
+      "type": "audio",
+      "path": "audio/sound/d.mp3"
+    },
+    {
+      "name": "e_audio",
+      "type": "audio",
+      "path": "audio/sound/e.mp3"
+    },
+    {
+      "name": "f_audio",
+      "type": "audio",
+      "path": "audio/sound/f.mp3"
+    },
+    {
+      "name": "g_audio",
+      "type": "audio",
+      "path": "audio/sound/g.mp3"
+    },
+    {
+      "name": "h_audio",
+      "type": "audio",
+      "path": "audio/sound/h.mp3"
+    },
+    {
+      "name": "i-_audio",
+      "type": "audio",
+      "path": "audio/sound/i-.mp3"
+    },
+    {
+      "name": "i_audio",
+      "type": "audio",
+      "path": "audio/sound/i.mp3"
+    },
+    {
+      "name": "j_audio",
+      "type": "audio",
+      "path": "audio/sound/j.mp3"
+    },
+    {
+      "name": "k_audio",
+      "type": "audio",
+      "path": "audio/sound/k.mp3"
+    },
+    {
+      "name": "l_audio",
+      "type": "audio",
+      "path": "audio/sound/l.mp3"
+    },
+    {
+      "name": "m_audio",
+      "type": "audio",
+      "path": "audio/sound/m.mp3"
+    },
+    {
+      "name": "n_audio",
+      "type": "audio",
+      "path": "audio/sound/n.mp3"
+    },
+    {
+      "name": "p_audio",
+      "type": "audio",
+      "path": "audio/sound/p.mp3"
+    },
+    {
+      "name": "r_audio",
+      "type": "audio",
+      "path": "audio/sound/r.mp3"
+    },
+    {
+      "name": "s_audio",
+      "type": "audio",
+      "path": "audio/sound/s.mp3"
+    },
+    {
+      "name": "s-_audio",
+      "type": "audio",
+      "path": "audio/sound/s-.mp3"
+    },
+    {
+      "name": "t_audio",
+      "type": "audio",
+      "path": "audio/sound/t.mp3"
+    },
+    {
+      "name": "u_audio",
+      "type": "audio",
+      "path": "audio/sound/u.mp3"
+    },
+    {
+      "name": "u-_audio",
+      "type": "audio",
+      "path": "audio/sound/u-.mp3"
+    },
+    {
+      "name": "v_audio",
+      "type": "audio",
+      "path": "audio/sound/v.mp3"
+    },
+    {
+      "name": "y_audio",
+      "type": "audio",
+      "path": "audio/sound/y.mp3"
+    },
+    {
+      "name": "z_audio",
+      "type": "audio",
+      "path": "audio/sound/z.mp3"
+    },
+    {
+      "name": "c-_audio",
+      "type": "audio",
+      "path": "audio/sound/c-.mp3"
+    },
+    {
+      "name": "o_audio",
+      "type": "audio",
+      "path": "audio/sound/o.mp3"
+    },
+    {
+      "name": "o-_audio",
+      "type": "audio",
+      "path": "audio/sound/o-.mp3"
+    },
+
+
+
+    {
+      "name": "a_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/ayakkabi.mp3"
+    },
+    {
+      "name": "b_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/bardak.mp3"
+    },
+    {
+      "name": "c_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/ceviz.mp3"
+    },
+    {
+      "name": "d_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/dolap.mp3"
+    },
+    {
+      "name": "e_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/eldiven.mp3"
+    },
+    {
+      "name": "f_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/firca.mp3"
+    },
+    {
+      "name": "g_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/gemi.mp3"
+    },
+    {
+      "name": "h_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/hali.mp3"
+    },
+    {
+      "name": "i-_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/inek.mp3"
+    },
+    {
+      "name": "i_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/islak_mendil.mp3"
+    },
+    {
+      "name": "j_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/jilet.mp3"
+    },
+    {
+      "name": "k_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/kitap.mp3"
+    },
+    {
+      "name": "l_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/lale.mp3"
+    },
+    {
+      "name": "m_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/masa.mp3"
+    },
+    {
+      "name": "n_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/nehir.mp3"
+    },
+    {
+      "name": "p_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/patates.mp3"
+    },
+    {
+      "name": "r_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/resim.mp3"
+    },
+    {
+      "name": "s_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/sarimsak.mp3"
+    },
+    {
+      "name": "s-_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/sort.mp3"
+    },
+    {
+      "name": "t_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/tekerlek.mp3"
+    },
+    {
+      "name": "u_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/ucak.mp3"
+    },
+    {
+      "name": "u-_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/utu.mp3"
+    },
+    {
+      "name": "v_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/vazo.mp3"
+    },
+    {
+      "name": "y_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/yumurta.mp3"
+    },
+    {
+      "name": "z_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/zarf.mp3"
+    },
+    {
+      "name": "c-_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/cicek.mp3"
+    },
+    {
+      "name": "o_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/orman.mp3"
+    },
+    {
+      "name": "o-_item_audio",
+      "type": "audio",
+      "path": "audio/sounde/orgu.mp3"
+    },
+    {
+      "name": "try_again",
+      "type": "audio",
+      "path": "audio/tr/try_again.wav"
+    },
+    {
+      "name": "ballon_body",
+      "type": "image",
+      "path": "img/ballon/ballon_body.png"
+    },
+    {
+      "name": "ballon_light",
+      "type": "image",
+      "path": "img/ballon/ballon_light.png"
+    },
+    {
+      "name": "ballon_rope",
+      "type": "image",
+      "path": "img/ballon/ballon_rope.png"
+    },
+    {
+      "name": "ballon_star",
+      "type": "image",
+      "path": "img/ballon/ballon_star.png"
+    },
+    {
+      "name": "background.png",
+      "type": "image",
+      "path": "img/background.png"
+    },
+    {
+      "name": "game_background.png",
+      "type": "image",
+      "path": "img/game_background.png"
+    },
+    {
+      "name": "a_letter",
+      "type": "image",
+      "path": "img/letter/a.png"
+    },
+    {
+      "name": "a_item",
+      "type": "image",
+      "path": "img/tr/item/a.png"
+    },
+    {
+      "name": "b_letter",
+      "type": "image",
+      "path": "img/letter/b.png"
+    },
+    {
+      "name": "b_item",
+      "type": "image",
+      "path": "img/tr/item/b.png"
+    },
+    {
+      "name": "c_letter",
+      "type": "image",
+      "path": "img/letter/c.png"
+    },
+    {
+      "name": "c_item",
+      "type": "image",
+      "path": "img/tr/item/c.png"
+    },
+    {
+      "name": "c-_letter",
+      "type": "image",
+      "path": "img/letter/c-.png"
+    },
+    {
+      "name": "c-_item",
+      "type": "image",
+      "path": "img/tr/item/c-.png"
+    },
+    {
+      "name": "d_letter",
+      "type": "image",
+      "path": "img/letter/d.png"
+    },
+    {
+      "name": "d_item",
+      "type": "image",
+      "path": "img/tr/item/d.png"
+    },
+    {
+      "name": "e_letter",
+      "type": "image",
+      "path": "img/letter/e.png"
+    },
+    {
+      "name": "e_item",
+      "type": "image",
+      "path": "img/tr/item/e.png"
+    },
+    {
+      "name": "f_letter",
+      "type": "image",
+      "path": "img/letter/f.png"
+    },
+    {
+      "name": "f_item",
+      "type": "image",
+      "path": "img/tr/item/f.png"
+    },
+    {
+      "name": "g_letter",
+      "type": "image",
+      "path": "img/letter/g.png"
+    },
+    {
+      "name": "g_item",
+      "type": "image",
+      "path": "img/tr/item/g.png"
+    },
+    {
+      "name": "g-_letter",
+      "type": "image",
+      "path": "img/letter/g-.png"
+    },
+    {
+      "name": "g-_item",
+      "type": "image",
+      "path": "img/tr/item/g-.png"
+    },
+    {
+      "name": "h_letter",
+      "type": "image",
+      "path": "img/letter/h.png"
+    },
+    {
+      "name": "h_item",
+      "type": "image",
+      "path": "img/tr/item/h.png"
+    },
+    {
+      "name": "i-_letter",
+      "type": "image",
+      "path": "img/letter/i-.png"
+    },
+    {
+      "name": "i-_item",
+      "type": "image",
+      "path": "img/tr/item/i-.png"
+    },
+    {
+      "name": "i_letter",
+      "type": "image",
+      "path": "img/letter/i.png"
+    },
+    {
+      "name": "i_item",
+      "type": "image",
+      "path": "img/tr/item/i.png"
+    },
+    {
+      "name": "j_letter",
+      "type": "image",
+      "path": "img/letter/j.png"
+    },
+    {
+      "name": "j_item",
+      "type": "image",
+      "path": "img/tr/item/j.png"
+    },
+    {
+      "name": "k_letter",
+      "type": "image",
+      "path": "img/letter/k.png"
+    },
+    {
+      "name": "k_item",
+      "type": "image",
+      "path": "img/tr/item/k.png"
+    },
+    {
+      "name": "l_letter",
+      "type": "image",
+      "path": "img/letter/l.png"
+    },
+    {
+      "name": "l_item",
+      "type": "image",
+      "path": "img/tr/item/l.png"
+    },
+    {
+      "name": "m_letter",
+      "type": "image",
+      "path": "img/letter/m.png"
+    },
+    {
+      "name": "m_item",
+      "type": "image",
+      "path": "img/tr/item/m.png"
+    },
+    {
+      "name": "n_letter",
+      "type": "image",
+      "path": "img/letter/n.png"
+    },
+    {
+      "name": "n_item",
+      "type": "image",
+      "path": "img/tr/item/n.png"
+    },
+    {
+      "name": "o_letter",
+      "type": "image",
+      "path": "img/letter/o.png"
+    },
+    {
+      "name": "o_item",
+      "type": "image",
+      "path": "img/tr/item/o.png"
+    },
+    {
+      "name": "o-_letter",
+      "type": "image",
+      "path": "img/letter/o-.png"
+    },
+    {
+      "name": "o-_item",
+      "type": "image",
+      "path": "img/tr/item/o-.png"
+    },
+    {
+      "name": "p_letter",
+      "type": "image",
+      "path": "img/letter/p.png"
+    },
+    {
+      "name": "p_item",
+      "type": "image",
+      "path": "img/tr/item/p.png"
+    },
+    {
+      "name": "r_letter",
+      "type": "image",
+      "path": "img/letter/r.png"
+    },
+    {
+      "name": "r_item",
+      "type": "image",
+      "path": "img/tr/item/r.png"
+    },
+    {
+      "name": "s_letter",
+      "type": "image",
+      "path": "img/letter/s.png"
+    },
+    {
+      "name": "s_item",
+      "type": "image",
+      "path": "img/tr/item/s.png"
+    },
+    {
+      "name": "s-_letter",
+      "type": "image",
+      "path": "img/letter/s-.png"
+    },
+    {
+      "name": "s-_item",
+      "type": "image",
+      "path": "img/tr/item/s-.png"
+    },
+    {
+      "name": "t_letter",
+      "type": "image",
+      "path": "img/letter/t.png"
+    },
+    {
+      "name": "t_item",
+      "type": "image",
+      "path": "img/tr/item/t.png"
+    },
+    {
+      "name": "u_letter",
+      "type": "image",
+      "path": "img/letter/u.png"
+    },
+    {
+      "name": "u_item",
+      "type": "image",
+      "path": "img/tr/item/u.png"
+    },
+    {
+      "name": "u-_letter",
+      "type": "image",
+      "path": "img/letter/u-.png"
+    },
+    {
+      "name": "u-_item",
+      "type": "image",
+      "path": "img/tr/item/u-.png"
+    },
+    {
+      "name": "v_letter",
+      "type": "image",
+      "path": "img/letter/v.png"
+    },
+    {
+      "name": "v_item",
+      "type": "image",
+      "path": "img/tr/item/v.png"
+    },
+    {
+      "name": "y_letter",
+      "type": "image",
+      "path": "img/letter/y.png"
+    },
+    {
+      "name": "y_item",
+      "type": "image",
+      "path": "img/tr/item/y.png"
+    },
+    {
+      "name": "z_letter",
+      "type": "image",
+      "path": "img/letter/z.png"
+    },
+    {
+      "name": "z_item",
+      "type": "image",
+      "path": "img/tr/item/z.png"
+    },
+
+    {
+      "name": "atlas",
+      "type": "atlas",
+      "path": "img/tr/atlas.png",
+      "data": "img/tr/atlas.json"
+    },
+    {
+      "name": "big_A.png",
+      "type": "image",
+      "path": "img/big_A.png"
+    }
+  ],
+  "game": {
+    "session_step": 10,
+    "items": "alphabet",
+    "scene_enter_duration": 500,
+    "scene_leave_duration": 500,
+    "balloon_options": {
+      "count": 15,
+      "luminosity": "bright"
+    },
+    "back_btn_image": "back",
+    "back_btn_constraint": {
+      "anchor": {
+        "x": 0,
+        "y": 0
+      },
+      "x": {
+        "multiplier": 0,
+        "constant": 25
+      },
+      "y": {
+        "multiplier": 0,
+        "constant": 25
+      }
+    },
+    "question_constraint": {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "x": {
+        "multiplier": 0.5,
+        "constant": 0
+      },
+      "y": {
+        "multiplier": 0.5,
+        "constant": 0
+      }
+    }
+  },
+  "alphabet": [
+    {
+      "id": "a",
+      "kind": "a",
+      "object": "Ayakkabı",
+      "object_img": "a_item",
+      "audio": "ayakkabi_audio",
+      "image": "a_letter",
+      "letter": "A",
+      "letter_audio": "big_a_audio",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "b",
+      "kind": "b",
+      "object_img": "b_item",
+      "audio": "b_item_audio",
+      "image": "b_letter",
+      "letter": "B",
+      "letter_audio": "b_audio",
+      "object": "Bardak",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "c",
+      "kind": "c",
+      "object_img": "c_item",
+      "audio": "c_item_audio",
+      "image": "c_letter",
+      "letter_audio": "c_audio",
+      "letter": "C",
+      "object": "Ceviz",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "c-",
+      "kind": "c-",
+      "object_img": "c-_item",
+      "audio": "c-_item_audio",
+      "image": "c-_letter",
+      "letter_audio": "c-_audio",
+      "letter": "Ç",
+      "object": "Çiçek",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "d",
+      "kind": "d",
+      "object_img": "d_item",
+      "audio": "d_item_audio",
+      "image": "d_letter",
+      "letter_audio": "d_audio",
+      "letter": "D",
+      "object": "Dolap",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "e",
+      "kind": "e",
+      "object_img": "e_item",
+      "audio": "e_item_audio",
+      "image": "e_letter",
+      "letter_audio": "e_audio",
+      "letter": "E",
+      "object": "Eldiven",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "f",
+      "kind": "f",
+      "object_img": "f_item",
+      "audio": "f_item_audio",
+      "image": "f_letter",
+      "letter_audio": "f_audio",
+      "letter": "F",
+      "object": "Fırça",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "g",
+      "kind": "g",
+      "object_img": "g_item",
+      "audio": "g_item_audio",
+      "image": "g_letter",
+      "letter_audio": "g_audio",
+      "letter": "G",
+      "object": "Gemi",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "h",
+      "kind": "h",
+      "object_img": "h_item",
+      "audio": "h_item_audio",
+      "image": "h_letter",
+      "letter_audio": "h_audio",
+      "letter": "H",
+      "object": "Halı",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i-",
+      "kind": "i-",
+      "object_img": "i-_item",
+      "audio": "i-_item_audio",
+      "image": "i-_letter",
+      "letter_audio": "i-_audio",
+      "letter": "I",
+      "object": "Islak Mendil",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "i",
+      "kind": "i",
+      "object_img": "i_item",
+      "audio": "i_item_audio",
+      "image": "i_letter",
+      "letter_audio": "i_audio",
+      "letter": "İ",
+      "object": "İnek",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "j",
+      "kind": "j",
+      "object_img": "j_item",
+      "audio": "j_item_audio",
+      "image": "j_letter",
+      "letter_audio": "j_audio",
+      "letter": "J",
+      "object": "Jilet",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "k",
+      "kind": "k",
+      "object_img": "k_item",
+      "audio": "k_item_audio",
+      "image": "k_letter",
+      "letter_audio": "k_audio",
+      "letter": "K",
+      "object": "Kitap",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "l",
+      "kind": "l",
+      "object_img": "l_item",
+      "audio": "l_item_audio",
+      "image": "l_letter",
+      "letter_audio": "l_audio",
+      "letter": "L",
+      "object": "Lale",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "m",
+      "kind": "m",
+      "object_img": "m_item",
+      "audio": "m_item_audio",
+      "image": "m_letter",
+      "letter_audio": "m_audio",
+      "letter": "M",
+      "object": "Masa",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "n",
+      "kind": "n",
+      "object_img": "n_item",
+      "audio": "n_item_audio",
+      "image": "n_letter",
+      "letter_audio": "n_audio",
+      "letter": "N",
+      "object": "Nehir",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "o",
+      "kind": "o",
+      "object_img": "o_item",
+      "audio": "o_item_audio",
+      "image": "o_letter",
+      "letter_audio": "o_audio",
+      "letter": "O",
+      "object": "Orman",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "o-",
+      "kind": "o-",
+      "object_img": "o-_item",
+      "audio": "o-_item_audio",
+      "image": "o-_letter",
+      "letter_audio": "o-_audio",
+      "letter": "Ö",
+      "object": "Örgü",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "p",
+      "kind": "p",
+      "object_img": "p_item",
+      "audio": "p_item_audio",
+      "image": "p_letter",
+      "letter_audio": "p_audio",
+      "letter": "P",
+      "object": "Patates",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "r",
+      "kind": "r",
+      "object_img": "r_item",
+      "audio": "r_item_audio",
+      "image": "r_letter",
+      "letter_audio": "r_audio",
+      "letter": "R",
+      "object": "Resim",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "s",
+      "kind": "s",
+      "object_img": "s_item",
+      "audio": "s_item_audio",
+      "image": "s_letter",
+      "letter_audio": "s_audio",
+      "letter": "S",
+      "object": "Sarımsak",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "s-",
+      "kind": "s-",
+      "object_img": "s-_item",
+      "audio": "s-_item_audio",
+      "image": "s-_letter",
+      "letter_audio": "s-_audio",
+      "letter": "Ş",
+      "object": "Şort",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "t",
+      "kind": "t",
+      "object_img": "t_item",
+      "audio": "t_item_audio",
+      "image": "t_letter",
+      "letter_audio": "t_audio",
+      "letter": "T",
+      "object": "Tekerlek",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "u",
+      "kind": "u",
+      "object_img": "u_item",
+      "audio": "u_item_audio",
+      "image": "u_letter",
+      "letter_audio": "u_audio",
+      "letter": "U",
+      "object": "Uçak",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "u-",
+      "kind": "u-",
+      "object_img": "u-_item",
+      "audio": "u-_item_audio",
+      "image": "u-_letter",
+      "letter_audio": "u-_audio",
+      "letter": "Ü",
+      "object": "Ütü",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "v",
+      "kind": "v",
+      "object_img": "v_item",
+      "audio": "v_item_audio",
+      "image": "v_letter",
+      "letter_audio": "v_audio",
+      "letter": "V",
+      "object": "Vazo",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "y",
+      "kind": "y",
+      "object_img": "y_item",
+      "audio": "y_item_audio",
+      "image": "y_letter",
+      "letter_audio": "y_audio",
+      "letter": "Y",
+      "object": "Yumurta",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    },
+    {
+      "id": "z",
+      "kind": "z",
+      "object_img": "z_item",
+      "audio": "z_item_audio",
+      "image": "z_letter",
+      "letter_audio": "z_audio",
+      "letter": "Z",
+      "object": "Zarf",
+      "steps": [
+        [
+          {
+            "x": 156,
+            "y": 33
+          },
+          {
+            "x": 125,
+            "y": 82
+          },
+          {
+            "x": 98,
+            "y": 151
+          },
+          {
+            "x": 74,
+            "y": 212
+          },
+          {
+            "x": 52,
+            "y": 272
+          },
+          {
+            "x": 30,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 163,
+            "y": 33
+          },
+          {
+            "x": 194,
+            "y": 82
+          },
+          {
+            "x": 221,
+            "y": 151
+          },
+          {
+            "x": 245,
+            "y": 212
+          },
+          {
+            "x": 267,
+            "y": 272
+          },
+          {
+            "x": 289,
+            "y": 331
+          }
+        ],
+        [
+          {
+            "x": 64,
+            "y": 247
+          },
+          {
+            "x": 111,
+            "y": 247
+          },
+          {
+            "x": 160,
+            "y": 247
+          },
+          {
+            "x": 209,
+            "y": 247
+          },
+          {
+            "x": 256,
+            "y": 247
+          }
+        ]
+      ]
+    }
+  ]
 }
