@@ -9,8 +9,21 @@
     "background_color": "#18B9F2",
     "text_color": "#fff",
     "image_path": "img/preloader.gif",
-    "only_image": true,
-    "text_constraint": null
+    "only_image": false,
+    "text_constraint": {
+      "anchor": {
+        "x": 0.5,
+        "y": 0.5
+      },
+      "x": {
+        "multiplier": 0.5,
+        "constant": 0
+      },
+      "y": {
+        "multiplier": 0.5,
+        "constant": 0
+      }
+    }
   },
   "home_screen": {
     "background_color": "#18B9F2",
@@ -45,54 +58,13 @@
                 "multiplier": 0.35
               },
               "y": {
-                "multiplier": 0.3
+                "multiplier": 0.25
               }
             }
           },
           {
             "text": "kelimesi",
             "audio": "sound_line_2",
-            "style": "sty2",
-            "position": {
-              "x": {
-                "multiplier": 0.35
-              },
-              "y": {
-                "multiplier": 0.45
-              }
-            }
-          },
-          {
-            "text": "%(letter)s",
-            "audio": "%(letter_audio)s",
-            "style": "sty1",
-            "position": {
-              "x": {
-                "multiplier": 0.35
-              },
-              "y": {
-                "multiplier": 0.65
-              }
-            }
-          },
-          {
-            "text": "harfi ile başlar",
-            "audio": "sound_line_4",
-            "style": "sty2",
-            "position": {
-              "x": {
-                "multiplier": 0.35
-              },
-              "y": {
-                "multiplier": 0.85
-              }
-            }
-          }
-        ],
-        [
-          {
-            "text": "Hadi",
-            "audio": "hadi_audio",
             "style": "sty2",
             "position": {
               "x": {
@@ -117,6 +89,47 @@
             }
           },
           {
+            "text": "harfi ile başlar",
+            "audio": "sound_line_4",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.35
+              },
+              "y": {
+                "multiplier": 0.8
+              }
+            }
+          }
+        ],
+        [
+          {
+            "text": "Hadi",
+            "audio": "hadi_audio",
+            "style": "sty2",
+            "position": {
+              "x": {
+                "multiplier": 0.35
+              },
+              "y": {
+                "multiplier": 0.3
+              }
+            }
+          },
+          {
+            "text": "%(letter)s",
+            "audio": "%(letter_audio)s",
+            "style": "sty1",
+            "position": {
+              "x": {
+                "multiplier": 0.35
+              },
+              "y": {
+                "multiplier": 0.5
+              }
+            }
+          },
+          {
             "text": "harfini çizelim",
             "audio": "lets_draw_audio",
             "style": "sty2",
@@ -125,7 +138,7 @@
                 "multiplier": 0.35
               },
               "y": {
-                "multiplier": 0.8
+                "multiplier": 0.7
               }
             }
           }
