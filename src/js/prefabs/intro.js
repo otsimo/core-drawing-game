@@ -32,9 +32,9 @@ export default class Introduction extends Phaser.Group {
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
         let intro = otsimo.kv.play_screen.intro;
         let qp = calculateConstraint(intro.question_constraint);
-        let qi = this.create(qp.x, -otsimo.game.height, q.object_img, q.object_frame);
-        qi.anchor = qp.anchor;
-        let itween = otsimo.game.add.tween(qi).to({ y: qp.y }, 300, Phaser.Easing.Cubic.Out);
+        let question_image = this.create(qp.x, -otsimo.game.height, q.object_img, q.object_frame);
+        question_image.anchor.set(qp.anchor.x, qp.anchor.y);
+        let itween = otsimo.game.add.tween(question_image).to({ y: qp.y }, 300, Phaser.Easing.Cubic.Out);
 
         this.pageTweens = [itween];
 
@@ -68,7 +68,7 @@ export default class Introduction extends Phaser.Group {
             }
             this._addOnPageCompleted(chain, txts);
         }
-        this.objectImage = qi;
+        this.objectImage = question_image;
         this.pageTweens[this.currentPage].start();
         this.currentPage = this.currentPage + 1
     }

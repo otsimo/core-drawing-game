@@ -14,12 +14,6 @@ function starContainsPoint(point, p2) {
     return bRet;
 }
 
-function moveSpriteTo(sprite) {
-    var tween = game.add.tween(sprite);
-    tween.to({ y: (game.height - 110) + (Math.random() * 20), x: 40 + Math.random() * 140 }, 300);
-    tween.start();
-}
-
 export default class Play extends Phaser.State {
 
     create() {

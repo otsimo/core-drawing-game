@@ -139,7 +139,6 @@ function moveSpriteTo(sprite) {
     let px = otsimo.starPos.x - otsimo.game.width / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_width)
     let py = otsimo.starPos.y - otsimo.game.height / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_height)
 
-    console.log("star to", otsimo.starPos, px, py)
     tween.to({ y: py, x: px }, 300);
     tween.start();
 }
