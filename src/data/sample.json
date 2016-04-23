@@ -5,7 +5,7 @@
   "settings/hint_duration/description": "Hint duration",
   "loading_screen": {
     "text": "Yükleniyor...",
-    "font": "60px Arial",
+    "font": "60px mfont",
     "background_color": "#18B9F2",
     "text_color": "#fff",
     "image_path": "img/preloader.gif",
@@ -14,6 +14,7 @@
   },
   "home_screen": {
     "background_color": "#18B9F2",
+    "background_image": "background",
     "play_btn_constraint": {
       "anchor": {
         "x": 0.5,
@@ -41,7 +42,7 @@
             "style": "sty1",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.3
@@ -54,7 +55,7 @@
             "style": "sty2",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.45
@@ -67,7 +68,7 @@
             "style": "sty1",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.65
@@ -80,7 +81,7 @@
             "style": "sty2",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.85
@@ -95,7 +96,7 @@
             "style": "sty2",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.4
@@ -108,7 +109,7 @@
             "style": "sty1",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.6
@@ -121,7 +122,7 @@
             "style": "sty2",
             "position": {
               "x": {
-                "multiplier": 0.25
+                "multiplier": 0.35
               },
               "y": {
                 "multiplier": 0.8
@@ -133,12 +134,12 @@
       "styles": {
         "sty1": {
           "fill": "#0000FF",
-          "font": "112px Arial",
+          "font": "112px mfont",
           "align": "center"
         },
         "sty2": {
           "fill": "#000000",
-          "font": "72px Arial",
+          "font": "72px mfont",
           "align": "center"
         }
       },
@@ -167,7 +168,7 @@
         },
         "y": {
           "multiplier": 0,
-          "constant": 25
+          "constant": 35
         }
       },
       "question_small_size": {
@@ -214,7 +215,10 @@
       }
     }
   },
-  "over_screen": {},
+  "over_screen": {
+    "background_color": "#18B9F2",
+    "background_image": "background"
+  },
   "preload": [
     {
       "name": "playButton",
