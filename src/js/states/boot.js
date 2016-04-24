@@ -20,7 +20,6 @@ export default class Boot extends Phaser.State {
             this.game.scale.maxHeight = 768;
             this.game.scale.forceOrientation(true);
             this.game.scale.pageAlignHorizontally = true;
-            this.game.scale.setScreenSize(true);
         }
         this.game.state.start('Preloader');
     }
