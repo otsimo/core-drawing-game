@@ -103,4 +103,8 @@ export default class Scene {
             this.showEnding()
         }, 400);
     }
+    
+    cleanup() {
+        this.paint.cleanup();
+    }
 }

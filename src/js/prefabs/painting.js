@@ -1,16 +1,71 @@
 
+function copyTouch(touch) {
+    return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
+}
+
+function is_touch_device() {
+    return 'ontouchstart' in window        // works on most browsers 
+        || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+};
 export class OtsimoPainting {
-
-
     constructor({game, parent}) {
         this.game = game;
         this.parentGroup = parent;
         this.drawing = false;
         this.steps = [];
         this.onfinishdrawing = null;
-
         this.steps.push(newPaintingStep(parent));
-        this.game.input.addMoveCallback(this.input.bind(this));
+
+        if (is_touch_device()) {
+            this.startup()
+        } else {
+            this.game.input.addMoveCallback(this.input.bind(this));
+        }
+    }
+    startup() {
+        var el = document.getElementsByTagName("canvas")[0];
+        this.hts = this.handleTouchStart.bind(this)
+        this.hte = this.handleTouchEnd.bind(this)
+        this.htc = this.handleTouchCancel.bind(this)
+        this.htm = this.handleTouchMove.bind(this)
+        el.addEventListener("touchstart", this.hts, false);
+        el.addEventListener("touchend", this.hte, false);
+        el.addEventListener("touchcancel", this.htc, false);
+        el.addEventListener("touchmove", this.htm, false);
+    }
+
+    handleTouchStart(e) {
+        console.log("touchstart")
+        e.preventDefault();
+        let touches = e.changedTouches;
+        if (touches.length >= 1) {
+            let touch = copyTouch(touches[0]);
+            this.input({ isMouse: false, isDown: false, isUp: false }, touch.pageX, touch.pageY);
+        }
+    }
+    handleTouchEnd(e) {
+        e.preventDefault();
+        let touches = e.changedTouches;
+        if (touches.length >= 1) {
+            let touch = copyTouch(touches[0]);
+            this.input({ isMouse: false, isDown: false, isUp: true }, touch.pageX, touch.pageY);
+        }
+    }
+    handleTouchMove(e) {
+        e.preventDefault();
+        let touches = e.changedTouches;
+        if (touches.length >= 1) {
+            let touch = copyTouch(touches[0]);
+            this.input({ isMouse: false, isDown: true }, touch.pageX, touch.pageY);
+        }
+    }
+    handleTouchCancel(e) {
+        e.preventDefault();
+        let touches = e.changedTouches;
+        if (touches.length >= 1) {
+            let touch = copyTouch(touches[0]);
+            this.input({ isMouse: false, isDown: false, isUp: true }, touch.pageX, touch.pageY);
+        }
     }
 
     getLastStep() {
@@ -27,7 +82,6 @@ export class OtsimoPainting {
             this.onUp(pointer, x, y);
         }
     };
-
 
     newStep() {
         this.steps.push(newPaintingStep(this.parentGroup));
@@ -85,13 +139,23 @@ export class OtsimoPainting {
             this.onfinishdrawing(this.getLastStep())
         }
     }
+
+    cleanupEvents() {
+        if (is_touch_device()) {
+            var el = document.getElementsByTagName("canvas")[0];
+            el.removeEventListener("touchstart", this.hts, false);
+            el.removeEventListener("touchend", this.hte, false);
+            el.removeEventListener("touchcancel", this.htc, false);
+            el.removeEventListener("touchmove", this.htm, false);
+        }
+    }
 }
 
 function newPaintingStep(parent) {
     let myBitmap = otsimo.game.add.bitmapData(otsimo.game.width, otsimo.game.height);
     let sprite = otsimo.game.add.sprite(0, 0, myBitmap, null, parent);
     sprite.anchor.set(0.5, 0.5);
-    
+
     let ctx = myBitmap.context;
     ctx.lineJoin = ctx.lineCap = 'round';
     ctx.globalAlpha = 0.2;

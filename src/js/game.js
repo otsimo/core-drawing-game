@@ -6,7 +6,6 @@ otsimo.onSettingsChanged(function (settings, sound) {
 
 
 otsimo.run(function () {
-    
     let game = new Phaser.Game(otsimo.width, otsimo.height, Phaser.CANVAS, 'gameContainer');
     Object.keys(states).forEach(state => game.state.add(state, states[state]));
 
