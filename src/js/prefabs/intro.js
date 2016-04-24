@@ -115,7 +115,18 @@ export default class Introduction extends Phaser.Group {
 
     }
 
-    goRightForEnding(){
-        
+    goRightForEnding() {
+        let q = this.question// otsimo.kv.alphabet[0] //this.question;
+        let intro = otsimo.kv.play_screen.intro;
+        let qp = calculateConstraint(intro.question_constraint);
+        let img = this.objectImage;
+
+        otsimo.game.add.tween(img)
+            .to({ x: qp.x, y: qp.y }, 300, Phaser.Easing.Cubic.Out, true)
+
+        otsimo.game.add.tween(img.scale)
+            .to({ x: 1, y: 1 }, 300, Phaser.Easing.Cubic.Out, true)
+
+        otsimo.game.add.tween(img.anchor).to({ x: qp.anchor.x, y: qp.anchor.y }, 300, Phaser.Easing.Cubic.Out, true)
     }
 }

@@ -82,16 +82,20 @@ export default class Scene {
 
 
     showEnding() {
-        this.intro.goRightForEnding()
-        this.paint.moveOut();
+        this.intro.goRightForEnding();
+        this.paint.goLeftForEnding();
         this.hideBasket();
-        this.intro.hide();
+
+        setTimeout(() => {
+            this.paint.moveOut();
+            this.intro.hide();
+        }, 1500);
 
         setTimeout(() => {
             if (!this.next()) {
                 this.game.state.start('Over');
             }
-        }, 400);
+        }, 2000);
     }
 
     onFinishDrawing() {

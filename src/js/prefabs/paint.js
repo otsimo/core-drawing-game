@@ -25,7 +25,7 @@ export default class Paint extends Phaser.Group {
     init() {
         let self = this;
         this.paint = new OtsimoPainting({ game: otsimo.game, parent: this });
-        this.paint.onfinishdrawing = function(step) {
+        this.paint.onfinishdrawing = function (step) {
             self.checkDrawing(step);
         }
     }
@@ -37,9 +37,16 @@ export default class Paint extends Phaser.Group {
 
     moveOut() {
         let tween = otsimo.game.add.tween(this)
-            .to({ x: this.hiddenPos.x, y: this.hiddenPos.y }, 300, Phaser.Easing.Cubic.In, true)
+            .to({ y: this.hiddenPos.y }, 300, Phaser.Easing.Cubic.In, true)
 
         tween.onComplete.addOnce(this.destroy, this)
+    }
+
+    goLeftForEnding() {
+        otsimo.game.add.tween(this)
+            .to({ x: this.visiblePos.x / 2, y: this.visiblePos.y }, 300, Phaser.Easing.Cubic.Out, true)
+        otsimo.game.add.tween(this.scale)
+            .to({ x: 0.7, y: 0.7 }, 300, Phaser.Easing.Cubic.Out, true)
     }
 
     drawSteps() {
@@ -55,7 +62,7 @@ export default class Paint extends Phaser.Group {
 
             var starImg = otsimo.game.add.image(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
             starImg.anchor.set(0.5, 0.5);
-            
+
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         }
