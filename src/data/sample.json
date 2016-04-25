@@ -148,12 +148,16 @@
         "sty1": {
           "fill": "#0000FF",
           "font": "112px mfont",
-          "align": "center"
+          "align": "center",
+          "strokeThickness": 13,
+          "stroke": "#FFFFFF"
         },
         "sty2": {
           "fill": "#000000",
           "font": "72px mfont",
-          "align": "center"
+          "align": "center",
+          "strokeThickness": 6,
+          "stroke": "#FFFFFF"
         }
       },
       "question_constraint": {
