@@ -17,4 +17,20 @@ function calculateConstraint(constraint) {
         anchor: constraint.anchor
     };
 }
-export {setConstraint, calculateConstraint}
+
+function gameVisibleName() {
+    let lang = otsimo.child.language || otsimo.manifest.default_language;
+    if (lang.length > 2) {
+        lang = lang.substring(0, 2)
+    }
+    for (var i = 0; i < otsimo.manifest.metadata.length; i++) {
+        var meta = otsimo.manifest.metadata[i];
+        if (meta.language == lang) {
+            return meta.visible_name;
+        }
+    }
+    return "";
+}
+
+
+export {gameVisibleName , setConstraint, calculateConstraint}

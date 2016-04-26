@@ -110,9 +110,18 @@ interface OtsimoGame {
     scene_enter_duration: number;
 
     balloon_options: any;
+    balloon_sound: string;
+
     question_constraint: Constraint;
     back_btn_constraint: Constraint;
     back_btn_image: string;
+}
+
+interface TextShadow {
+    x: number;
+    y: number;
+    color: string;
+    blur: number;
 }
 
 interface KeyValue {
@@ -131,6 +140,16 @@ interface Manifest {
     version: string;
 }
 
+interface MusicInfo {
+    music: string;
+    volume: number;
+    loop: boolean;
+    volume_load_screen: number;
+    volume_home_screen: number;
+    volume_play_screen: number;
+    volume_over_screen: number;
+}
+
 declare namespace otsimo {
 
     var debug: boolean;
@@ -144,6 +163,7 @@ declare namespace otsimo {
     var kv: KeyValue;
 
     var game: Phaser.Game;
+    var currentMusic: Phaser.Sound;
 
     function quitgame(): void;
 

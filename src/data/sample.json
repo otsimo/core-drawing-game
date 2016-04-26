@@ -260,7 +260,17 @@
     {
       "name": "applause",
       "type": "audio",
-      "path": "audio/applause.wav"
+      "path": "audio/applause.mp3"
+    },
+    {
+      "name": "backmusic",
+      "type": "audio",
+      "path": "audio/bg.mp3"
+    },
+    {
+      "name": "clickSound",
+      "type": "audio",
+      "path": "audio/click.mp3"
     },
     {
       "name": "a_audio",
@@ -911,7 +921,9 @@
         "multiplier": 0.5,
         "constant": 0
       }
-    }
+    },
+    "correct_sound": "applause",
+    "click_sound": "clickSound"
   },
   "alphabet": [
     {
@@ -3444,5 +3456,14 @@
         ]
       ]
     }
-  ]
+  ],
+  "game_music": {
+    "music": "backmusic",
+    "volume": 1,
+    "loop": true,
+    "volume_load_screen": 1,
+    "volume_home_screen": 1,
+    "volume_play_screen": 0.3,
+    "volume_over_screen": 0.7
+  }
 }

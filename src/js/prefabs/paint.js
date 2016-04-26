@@ -123,8 +123,9 @@ export default class Paint extends Phaser.Group {
     }
 
     finishGame() {
+        console.log("finishgame");
         this.onFinishDrawing.dispatch();
-        cleanup();
+        this.cleanup();
     }
 
     cleanup() {

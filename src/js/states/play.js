@@ -1,5 +1,6 @@
 import Session from '../session'
 import Scene from '../scene'
+import {calculateConstraint} from '../utils'
 
 function starContainsPoint(point, p2) {
     var minx = p2.x - 30;
@@ -29,8 +30,11 @@ export default class Play extends Phaser.State {
             let back = this.game.add.image(this.game.world.centerX, this.game.world.centerY, otsimo.kv.play_screen.background_image)
             back.anchor.set(0.5, 0.5);
         }
+        this.initDecoration();
         this.game.add.button(25, 25, 'back', this.backAction, this);
-
+        if (otsimo.currentMusic) {
+            otsimo.currentMusic.volume = otsimo.kv.game_music.volume_play_screen;
+        }
         scene.next();
     }
 
@@ -49,5 +53,15 @@ export default class Play extends Phaser.State {
     sceneEnded() {
         this.session.end();
         this.game.state.start('Over');
+    }
+
+    initDecoration() {
+        if (otsimo.kv.decoration) {
+            for (let d of otsimo.kv.decoration) {
+                let c = calculateConstraint(d);
+                let img = this.game.add.image(c.x, c.y, d.image, d.frame);
+                img.anchor.set(c.anchor.x, c.anchor.y);
+            }
+        }
     }
 }

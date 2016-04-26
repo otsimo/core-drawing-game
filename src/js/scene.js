@@ -99,6 +99,9 @@ export default class Scene {
     }
 
     onFinishDrawing() {
+        if (otsimo.correctSound) {
+            otsimo.correctSound.play(null, null, 0.5);
+        }
         setTimeout(() => {
             this.showEnding()
         }, 400);
