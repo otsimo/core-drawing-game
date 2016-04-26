@@ -28,11 +28,12 @@
             "keywords": [
                 "drawing"
             ],
-            "logo": "i18n/en/logo_en_450x300.png",
-            "icon": "i18n/en/icon_en_512.png",
+            "logo": "i18n/tr/d-alphabet-s.png",
+            "icon": "i18n/tr/d-alphabet-b.png",
             "images": [
-                "i18n/en/screenshoot1.png",
-                "i18n/en/screenshoot2.png"
+                "i18n/tr/ad-src.png",
+                "i18n/tr/ad-src2.png",
+                "i18n/tr/ad-src3.png"
             ],
             "assets": [
                 "img/en",
