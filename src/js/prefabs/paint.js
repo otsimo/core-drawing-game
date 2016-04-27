@@ -25,6 +25,7 @@ export default class Paint extends Phaser.Group {
     init() {
         let self = this;
         this.paint = new OtsimoPainting({ game: otsimo.game, parent: this });
+        this.starArr = [];
         this.paint.onfinishdrawing = function (step) {
             self.checkDrawing(step);
         }
@@ -36,9 +37,9 @@ export default class Paint extends Phaser.Group {
     }
 
     moveOut() {
+        console.log("move out");
         let tween = otsimo.game.add.tween(this)
             .to({ y: this.hiddenPos.y }, 300, Phaser.Easing.Cubic.In, true)
-
         tween.onComplete.addOnce(this.destroy, this)
     }
 
@@ -65,7 +66,7 @@ export default class Paint extends Phaser.Group {
                 this.stepDist += d;
             }
 
-            var starImg = otsimo.game.add.image(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
+            var starImg = otsimo.game.add.sprite(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
             starImg.anchor.set(0.5, 0.5);
 
             this.bringToTop(starImg);
@@ -103,11 +104,9 @@ export default class Paint extends Phaser.Group {
                 }
             }
         }
-        for (let i of this.stepGroup) {
 
-        }
         console.log("totDist: ", totDist);
-        if (this.stepDist && this.stepDist * 1.2 < totDist) {
+        if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
             console.log("returning");
             this.paint.clearCtx();
             this.paint.newStep();
@@ -138,8 +137,9 @@ export default class Paint extends Phaser.Group {
     }
 
     finishAnim() {
+        console.log("finish anim")
         for (var i = 0; i < this.stepGroup.length; i++) {
-            moveSpriteTo(this.stepGroup[i]);
+            this.moveSpriteTo(this.stepGroup[i]);
         }
         this.stepGroup = [];
     }
@@ -155,6 +155,49 @@ export default class Paint extends Phaser.Group {
             this.paint.cleanupEvents();
         }
     }
+
+    moveSpriteTo(sprite) {
+        console.log("move sprite");
+        this.starArr.push(sprite);
+        console.log("starArr: ", this.starArr);
+        var tween = otsimo.game.add.tween(sprite);
+
+        let px = otsimo.starPos.x - otsimo.game.width / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_width)
+        let py = otsimo.starPos.y - otsimo.game.height / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_height)
+
+        tween.to({ y: py, x: px }, 300);
+        tween.start();
+    }
+
+    starParticle() {
+        for (let i = 0; i < this.starArr.length; i++) {
+            let a = (Math.random() * Math.PI) / 2;
+            let d = Math.sqrt(otsimo.game.width * otsimo.game.width + otsimo.game.height * otsimo.game.height) * 1.4;
+            let my = Math.sin(a) * d
+            let mx = Math.cos(a) * d;
+            my = otsimo.game.height - my
+            let tween = otsimo.game.add.tween(this.starArr[i]).to({ x: mx, y: my }, Math.random() * 600 + 1000, Phaser.Easing.Sinusoidal.Out, false);
+            tween.onComplete.add(this.kill, this.starArr[i]);
+            tween.start();
+        }
+
+        for (let i = 0; i < this.starArr.length; i++) {
+            let a = (Math.random() * Math.PI) / 2;
+            let d = Math.sqrt(otsimo.game.width * otsimo.game.width + otsimo.game.height * otsimo.game.height);
+            let my = Math.sin(a) * d
+            let mx = Math.cos(a) * d;
+            my = otsimo.game.height - my
+            var starImg = otsimo.game.add.sprite(0, otsimo.game.height, "atlas", "star_middle.png");
+            starImg.anchor.set(0.5, 0.5);
+            let tween = otsimo.game.add.tween(starImg).to({ x: mx, y: my }, Math.random() * 600 + 1000, Phaser.Easing.Sinusoidal.Out, false);
+            tween.onComplete.add(this.kill, starImg);
+            tween.start();
+        }
+    }
+    
+    kill(particle) {
+        particle.kill();
+    }
 }
 
 function starContainsPoint(point, p2) {
@@ -168,14 +211,4 @@ function starContainsPoint(point, p2) {
         bRet = true;
     }
     return bRet;
-}
-
-function moveSpriteTo(sprite) {
-    var tween = otsimo.game.add.tween(sprite);
-
-    let px = otsimo.starPos.x - otsimo.game.width / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_width)
-    let py = otsimo.starPos.y - otsimo.game.height / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_height)
-
-    tween.to({ y: py, x: px }, 300);
-    tween.start();
 }

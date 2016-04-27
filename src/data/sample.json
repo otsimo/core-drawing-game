@@ -258,6 +258,26 @@
       "path": "audio/tr/congratulations.wav"
     },
     {
+      "name": "lets_draw_audio",
+      "type": "audio",
+      "path": "audio/soundb/harfini_cizelim.mp3"
+    },
+    {
+      "name": "sound_line_2",
+      "type": "audio",
+      "path": "audio/soundb/kelimesi.mp3"
+    },
+    {
+      "name": "sound_line_4",
+      "type": "audio",
+      "path": "audio/soundb/harfi_ile_baslar.mp3"
+    },
+    {
+      "name": "hadi_audio",
+      "type": "audio",
+      "path": "audio/soundb/hadi.mp3"
+    },
+    {
       "name": "applause",
       "type": "audio",
       "path": "audio/applause.mp3"
@@ -894,6 +914,9 @@
       "luminosity": "bright"
     },
     "back_btn_image": "back",
+    "error_ratio": 0.2,
+    "end_star_width_ratio": 0.5,
+    "end_star_height_ratio": 0.5,
     "back_btn_constraint": {
       "anchor": {
         "x": 0,
