@@ -43,7 +43,6 @@ export default class Preloader extends Phaser.State {
             if (asset.type === "atlas") {
                 loader.atlas(asset.name, asset.path, asset.data);
             } else {
-                console.log(asset.name);
                 loader[asset.type](asset.name, asset.path);
             }
         }

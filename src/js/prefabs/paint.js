@@ -52,12 +52,17 @@ export default class Paint extends Phaser.Group {
     drawSteps() {
         var points = this.item.steps[this.currentStep];
         this.stepGroup = [];
+        this.stepDist = 0;
         for (var i = 0; i < points.length; ++i) {
             var x = points[i].x;
             var y = points[i].y;
             var img = "star_middle.png";
             if (i == 0 || i == points.length - 1) {
                 img = "start_end.png";
+            }
+            if (i > 0) {
+                let d = distanceBetween(points[i], points[i - 1]);
+                this.stepDist += d;
             }
 
             var starImg = otsimo.game.add.image(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
@@ -66,11 +71,15 @@ export default class Paint extends Phaser.Group {
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         }
+        console.log("step distance of stars: ", this.stepDist);
     }
 
     checkDrawing(step) {
+        console.log("checkDrawing");
+        console.log(step.points);
         let checkPoints = this.item.steps[this.currentStep];
         let checking = [];
+        let totDist = 0;
         for (var j = 0; j < checkPoints.length; j++) {
             checking.push(false);
         }
@@ -78,6 +87,7 @@ export default class Paint extends Phaser.Group {
             var pre = step.points[i - 1];
             var now = step.points[i];
             var dist = distanceBetween(pre, now);
+            totDist += dist;
             var angle = angleBetween(pre, now);
             for (var t = 0; t < dist; t++) {
                 var x = pre.x + (Math.sin(angle) * t);
@@ -93,8 +103,19 @@ export default class Paint extends Phaser.Group {
                 }
             }
         }
+        for (let i of this.stepGroup) {
+
+        }
+        console.log("totDist: ", totDist);
+        if (this.stepDist && this.stepDist * 1.2 < totDist) {
+            console.log("returning");
+            this.paint.clearCtx();
+            this.paint.newStep();
+            return;
+        }
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
+                console.log("returning");
                 this.paint.clearCtx();
                 this.paint.newStep();
                 return;
@@ -104,6 +125,7 @@ export default class Paint extends Phaser.Group {
     }
 
     finishStep() {
+        console.log("finishStep", this.currentStep, this.item.steps.length);
         this.finishAnim();
 
         if (this.currentStep + 1 < this.item.steps.length) {
