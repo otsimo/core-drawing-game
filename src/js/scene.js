@@ -2,6 +2,7 @@ import {Randomizer} from './randomizer'
 import Introduction from './prefabs/intro'
 import {calculateConstraint} from './utils'
 import Paint from './prefabs/paint'
+import Hint from './prefabs/hint'
 
 export default class Scene {
     constructor({session, delegate}) {
@@ -55,6 +56,10 @@ export default class Scene {
         paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
         this.paint = paint;
         this.showBasket();
+        let hint = new Hint({game: otsimo.game, stars: this.paint.stepGroup});
+        hint.call(300);
+        this.hint = hint;
+        this.paint.addHint(this.hint);
     }
 
     showBasket() {

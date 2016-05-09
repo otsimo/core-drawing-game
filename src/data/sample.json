@@ -905,10 +905,11 @@
     }
   ],
   "game": {
-    "session_step": 10,
+    "session_step": 2,
     "items": "alphabet",
     "scene_enter_duration": 500,
     "scene_leave_duration": 500,
+    "hint_hand_duration": 500,
     "balloon_options": {
       "count": 15,
       "luminosity": "bright"

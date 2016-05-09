@@ -1,10 +1,11 @@
 import {calculateConstraint} from '../utils'
 import {OtsimoPainting, angleBetween, distanceBetween} from './painting'
+import {Hint} from './hint'
 
 export default class Paint extends Phaser.Group {
     constructor({game, item}) {
         super(game);
-        this.item = item
+        this.item = item;
         let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
 
         let sprite = this.create(0, 0, item.image, item.frame);
@@ -19,7 +20,7 @@ export default class Paint extends Phaser.Group {
         this.currentStep = 0;
         this.drawSteps();
 
-        this.onFinishDrawing = new Phaser.Signal()
+        this.onFinishDrawing = new Phaser.Signal();
     }
 
     init() {
@@ -29,6 +30,7 @@ export default class Paint extends Phaser.Group {
         this.paint.onfinishdrawing = function (step) {
             self.checkDrawing(step);
         }
+        this.hint = undefined;
     }
 
     moveIn() {
@@ -61,6 +63,7 @@ export default class Paint extends Phaser.Group {
             if (i == 0 || i == points.length - 1) {
                 img = "start_end.png";
             }
+            console.log(img);
             if (i > 0) {
                 let d = distanceBetween(points[i], points[i - 1]);
                 this.stepDist += d;
@@ -71,13 +74,16 @@ export default class Paint extends Phaser.Group {
 
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
+        } if (this.hint) {
+            this.hint.stars = this.stepGroup;
+            this.hint.kill();
+            this.hint.removeTimer();
+            this.hint.call(0);
         }
         console.log("step distance of stars: ", this.stepDist);
     }
 
     checkDrawing(step) {
-        console.log("checkDrawing");
-        console.log(step.points);
         let checkPoints = this.item.steps[this.currentStep];
         let checking = [];
         let totDist = 0;
@@ -126,7 +132,6 @@ export default class Paint extends Phaser.Group {
     finishStep() {
         console.log("finishStep", this.currentStep, this.item.steps.length);
         this.finishAnim();
-
         if (this.currentStep + 1 < this.item.steps.length) {
             this.paint.newStep();
             this.currentStep += 1;
@@ -137,11 +142,15 @@ export default class Paint extends Phaser.Group {
     }
 
     finishAnim() {
+        this.hint.removeTimer();
+        this.hint.kill();
+        this.hint.stars = [];
         console.log("finish anim")
         for (var i = 0; i < this.stepGroup.length; i++) {
             this.moveSpriteTo(this.stepGroup[i]);
         }
         this.stepGroup = [];
+
     }
 
     finishGame() {
@@ -194,9 +203,13 @@ export default class Paint extends Phaser.Group {
             tween.start();
         }
     }
-    
+
     kill(particle) {
         particle.kill();
+    }
+
+    addHint(hint) {
+        this.hint = hint;
     }
 }
 
