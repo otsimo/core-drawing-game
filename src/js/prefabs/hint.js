@@ -1,8 +1,3 @@
-/**
- * hint interrupts missing for painting.js
- * hint anchor and star anchor don't match
- */
-
 export default class Hint {
     constructor({game, stars}) {
         this.game = game;
@@ -21,7 +16,7 @@ export default class Hint {
      * @param {integer} delay for outside conditions
      */
     call(delay) {
-        console.log("hint is called");
+        //console.log("hint is called");
         if (!otsimo.settings.show_hint) {
             return;
         }
@@ -38,7 +33,7 @@ export default class Hint {
         this.tweenArr = [];
         this.killArrow();
     }
-    
+
     /**
      * Removes timer calls if there was any
      * Does not affect active tweens
@@ -62,7 +57,7 @@ export default class Hint {
      */
     hint() {
         this.incrementStep();
-        console.log("showing hint");
+        //console.log("showing hint");
         let fT = undefined;
         let lT = undefined;
         let next = { func: Phaser.Easing.Sinusoidal.Out, id: 'out' };
@@ -78,12 +73,12 @@ export default class Hint {
                     break;
             }
         }
-        this.arrow = otsimo.game.add.sprite(this.stars[0].world.x, this.stars[0].world.y + otsimo.game.height * 0.05, 'hand');
-        console.log("anchors: ", this.stars[0].anchor.x - 0.1, this.stars[0].anchor.y);
+        this.arrow = otsimo.game.add.sprite(this.stars[0].world.x + this.stars[0].width / 2, this.stars[0].world.y + this.stars[0].height * 1.5, 'hand');
+        this.arrow.anchor.set(0, 0);
         this.arrow.anchor.set(this.stars[0].anchor.x, this.stars[0].anchor.y);
         for (let i of this.stars) {
             if (i != this.stars[0]) {
-                let t = otsimo.game.add.tween(this.arrow).to({ y: i.world.y, x: i.world.x }, otsimo.kv.game.hint_hand_duration, Phaser.Easing.Linear.Out, false);
+                let t = otsimo.game.add.tween(this.arrow).to({ y: i.world.y + i.height * 1.5, x: i.world.x + i.width / 2 }, otsimo.kv.game.hint_hand_duration, Phaser.Easing.Linear.Out, false);
                 this.tweenArr.push(t);
                 this.swap(next);
             }
@@ -97,16 +92,21 @@ export default class Hint {
             this.tweenArr[i].chain(this.tweenArr[i + 1]);
         }
         this.tween = fT;
-        fT.start();
-        lT.onComplete.add(this.kill, this);
-        let delay = this.tweenArr.length * otsimo.kv.game.hint_hand_duration;
-        this.call(delay);
+        if (this.stars.length == 1) {
+            otsimo.game.time.events.add(otsimo.kv.game.hint_hand_duration * 2, this.kill, this);
+            this.call(otsimo.kv.game.hint_hand_duration * 1.5);
+        } else {
+            fT.start();
+            lT.onComplete.add(this.kill, this);
+            let delay = this.tweenArr.length * otsimo.kv.game.hint_hand_duration;
+            this.call(delay);
+        }
     }
-    
+
     /**
      * Kills the hint object if it exists
      */
-    
+
     killArrow() {
         if (this.arrow) {
             this.arrow.kill();
@@ -117,7 +117,7 @@ export default class Hint {
     /**
      * Kills all tweens in tweenArr 
      */
-    
+
     killTween() {
         let temp = this.tween;
         for (let i of this.tweenArr) {

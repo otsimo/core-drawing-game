@@ -1,4 +1,6 @@
 
+import {Hint} from './hint'
+
 function copyTouch(touch) {
     return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
 }
@@ -35,7 +37,7 @@ export class OtsimoPainting {
     }
 
     handleTouchStart(e) {
-        console.log("touchstart")
+        //console.log("touchstart")
         e.preventDefault();
         let touches = e.changedTouches;
         if (touches.length >= 1) {
@@ -98,7 +100,10 @@ export class OtsimoPainting {
     }
 
     onDown(pointer, x, y) {
-
+        console.log("painting: ON DOWN");
+        console.log("painting: remove timer and kill hint");
+        this.hint.removeTimer();
+        this.hint.kill();
         let step = this.getLastStep();
         step.lastPoint = { x: x, y: y };
         step.points.push(step.lastPoint);
@@ -134,6 +139,9 @@ export class OtsimoPainting {
     }
 
     onUp(pointer, x, y) {
+        console.log("painting: ON UP");
+        console.log("painting: call hint");
+        this.hint.call(0);
         this.drawing = false;
         if (this.onfinishdrawing) {
             this.onfinishdrawing(this.getLastStep())
@@ -148,6 +156,10 @@ export class OtsimoPainting {
             el.removeEventListener("touchcancel", this.htc, false);
             el.removeEventListener("touchmove", this.htm, false);
         }
+    }
+    
+    addHint(hint) {
+        this.hint = hint;
     }
 }
 

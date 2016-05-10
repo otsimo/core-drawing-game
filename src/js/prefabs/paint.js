@@ -39,7 +39,7 @@ export default class Paint extends Phaser.Group {
     }
 
     moveOut() {
-        console.log("move out");
+        //console.log("move out");
         let tween = otsimo.game.add.tween(this)
             .to({ y: this.hiddenPos.y }, 300, Phaser.Easing.Cubic.In, true)
         tween.onComplete.addOnce(this.destroy, this)
@@ -63,7 +63,7 @@ export default class Paint extends Phaser.Group {
             if (i == 0 || i == points.length - 1) {
                 img = "start_end.png";
             }
-            console.log(img);
+            //console.log(img);
             if (i > 0) {
                 let d = distanceBetween(points[i], points[i - 1]);
                 this.stepDist += d;
@@ -75,12 +75,13 @@ export default class Paint extends Phaser.Group {
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         } if (this.hint) {
+            console.log("paint: hint initializing in drawSteps")
             this.hint.stars = this.stepGroup;
             this.hint.kill();
             this.hint.removeTimer();
             this.hint.call(0);
         }
-        console.log("step distance of stars: ", this.stepDist);
+        //console.log("step distance of stars: ", this.stepDist);
     }
 
     checkDrawing(step) {
@@ -111,16 +112,16 @@ export default class Paint extends Phaser.Group {
             }
         }
 
-        console.log("totDist: ", totDist);
+        //console.log("totDist: ", totDist);
         if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
-            console.log("returning");
+            //console.log("returning");
             this.paint.clearCtx();
             this.paint.newStep();
             return;
         }
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
-                console.log("returning");
+                //console.log("returning");
                 this.paint.clearCtx();
                 this.paint.newStep();
                 return;
@@ -130,7 +131,7 @@ export default class Paint extends Phaser.Group {
     }
 
     finishStep() {
-        console.log("finishStep", this.currentStep, this.item.steps.length);
+        //console.log("finishStep", this.currentStep, this.item.steps.length);
         this.finishAnim();
         if (this.currentStep + 1 < this.item.steps.length) {
             this.paint.newStep();
@@ -142,6 +143,7 @@ export default class Paint extends Phaser.Group {
     }
 
     finishAnim() {
+        console.log("paint: removeTimer, kill and empty stars of hint");
         this.hint.removeTimer();
         this.hint.kill();
         this.hint.stars = [];
@@ -154,7 +156,7 @@ export default class Paint extends Phaser.Group {
     }
 
     finishGame() {
-        console.log("finishgame");
+        //console.log("finishgame");
         this.onFinishDrawing.dispatch();
         this.cleanup();
     }
@@ -166,9 +168,9 @@ export default class Paint extends Phaser.Group {
     }
 
     moveSpriteTo(sprite) {
-        console.log("move sprite");
+        //console.log("move sprite");
         this.starArr.push(sprite);
-        console.log("starArr: ", this.starArr);
+        //console.log("starArr: ", this.starArr);
         var tween = otsimo.game.add.tween(sprite);
 
         let px = otsimo.starPos.x - otsimo.game.width / 2 + (Math.random() * otsimo.kv.play_screen.bucket_star_width)
@@ -209,7 +211,9 @@ export default class Paint extends Phaser.Group {
     }
 
     addHint(hint) {
+        console.log("paint: this.hint = hint")
         this.hint = hint;
+        this.paint.addHint(hint);
     }
 }
 
