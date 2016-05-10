@@ -910,6 +910,7 @@
     "scene_enter_duration": 500,
     "scene_leave_duration": 500,
     "hint_hand_duration": 300,
+    "step_score": 5,
     "balloon_options": {
       "count": 15,
       "luminosity": "bright"

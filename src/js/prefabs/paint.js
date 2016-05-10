@@ -3,9 +3,10 @@ import {OtsimoPainting, angleBetween, distanceBetween} from './painting'
 import {Hint} from './hint'
 
 export default class Paint extends Phaser.Group {
-    constructor({game, item}) {
+    constructor({game, item, session}) {
         super(game);
         this.item = item;
+        this.session = session;
         let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
 
         let sprite = this.create(0, 0, item.image, item.frame);
@@ -75,7 +76,6 @@ export default class Paint extends Phaser.Group {
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         } if (this.hint) {
-            console.log("paint: hint initializing in drawSteps")
             this.hint.stars = this.stepGroup;
             this.hint.kill();
             this.hint.removeTimer();
@@ -115,6 +115,7 @@ export default class Paint extends Phaser.Group {
         //console.log("totDist: ", totDist);
         if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
             //console.log("returning");
+            this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
             this.paint.clearCtx();
             this.paint.newStep();
             return;
@@ -122,6 +123,7 @@ export default class Paint extends Phaser.Group {
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
                 //console.log("returning");
+                this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
                 this.paint.clearCtx();
                 this.paint.newStep();
                 return;
@@ -143,11 +145,10 @@ export default class Paint extends Phaser.Group {
     }
 
     finishAnim() {
-        console.log("paint: removeTimer, kill and empty stars of hint");
+        this.session.correctInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
         this.hint.removeTimer();
         this.hint.kill();
         this.hint.stars = [];
-        console.log("finish anim")
         for (var i = 0; i < this.stepGroup.length; i++) {
             this.moveSpriteTo(this.stepGroup[i]);
         }

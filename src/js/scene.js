@@ -50,13 +50,13 @@ export default class Scene {
     }
 
     show() {
-        let paint = new Paint({ game: otsimo.game, item: this.answerItem });
+        let paint = new Paint({ game: otsimo.game, item: this.answerItem, session: this.session });
         paint.init();
         paint.moveIn();
         paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
         this.paint = paint;
         this.showBasket();
-        let hint = new Hint({game: otsimo.game, stars: this.paint.stepGroup});
+        let hint = new Hint({ game: otsimo.game, stars: this.paint.stepGroup });
         hint.call(300);
         this.hint = hint;
         this.paint.addHint(this.hint);

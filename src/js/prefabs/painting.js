@@ -157,7 +157,7 @@ export class OtsimoPainting {
             el.removeEventListener("touchmove", this.htm, false);
         }
     }
-    
+
     addHint(hint) {
         this.hint = hint;
     }
