@@ -114,16 +114,20 @@ export default class Paint extends Phaser.Group {
 
         //console.log("totDist: ", totDist);
         if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
-            //console.log("returning");
-            this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
+            console.log("distance diff return");
+            if (this.session) {
+                this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed    
+            }
             this.paint.clearCtx();
             this.paint.newStep();
             return;
         }
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
-                //console.log("returning");
-                this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
+                console.log("checking false return");
+                if (this.session) {
+                    this.session.wrongtInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed    
+                }
                 this.paint.clearCtx();
                 this.paint.newStep();
                 return;
@@ -145,7 +149,9 @@ export default class Paint extends Phaser.Group {
     }
 
     finishAnim() {
-        this.session.correctInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
+        if (this.session) {
+            this.session.correctInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed    
+        }
         this.hint.removeTimer(false);
         this.hint.kill();
         //console.log("finish anim");
@@ -159,6 +165,7 @@ export default class Paint extends Phaser.Group {
 
     finishGame() {
         //console.log("finishgame");
+        this.session = undefined;
         this.onFinishDrawing.dispatch();
         this.cleanup();
     }

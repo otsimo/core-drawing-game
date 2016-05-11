@@ -41,7 +41,7 @@ export default class Scene {
             intro.onComplete.addOnce(this.onIntroCompleted, this);
             intro.show();
         })
-        return true
+        return true;
     }
 
     onIntroCompleted() {
@@ -105,6 +105,9 @@ export default class Scene {
                 otsimo.game.state.start('Over');
             }
         }, 2000);
+        setTimeout(() => {
+            this.cleanup();
+        }, 1500);
     }
 
     onFinishDrawing() {
@@ -122,5 +125,6 @@ export default class Scene {
 
     cleanup() {
         this.paint.cleanup();
+        this.paint = undefined;
     }
 }
