@@ -100,9 +100,9 @@ export class OtsimoPainting {
     }
 
     onDown(pointer, x, y) {
-        console.log("painting: ON DOWN");
-        console.log("painting: remove timer and kill hint");
-        this.hint.removeTimer();
+        //console.log("painting: ON DOWN");
+        //console.log("painting: remove timer and kill hint");
+        this.hint.removeTimer(false);
         this.hint.kill();
         let step = this.getLastStep();
         step.lastPoint = { x: x, y: y };
@@ -139,8 +139,8 @@ export class OtsimoPainting {
     }
 
     onUp(pointer, x, y) {
-        console.log("painting: ON UP");
-        console.log("painting: call hint");
+        //console.log("painting: ON UP");
+        //console.log("painting: call hint");
         this.hint.call(0);
         this.drawing = false;
         if (this.onfinishdrawing) {

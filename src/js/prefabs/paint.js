@@ -78,7 +78,7 @@ export default class Paint extends Phaser.Group {
         } if (this.hint) {
             this.hint.stars = this.stepGroup;
             this.hint.kill();
-            this.hint.removeTimer();
+            this.hint.removeTimer(false);
             this.hint.call(0);
         }
         //console.log("step distance of stars: ", this.stepDist);
@@ -146,8 +146,9 @@ export default class Paint extends Phaser.Group {
 
     finishAnim() {
         this.session.correctInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed
-        this.hint.removeTimer();
+        this.hint.removeTimer(false);
         this.hint.kill();
+        //console.log("finish anim");
         this.hint.stars = [];
         for (var i = 0; i < this.stepGroup.length; i++) {
             this.moveSpriteTo(this.stepGroup[i]);
@@ -212,7 +213,7 @@ export default class Paint extends Phaser.Group {
     }
 
     addHint(hint) {
-        console.log("paint: this.hint = hint")
+        //console.log("paint: this.hint = hint")
         this.hint = hint;
         this.paint.addHint(hint);
     }

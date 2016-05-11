@@ -24,7 +24,7 @@ export default class Session {
             failure: this.wrongAnswerTotal,
             success: this.correctAnswerTotal
         }
-        console.log("end session, post to analytics")
+        //console.log("end session, post to analytics")
     }
 
     startStep() {
@@ -37,6 +37,7 @@ export default class Session {
     }
 
     wrongInput(item, amount, step) {
+        console.log("wrong input");
         this.decrementScore();
         this.incrementHint(step);
         let now = Date.now();
@@ -48,14 +49,12 @@ export default class Session {
             time: now - this.stepStartTime,
             delta: now - this.previousInput
         }
-        console.log("wrong input")
     }
 
     correctInput(item, answerItem, step) {
+        console.log("correct input");
         this.incrementHint(step);
         let now = Date.now();
-        this.score += this.stepScore;
-        console.log("score: ", this.score);
         this.correctAnswerTotal += 1;
         let payload = {
             item: item.id,
@@ -66,14 +65,18 @@ export default class Session {
         this.previousInput = now;
         otsimo.customevent("game:success", payload);
     }
+    
+    updateScore() {
+        this.score += this.stepScore;
+    }
 
     debug(game) {
-        game.debug.text("score: " + this.score, 2, 28, "#00ff00");
-        game.debug.text("wrongAnswerTotal: " + this.wrongAnswerTotal, 2, 42, "#00ff00");
-        game.debug.text("wrongAnswerStep: " + this.wrongAnswerStep, 2, 54, "#00ff00");
-        game.debug.text("hintStep: " + this.hintStep, 2, 66, "#00ff00");
-        game.debug.text("hintTotal: " + this.hintTotal, 2, 78, "#00ff00");
-        game.debug.text("stepScore: " + this.stepScore, 2, 90, "#00ff00");
+        game.debug.text("score: " + this.score, 800, 640, "#00ff00");
+        game.debug.text("wrongAnswerTotal: " + this.wrongAnswerTotal, 800, 660, "#00ff00");
+        game.debug.text("wrongAnswerStep: " + this.wrongAnswerStep, 800, 680, "#00ff00");
+        game.debug.text("hintStep: " + this.hintStep, 800, 700, "#00ff00");
+        game.debug.text("hintTotal: " + this.hintTotal, 800, 720, "#00ff00");
+        game.debug.text("stepScore: " + this.stepScore, 800, 740, "#00ff00");
     }
 
     decrementScore() {
@@ -82,15 +85,16 @@ export default class Session {
         }
     }
 
-    incrementHint(tableHintStep) {
-        let change = tableHintStep - this.hintStep;
+    incrementHint(hintObjectStep) {
+        let change = hintObjectStep - this.hintStep;
+        console.log("change: ", change);
         if (this.stepScore > 0) {
             this.stepScore -= change;
             if (this.stepScore < 0) {
                 this.stepScore = 0;
             }
         }
-        this.hintTotal += (tableHintStep - this.hintStep);
-        this.hintStep = tableHintStep;
+        this.hintTotal += change;
+        this.hintStep = hintObjectStep;
     }
 }

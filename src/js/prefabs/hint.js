@@ -8,6 +8,7 @@ export default class Hint {
         this.timer = undefined;
         this.tween = undefined;
         this.arrow = undefined;
+        this.flag = false;
     }
 
     /**
@@ -16,11 +17,12 @@ export default class Hint {
      * @param {integer} delay for outside conditions
      */
     call(delay) {
-        //console.log("hint is called");
-        if (!otsimo.settings.show_hint) {
+        //console.log("call hint");
+        //console.log("call: stars = ", this.stars);
+        if (!otsimo.settings.show_hint || this.stars.length == 0) {
             return;
         }
-        this.removeTimer();
+        this.removeTimer(false);
         this.timer = otsimo.game.time.events.add(delay + (otsimo.settings.hint_duration * 1000), this.hint, this);
         this.timerArr.push(this.timer);
     }
@@ -29,7 +31,7 @@ export default class Hint {
      * Kill hint from scene or paint
      * Also destroys tweens
      */
-    kill() { //kills objects
+    kill() {
         this.tweenArr = [];
         this.killArrow();
     }
@@ -38,8 +40,13 @@ export default class Hint {
      * Removes timer calls if there was any
      * Does not affect active tweens
      */
-    removeTimer() {
-        otsimo.game.time.events.stop(false);
+    removeTimer(fl) {
+        if (fl) {
+            this.flag = true;
+        } else {
+            this.flag = false;
+            otsimo.game.time.events.stop(false);
+        }
         if (this.timer) {
             otsimo.game.time.events.remove(this.timer);
             this.timer = undefined;
@@ -56,6 +63,9 @@ export default class Hint {
      * Calls hint again with a delay of tween animations.
      */
     hint() {
+        if (this.flag == true || this.stars.length == 0) {
+            return;
+        }
         this.incrementStep();
         //console.log("showing hint");
         let fT = undefined;
@@ -73,6 +83,7 @@ export default class Hint {
                     break;
             }
         }
+        //console.log("this.stars: ", this.stars);
         this.arrow = otsimo.game.add.sprite(this.stars[0].world.x + this.stars[0].width / 2, this.stars[0].world.y + this.stars[0].height * 1.5, 'hand');
         this.arrow.anchor.set(0, 0);
         this.arrow.anchor.set(this.stars[0].anchor.x, this.stars[0].anchor.y);

@@ -50,12 +50,14 @@ export default class Scene {
     }
 
     show() {
+        this.session.startStep();
         let paint = new Paint({ game: otsimo.game, item: this.answerItem, session: this.session });
         paint.init();
         paint.moveIn();
         paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
         this.paint = paint;
         this.showBasket();
+        //console.log("show stepGroup: ", this.paint.stepGroup);
         let hint = new Hint({ game: otsimo.game, stars: this.paint.stepGroup });
         hint.call(300);
         this.hint = hint;
@@ -81,7 +83,7 @@ export default class Scene {
     }
 
     hideBasket() {
-        console.log("hiding basket");
+        //console.log("hiding basket");
         let tween = otsimo.game.add.tween(this.bucket).to({ y: otsimo.game.height + this.bucket.height }, 300, Phaser.Easing.Cubic.In, true)
         tween.onChildComplete.addOnce(this.bucket.destroy, this.bucket);
     }
@@ -100,19 +102,22 @@ export default class Scene {
 
         setTimeout(() => {
             if (!this.next()) {
-                console.log("a");
                 otsimo.game.state.start('Over');
             }
         }, 2000);
     }
 
     onFinishDrawing() {
+        this.session.updateScore();
+        //console.log("onFinishDrawing");
         if (otsimo.correctSound) {
             otsimo.correctSound.play(null, null, 0.5);
         }
         setTimeout(() => {
             this.showEnding()
         }, 400);
+        this.hint.kill();
+        this.hint.removeTimer(true);
     }
 
     cleanup() {
