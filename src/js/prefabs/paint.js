@@ -126,7 +126,7 @@ export default class Paint extends Phaser.Group {
             if (checking[k] === false) {
                 console.log("checking false return");
                 if (this.session) {
-                    this.session.wrongtInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed    
+                    this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step); // different var.s as item & answerItem may be needed    
                 }
                 this.paint.clearCtx();
                 this.paint.newStep();

@@ -905,14 +905,15 @@
     }
   ],
   "game": {
-    "session_step": 5,
+    "session_step": 2,
     "items": "alphabet",
     "scene_enter_duration": 500,
     "scene_leave_duration": 500,
     "hint_hand_duration": 300,
+    "hand_scale_constant": 0.7,
     "step_score": 5,
     "balloon_options": {
-      "count": 15,
+      "count": 10,
       "luminosity": "bright"
     },
     "back_btn_image": "back",
@@ -950,6 +951,54 @@
     "correct_sound": "applause",
     "click_sound": "clickSound"
   },
+  "ending_scene": {
+        "victory_sound": "victorySound",
+        "duration": 1000,
+        "text": {
+            "text": "Tebrikler",
+            "sound": "congSound",
+            "style": {
+                "strokeThickness": 18,
+                "stroke": "#FFFFFF",
+                "font": "98px mfont",
+                "fill": "#00FF22",
+                "align": "center",
+                "maxLines": 2,
+                "wordWrap": true,
+                "wordWrapWidth": 960,
+                "boundsAlignH": "center",
+                "boundsAlignV": "top"
+            },
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": {
+                "multiplier": 0.5,
+                "constant": 0
+            },
+            "y": {
+                "multiplier": 0.3,
+                "constant": 0
+            }
+        },
+        "button": {
+            "image": "playButton",
+            "delay": 3000,
+            "anchor": {
+                "x": 0.5,
+                "y": 0.5
+            },
+            "x": {
+                "multiplier": 0.5,
+                "constant": 0
+            },
+            "y": {
+                "multiplier": 0.7,
+                "constant": 0
+            }
+        }
+    },
   "alphabet": [
     {
       "id": "a",
