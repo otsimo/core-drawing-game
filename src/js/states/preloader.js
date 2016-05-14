@@ -30,6 +30,9 @@ export default class Preloader extends Phaser.State {
         if (otsimo.kv.game.click_sound) {
             otsimo.clickSound = this.game.add.audio(otsimo.kv.game.click_sound);
         }
+        if (otsimo.kv.game.balloon_sound) {
+            otsimo.popSound = this.game.add.audio(otsimo.kv.game.balloon_sound);
+        }
         
         if (otsimo.kv.game.correct_sound) {
             otsimo.correctSound = this.game.add.audio(otsimo.kv.game.correct_sound);

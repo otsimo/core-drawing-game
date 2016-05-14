@@ -283,6 +283,11 @@
       "path": "audio/applause.mp3"
     },
     {
+      "name": "balloon",
+      "type": "audio",
+      "path": "audio/balon.mp3"
+    },
+    {
       "name": "backmusic",
       "type": "audio",
       "path": "audio/bg.mp3"
@@ -576,6 +581,16 @@
       "name": "try_again",
       "type": "audio",
       "path": "audio/tr/try_again.wav"
+    },
+    {
+      "name": "victorySound",
+      "type": "audio",
+      "path": "audio/tr/congratulations.wav"
+    },
+    {
+      "name": "finishSound",
+      "type": "audio",
+      "path": "audio/finish.mp3"
     },
     {
       "name": "ballon_body",
@@ -905,11 +920,11 @@
     }
   ],
   "game": {
-    "session_step": 2,
+    "session_step": 5,
     "items": "alphabet",
     "scene_enter_duration": 500,
     "scene_leave_duration": 500,
-    "hint_hand_duration": 300,
+    "hint_hand_duration": 200,
     "hand_scale_constant": 0.7,
     "step_score": 5,
     "balloon_options": {
@@ -948,12 +963,14 @@
         "constant": 0
       }
     },
+    "balloon_sound": "balloon",
     "correct_sound": "applause",
     "click_sound": "clickSound"
   },
   "ending_scene": {
         "victory_sound": "victorySound",
         "duration": 1000,
+        "finish_sound": "finishSound",
         "text": {
             "text": "Tebrikler",
             "sound": "congSound",

@@ -37,8 +37,6 @@ export default class Over extends Phaser.State {
         btn.alpha = 0
 
 
-        Balloon.random()
-
         //add text
         let text = otsimo.game.add.text(tc.x, tc.y - 100, otsimo.kv.ending_scene.text.text, otsimo.kv.ending_scene.text.style);
         text.anchor.set(tc.anchor.x, tc.anchor.y);
@@ -71,9 +69,13 @@ export default class Over extends Phaser.State {
 
         //text sound
         setTimeout(() => {
-            let cong = this.game.add.audio(otsimo.kv.ending_scene.text.sound);
-            cong.play()
+            let cong = this.game.add.audio(otsimo.kv.ending_scene.victory_sound);
+            cong.play();
         }, dur / 2);
+        
+        //finish sound
+        let fin = this.game.add.audio(otsimo.kv.ending_scene.finish_sound);
+        fin.play();
 
         Balloon.random();
     }
