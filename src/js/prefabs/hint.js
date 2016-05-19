@@ -6,7 +6,7 @@ export default class Hint {
         this.timerArr = [];
         this.tweenArr = [];
         this.timer = undefined;
-        this.tween = undefined;
+        this.fT = undefined;
         this.arrow = undefined;
         this.flag = false;
     }
@@ -70,95 +70,96 @@ export default class Hint {
             return;
         }
         this.incrementStep();
-        let fT = undefined;
-        let next = { func: Phaser.Easing.Sinusoidal.Out, id: 'out' };
-        let lTdelay = 100;
-        /*this.swap = function (prev) {
-            switch (prev.id) {
-                case ('out'):
-                    prev.func = Phaser.Easing.Sinusoidal.In;
-                    prev.id = 'in';
-                    break;
-                case ('in'):
-                    prev.func = Phaser.Easing.Sinusoidal.Out;
-                    prev.id = 'out';
-                    break;
-            }
-        }*/
-        let yC = 1.5 * this.stars[0].height * otsimo.kv.game.hand_scale_constant;
+
+        let lTdelay = 300;
         let xC = this.stars[0].width * (1 - otsimo.kv.game.hand_scale_constant);
+        let yC = 1.5 * this.stars[0].height * otsimo.kv.game.hand_scale_constant;
+
         this.arrow = otsimo.game.add.sprite(this.stars[0].world.x + xC, this.stars[0].world.y + yC, 'hand');
-        this.tween = otsimo.game.add.tween(this.arrow.scale)
-            .to(
+        this.arrow.anchor.set(this.stars[0].anchor.x, this.stars[0].anchor.y);
+
+        this.addTweensToStars(xC, yC);
+        this.chainTweens();
+
+        if (this.stars.length == 1) {
+            otsimo.game.time.events.add(otsimo.kv.game.hint_hand_duration * 2, this.kill, this);
+            this.call(otsimo.kv.game.hint_hand_duration * 1.5);
+        } else {
+            this.fT.start();
+            this.lT.onComplete.add(this.kill, this);
+            let delay = (this.tweenArr.length + 5) * otsimo.kv.game.hint_hand_duration;
+            this.call(delay);
+        }
+    }
+
+    //add a tween to every star
+
+    addTweensToStars(xC, yC, lTdelay) {
+
+        // first tween for scaling
+        this.fT = otsimo.game.add.tween(this.arrow.scale).to(
             {
                 x: otsimo.kv.game.hand_scale_constant,
                 y: otsimo.kv.game.hand_scale_constant
             },
             otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.Out, false
-            );
-        this.arrow.anchor.set(this.stars[0].anchor.x, this.stars[0].anchor.y);
+        );
+        
+        //tweens for arrow move
         for (let i of this.stars) {
-            if (i != this.stars[0] && i != this.stars[1] && i != this.stars[this.stars.length - 1]) {
+            // i is the last star & there are more multiple stars
+            if (i == this.stars[this.stars.length - 1] && this.stars.length != 1) {
+                let lTx = (i.world.x - this.stars[this.stars.length - 2].world.x);
+                let lTy = (i.world.y - this.stars[this.stars.length - 2].world.y);
+
                 let t = otsimo.game.add.tween(this.arrow).to(
                     {
-                        y: i.world.y + yC,
-                        x: i.world.x + xC
-                    },
-                    otsimo.kv.game.hint_hand_duration, Phaser.Easing.Linear.Out, false
-                );
-                this.tweenArr.push(t);
-                //this.swap(next);
-            } else if (i == this.stars[1]) {
-                let t = otsimo.game.add.tween(this.arrow).to(
-                    {
-                        y: i.world.y + yC,
-                        x: i.world.x + xC
-                    },
-                    otsimo.kv.game.hint_hand_duration, Phaser.Easing.Sinusoidal.Out, false
-                );
-                this.tweenArr.push(t);
-            } else if (i == this.stars[this.stars.length - 1] && this.stars.length != 1) {
-                let t = otsimo.game.add.tween(this.arrow).to(
-                    {
-                        y: i.world.y + yC + (i.world.y - this.stars[this.stars.length - 2].world.y) * 0.5,
-                        x: i.world.x + xC + (i.world.x - this.stars[this.stars.length - 2].world.x) * 0.5
+                        y: i.world.y + yC + lTy * 0.5,
+                        x: i.world.x + xC + lTx * 0.35
                     },
                     otsimo.kv.game.hint_hand_duration * 2, Phaser.Easing.Sinusoidal.In, false
                 );
+
                 this.tweenArr.push(t);
-            } else if (i == this.stars[0]) {
+            } else {
+
+                let easingFunc = Phaser.Easing.Linear.In;
+
+                // i is the first or second star
+                if (i == this.stars[0] || i == this.stars[1]) {
+                    easingFunc = Phaser.Easing.Sinusoidal.Out;
+                }
+
                 let t = otsimo.game.add.tween(this.arrow).to(
                     {
-                        y: i.world.y + yC, x: i.world.x + xC
+                        y: i.world.y + yC,
+                        x: i.world.x + xC
                     },
-                    otsimo.kv.game.hint_hand_duration, Phaser.Easing.Sinusoidal.Out, false
+                    otsimo.kv.game.hint_hand_duration, easingFunc, false
                 );
+
                 this.tweenArr.push(t);
             }
         }
-        fT = this.tween;
-        fT.chain(this.tweenArr[0]);
+        
+        //last tween for scaling back
         this.lT = otsimo.game.add.tween(this.arrow.scale).to(
             {
                 x: 1,
                 y: 1
             },
-            otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.In, false, lTdelay
+            otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.Out, false, lTdelay
         );
+
+    }
+
+    chainTweens() {
+        this.fT.chain(this.tweenArr[0]);
         for (let i = 0; i < this.tweenArr.length - 1; i++) {
             this.tweenArr[i].chain(this.tweenArr[i + 1]);
             if (i == this.tweenArr.length - 2) {
                 this.tweenArr[i].onComplete.add(this.lastTween, this);
             }
-        }
-        if (this.stars.length == 1) {
-            otsimo.game.time.events.add(otsimo.kv.game.hint_hand_duration * 2, this.kill, this);
-            this.call(otsimo.kv.game.hint_hand_duration * 1.5);
-        } else {
-            fT.start();
-            this.lT.onComplete.add(this.kill, this);
-            let delay = lTdelay + (this.tweenArr.length + 7) * otsimo.kv.game.hint_hand_duration;
-            this.call(delay);
         }
     }
 
@@ -182,7 +183,7 @@ export default class Hint {
      */
 
     killTween() {
-        let temp = this.tween;
+        let temp = this.fT;
         for (let i of this.tweenArr) {
             temp = i;
             while (temp.chainedTween != null) {
@@ -193,8 +194,8 @@ export default class Hint {
             otsimo.game.tweens.remove(i);
             i = undefined;
         }
-        if (this.tween) {
-            this.tween.stop();
+        if (this.fT) {
+            this.fT.stop();
         }
     }
 
