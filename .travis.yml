@@ -8,7 +8,8 @@ install:
 script: npm test
 after_success: sh publish.sh
 before_install:
-- openssl aes-256-cbc -K $encrypted_7563c8fbc5a5_key -iv $encrypted_7563c8fbc5a5_iv
+- openssl aes-256-cbc -K $encrypted_952511b73c73_key -iv $encrypted_952511b73c73_iv
+  -in .npmrc.enc -out ~/.npmrc -d
   -in .npmrc.enc -out ~/.npmrc -d
 notifications:
   email: false
