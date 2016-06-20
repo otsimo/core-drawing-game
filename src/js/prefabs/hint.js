@@ -17,8 +17,6 @@ export default class Hint {
      * @param {integer} delay for outside conditions
      */
     call(delay) {
-        //console.log("call hint");
-        //console.log("call: stars = ", this.stars);
         if (!otsimo.settings.show_hint || this.stars.length == 0) {
             return;
         }

@@ -1,6 +1,3 @@
-// play sounds as texts appear
-// option: intro without drawing image 
-
 import {calculateConstraint} from '../utils'
 
 export default class Introduction extends Phaser.Group {
@@ -33,10 +30,9 @@ export default class Introduction extends Phaser.Group {
 
     show() {
         if (!otsimo.kv.game.show_intro_drawing) {
-            otsimo.kv.play_screen.intro.question_constraint.x = 2.9;
-            //otsimo.kv.play_screen.intro.question_small_constraint.x = 2.9;
+            otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 2.9;
         } else {
-            otsimo.kv.play_screen.intro.question_constraint.x = 0.9;
+            otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 0.9;
         }
         this.soundArr = [];
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
@@ -63,10 +59,6 @@ export default class Introduction extends Phaser.Group {
                 txt.audio = sprintf(t.audio, q);
                 txt.anchor.set(0.5, 0.5);
                 txt.alpha = 0;
-
-                //console.log("let's see txt:", txt);
-                //console.log("let's see text:", text);
-                //console.log("let's see t:", t);
 
                 // load sound of k
                 if (t.audio[0] == "%") {
@@ -109,9 +101,6 @@ export default class Introduction extends Phaser.Group {
     }
 
     startSound(text, tween, c) {
-        //console.log(arguments);
-        //console.log("playing");
-        //console.log("c:", c);
         this.soundArr[c].play();
     }
 
@@ -165,7 +154,7 @@ export default class Introduction extends Phaser.Group {
 
     goRightForEnding() {
         if (!otsimo.kv.game.show_intro_drawing) {
-            return;    
+            return;
         }
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
         let intro = otsimo.kv.play_screen.intro;
