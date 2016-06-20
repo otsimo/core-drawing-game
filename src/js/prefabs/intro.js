@@ -31,8 +31,20 @@ export default class Introduction extends Phaser.Group {
     show() {
         if (!otsimo.kv.game.show_intro_drawing) {
             otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 2.9;
+            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[0].length; i++) {
+                otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.5;
+            }
+            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[1].length; i++) {
+                otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.5;
+            }
         } else {
             otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 0.9;
+            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[0].length; i++) {
+                otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.35;
+            }
+            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[1].length; i++) {
+                otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.35;
+            }
         }
         this.soundArr = [];
         let q = this.question// otsimo.kv.alphabet[0] //this.question;

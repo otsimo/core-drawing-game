@@ -47,8 +47,14 @@ export default class Paint extends Phaser.Group {
     }
 
     goLeftForEnding() {
-        otsimo.game.add.tween(this)
-            .to({ x: this.visiblePos.x / 2, y: this.visiblePos.y }, 300, Phaser.Easing.Cubic.Out, true)
+        let tempX = this.visiblePos.x;
+        if (!otsimo.kv.game.show_intro_drawing) {
+            otsimo.game.add.tween(this)
+            .to({ x: tempX, y: this.visiblePos.y }, 300, Phaser.Easing.Cubic.Out, true);
+        } else {
+            otsimo.game.add.tween(this)
+            .to({ x: tempX / 2, y: this.visiblePos.y }, 300, Phaser.Easing.Cubic.Out, true);
+        }
         otsimo.game.add.tween(this.scale)
             .to({ x: 0.7, y: 0.7 }, 300, Phaser.Easing.Cubic.Out, true)
     }
