@@ -124,7 +124,9 @@ export default class Scene {
     }
 
     cleanup() {
-        this.paint.cleanup();
+        if (this.paint) {
+            this.paint.cleanup();
+        }
         this.paint = undefined;
     }
 }

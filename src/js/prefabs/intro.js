@@ -1,3 +1,6 @@
+// play sounds as texts appear
+// option: intro without drawing image 
+
 import {calculateConstraint} from '../utils'
 
 export default class Introduction extends Phaser.Group {
@@ -29,6 +32,7 @@ export default class Introduction extends Phaser.Group {
     }
 
     show() {
+        this.soundArr = [];
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
         let intro = otsimo.kv.play_screen.intro;
         let qp = calculateConstraint(intro.question_constraint);
@@ -37,6 +41,8 @@ export default class Introduction extends Phaser.Group {
         let itween = otsimo.game.add.tween(question_image).to({ y: qp.y }, 300, Phaser.Easing.Cubic.Out);
 
         this.pageTweens = [itween];
+
+        let count = 0;
 
         for (let i = 0; i < intro.pages.length; i++) {
             let chain = null;
@@ -52,7 +58,29 @@ export default class Introduction extends Phaser.Group {
                 txt.anchor.set(0.5, 0.5);
                 txt.alpha = 0;
 
-                let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, intro.text_enter_duration, Phaser.Easing.Cubic.Out, false, intro.duration_each);
+                //console.log("let's see txt:", txt);
+                //console.log("let's see text:", text);
+                //console.log("let's see t:", t);
+
+                // load sound of k
+                if (t.audio[0] == "%") {
+                    this.soundArr.push(otsimo.game.add.audio(txt.audio));
+                } else {
+                    this.soundArr.push(otsimo.game.add.audio(t.audio));   
+                }
+                
+                
+
+                let tweenDur = intro.text_enter_duration;
+                
+                if (this.soundArr[count].totalDuration > tweenDur) {
+                    tweenDur = this.soundArr[count].totalDuration;
+                }
+
+                let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, intro.duration_each);
+                //console.log("let's see k:", k);
+
+                k.onStart.addOnce(this.startSound, this, 0, count);
 
                 if (chain) {
                     chain.chain(k);
@@ -65,12 +93,20 @@ export default class Introduction extends Phaser.Group {
 
                 chain = k;
                 txts.push(txt);
+                count++;
             }
             this._addOnPageCompleted(chain, txts);
         }
         this.objectImage = question_image;
         this.pageTweens[this.currentPage].start();
         this.currentPage = this.currentPage + 1
+    }
+
+    startSound(text, tween, c) {
+        //console.log(arguments);
+        //console.log("playing");
+        //console.log("c:", c);
+        this.soundArr[c].play();
     }
 
     hide() {
