@@ -32,6 +32,12 @@ export default class Introduction extends Phaser.Group {
     }
 
     show() {
+        if (!otsimo.kv.game.show_intro_drawing) {
+            otsimo.kv.play_screen.intro.question_constraint.x = 2.9;
+            //otsimo.kv.play_screen.intro.question_small_constraint.x = 2.9;
+        } else {
+            otsimo.kv.play_screen.intro.question_constraint.x = 0.9;
+        }
         this.soundArr = [];
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
         let intro = otsimo.kv.play_screen.intro;
@@ -110,6 +116,9 @@ export default class Introduction extends Phaser.Group {
     }
 
     hide() {
+        if (!otsimo.kv.game.show_intro_drawing) {
+            return;
+        }
         let img = this.objectImage;
         let t = otsimo.game.add.tween(img)
             .to({ x: otsimo.game.width + img.width }, 300, Phaser.Easing.Cubic.In, true);
@@ -118,6 +127,9 @@ export default class Introduction extends Phaser.Group {
     }
 
     makeObjectImageSmall() {
+        if (!otsimo.kv.game.show_intro_drawing) {
+            return;    
+        }
         let p = calculateConstraint(otsimo.kv.play_screen.intro.question_small_constraint);
         let img = this.objectImage;
 
@@ -152,6 +164,9 @@ export default class Introduction extends Phaser.Group {
     }
 
     goRightForEnding() {
+        if (!otsimo.kv.game.show_intro_drawing) {
+            return;    
+        }
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
         let intro = otsimo.kv.play_screen.intro;
         let qp = calculateConstraint(intro.question_constraint);

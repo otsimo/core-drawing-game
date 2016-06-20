@@ -920,6 +920,7 @@
     }
   ],
   "game": {
+    "show_intro_drawing" : true,
     "session_step": 5,
     "items": "alphabet",
     "scene_enter_duration": 500,

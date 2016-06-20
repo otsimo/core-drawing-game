@@ -103,6 +103,7 @@ interface PlayScreen {
 }
 
 interface OtsimoGame {
+    show_intro_drawing: boolean;
     session_step: number;
     items: string;
 
