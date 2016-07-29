@@ -31,18 +31,18 @@ export default class Introduction extends Phaser.Group {
     show() {
         if (!otsimo.kv.game.show_intro_drawing) {
             otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 2.9;
-            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[0].length; i++) {
+            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[0].length; i++) {
                 otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.5;
             }
-            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[1].length; i++) {
+            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[1].length; i++) {
                 otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.5;
             }
         } else {
             otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 0.9;
-            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[0].length; i++) {
+            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[0].length; i++) {
                 otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.35;
             }
-            for (let i = 0; i< otsimo.kv.play_screen.intro.pages[1].length; i++) {
+            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[1].length; i++) {
                 otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.35;
             }
         }
@@ -57,11 +57,15 @@ export default class Introduction extends Phaser.Group {
         this.pageTweens = [itween];
 
         let count = 0;
-
+        console.log("intro pages: ", intro.pages);
         for (let i = 0; i < intro.pages.length; i++) {
+            console.log("intro.pages[i]: ", intro.pages[i]);
             let chain = null;
             let txts = [];
-            for (let t of intro.pages[i]) {
+            let page = intro.pages[i];
+            for (let s = 0; s < page.length; s++) {
+                let t = page[s];
+                console.log("t: ", t);
                 let pos = calculateConstraint(t.position);
                 let text = sprintf(t.text, q);
                 let style = intro.styles[t.style];
@@ -73,19 +77,27 @@ export default class Introduction extends Phaser.Group {
                 txt.alpha = 0;
 
                 // load sound of k
-                if (t.audio[0] == "%") {
-                    this.soundArr.push(otsimo.game.add.audio(txt.audio));
-                } else {
-                    this.soundArr.push(otsimo.game.add.audio(t.audio));   
+                if (s == 0) {
+                    this.sound = otsimo.game.add.audio(txt.audio);
+                } else if (s == 1) {
+                    if (i == 0) {
+                        let tmp = "kelimesi_%s_harfi_ile_baslar";
+                        let fin = sprintf(tmp, this.question.id);
+                        console.log("fin: ", fin);
+                        this.sound = otsimo.game.add.audio(fin);
+                    } else {
+                        let tmp = "hadi_%s_harfini_cizelim";
+                        let fin = sprintf(tmp, this.question.id);
+                        console.log("fin: ", fin);
+                        this.sound = otsimo.game.add.audio(fin);
+                    }
                 }
-                
-                
 
                 let tweenDur = intro.text_enter_duration;
-                
-                if (this.soundArr[count].totalDuration > tweenDur) {
-                    tweenDur = this.soundArr[count].totalDuration;
-                }
+
+                /*if (this.soundArr[0].totalDuration > tweenDur) {
+                    tweenDur = this.soundArr[0].totalDuration;
+                }*/
 
                 let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, intro.duration_each);
                 //console.log("let's see k:", k);
@@ -113,7 +125,7 @@ export default class Introduction extends Phaser.Group {
     }
 
     startSound(text, tween, c) {
-        this.soundArr[c].play();
+        //this.sound.play();
     }
 
     hide() {
@@ -129,7 +141,7 @@ export default class Introduction extends Phaser.Group {
 
     makeObjectImageSmall() {
         if (!otsimo.kv.game.show_intro_drawing) {
-            return;    
+            return;
         }
         let p = calculateConstraint(otsimo.kv.play_screen.intro.question_small_constraint);
         let img = this.objectImage;
