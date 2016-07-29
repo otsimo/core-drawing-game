@@ -47,7 +47,7 @@ export default class Introduction extends Phaser.Group {
             }
         }
         this.soundArr = [];
-        let q = this.question// otsimo.kv.alphabet[0] //this.question;
+        let q = this.question;
         let intro = otsimo.kv.play_screen.intro;
         let qp = calculateConstraint(intro.question_constraint);
         let question_image = this.create(qp.x, -otsimo.game.height, q.object_img, q.object_frame);
@@ -65,7 +65,6 @@ export default class Introduction extends Phaser.Group {
             let page = intro.pages[i];
             for (let s = 0; s < page.length; s++) {
                 let t = page[s];
-                console.log("t: ", t);
                 let pos = calculateConstraint(t.position);
                 let text = sprintf(t.text, q);
                 let style = intro.styles[t.style];
@@ -77,32 +76,41 @@ export default class Introduction extends Phaser.Group {
                 txt.alpha = 0;
 
                 // load sound of k
-                if (s == 0) {
-                    this.sound = otsimo.game.add.audio(txt.audio);
-                } else if (s == 1) {
-                    if (i == 0) {
+                let sound = undefined;
+                if (t.audio) {
+                    console.log("txt.audio: ", txt.audio);
+                    sound = otsimo.game.add.audio(txt.audio);
+                    this.soundArr.push(sound);                    
+                }
+                /*if (i == 0) {
+                    if (s == 0) {
+                        sound = otsimo.game.add.audio(txt.audio);
+                        this.soundArr.push(sound);
+                    } else if (s == 1) {
                         let tmp = "kelimesi_%s_harfi_ile_baslar";
                         let fin = sprintf(tmp, this.question.id);
-                        console.log("fin: ", fin);
-                        this.sound = otsimo.game.add.audio(fin);
-                    } else {
-                        let tmp = "hadi_%s_harfini_cizelim";
-                        let fin = sprintf(tmp, this.question.id);
-                        console.log("fin: ", fin);
-                        this.sound = otsimo.game.add.audio(fin);
+                        sound = otsimo.game.add.audio(fin);
+                        this.soundArr.push(sound);
+                    }
+
+                } else if (i == 1 && s == 0) {
+                    let tmp = "hadi_%s_harfini_cizelim";
+                    let fin = sprintf(tmp, this.question.id);
+                    sound = otsimo.game.add.audio(fin);
+                    this.soundArr.push(sound);
+                }*/
+
+                let tweenDur = intro.text_enter_duration;
+                let delay = intro.duration_each;
+                if (sound) {
+                    let soundDur = this.game.cache.getSoundData(sound.key).duration * 1000;
+                    if (soundDur > delay) {
+                        delay = soundDur;
                     }
                 }
 
-                let tweenDur = intro.text_enter_duration;
 
-                /*if (this.soundArr[0].totalDuration > tweenDur) {
-                    tweenDur = this.soundArr[0].totalDuration;
-                }*/
-
-                let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, intro.duration_each);
-                //console.log("let's see k:", k);
-
-                k.onStart.addOnce(this.startSound, this, 0, count);
+                let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, delay * 0.5);
 
                 if (chain) {
                     chain.chain(k);
@@ -121,11 +129,27 @@ export default class Introduction extends Phaser.Group {
         }
         this.objectImage = question_image;
         this.pageTweens[this.currentPage].start();
-        this.currentPage = this.currentPage + 1
+        this.currentPage = this.currentPage + 1;
+        this.startSound();
     }
 
-    startSound(text, tween, c) {
-        //this.sound.play();
+    startSound() {
+        let s1 = this.soundArr[0];
+        let s2 = this.soundArr[1];
+        let s3 = this.soundArr[2];
+        let dur1 = this.game.cache.getSoundData(s1.key).duration * 1000;
+        let dur2 = this.game.cache.getSoundData(s2.key).duration * 1000;
+        let dur3 = dur1 + dur2;
+        s1.play();
+        console.log("dur1 :", dur1, "dur2: ", dur2, "dur3: ", dur3);
+        console.log("dur1 should be: ", s1.duration);
+        setTimeout(() => {
+            s2.play();
+        }, dur1);
+
+        setTimeout(() => {
+            s3.play();
+        }, dur1 + dur2);
     }
 
     hide() {

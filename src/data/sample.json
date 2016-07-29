@@ -64,7 +64,7 @@
                     },
                     {
                         "text": "kelimesi",
-                        "audio": "sound_line_2",
+                        "audio": "kelimesi_%(id)s_harfi_ile_baslar",
                         "style": "sty2",
                         "position": {
                             "x": {
@@ -77,7 +77,6 @@
                     },
                     {
                         "text": "%(letter)s",
-                        "audio": "%(letter_audio)s",
                         "style": "sty1",
                         "position": {
                             "x": {
@@ -90,7 +89,6 @@
                     },
                     {
                         "text": "harfi ile başlar",
-                        "audio": "sound_line_4",
                         "style": "sty2",
                         "position": {
                             "x": {
@@ -105,7 +103,7 @@
                 [
                     {
                         "text": "Hadi",
-                        "audio": "hadi_audio",
+                        "audio": "hadi_%(id)s_harfini_cizelim",
                         "style": "sty2",
                         "position": {
                             "x": {
@@ -118,7 +116,6 @@
                     },
                     {
                         "text": "%(letter)s",
-                        "audio": "%(letter_audio)s",
                         "style": "sty1",
                         "position": {
                             "x": {
@@ -131,7 +128,6 @@
                     },
                     {
                         "text": "harfini çizelim",
-                        "audio": "lets_draw_audio",
                         "style": "sty2",
                         "position": {
                             "x": {
@@ -263,16 +259,6 @@
             "path": "audio/soundb/harfini_cizelim.mp3"
         },
         {
-            "name": "sound_line_2",
-            "type": "audio",
-            "path": "audio/soundb/kelimesi.mp3"
-        },
-        {
-            "name": "sound_line_4",
-            "type": "audio",
-            "path": "audio/soundb/harfi_ile_baslar.mp3"
-        },
-        {
             "name": "hadi_audio",
             "type": "audio",
             "path": "audio/soundb/hadi.mp3"
@@ -296,11 +282,6 @@
             "name": "clickSound",
             "type": "audio",
             "path": "audio/click.mp3"
-        },
-        {
-            "name": "starts_with_a",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_a_harfi_ile_baslar"
         },
         {
             "name": "a_audio",
@@ -924,294 +905,294 @@
             "path": "img/big_A.png"
         },
         {
-            "name": "kelimesi_a_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_a_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_b_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_b_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_c_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_c_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_c-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_c-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_d_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_d_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_e_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_e_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_f_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_f_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_g_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_g_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_g-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_g-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_h_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_h_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_i-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_i-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_i_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_i_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_j_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_j_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_k_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_k_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_l_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_l_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_m_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_m_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_n_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_n_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_o_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_o_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_o-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_o-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_p_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_p_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_r_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_r_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_s_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_s_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_s-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_s-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_t_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_t_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_u_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_u_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_u-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_u-_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_v_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_v_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_y_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_y_harfi_ile_baslar"
-        },
-        {
-            "name": "kelimesi_z_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_z_harfi_ile_baslar"
-        },
-        {
             "name": "hadi_a_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_a_harfini_cizelim"
+            "path": "audio/soundd/hadi_a_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_b_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_b_harfini_cizelim"
+            "path": "audio/soundd/hadi_b_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_c_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_c_harfini_cizelim"
+            "path": "audio/soundd/hadi_c_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_c-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_c-_harfini_cizelim"
+            "path": "audio/soundd/hadi_c-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_d_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_d_harfini_cizelim"
+            "path": "audio/soundd/hadi_d_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_e_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_e_harfini_cizelim"
+            "path": "audio/soundd/hadi_e_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_f_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_f_harfini_cizelim"
+            "path": "audio/soundd/hadi_f_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_g_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_g_harfini_cizelim"
+            "path": "audio/soundd/hadi_g_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_g-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_g-_harfini_cizelim"
+            "path": "audio/soundd/hadi_g-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_h_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_h_harfini_cizelim"
+            "path": "audio/soundd/hadi_h_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_i-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_i-_harfini_cizelim"
+            "path": "audio/soundd/hadi_i-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_i_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_i_harfini_cizelim"
+            "path": "audio/soundd/hadi_i_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_j_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_j_harfini_cizelim"
+            "path": "audio/soundd/hadi_j_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_k_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_k_harfini_cizelim"
+            "path": "audio/soundd/hadi_k_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_l_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_l_harfini_cizelim"
+            "path": "audio/soundd/hadi_l_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_m_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_m_harfini_cizelim"
+            "path": "audio/soundd/hadi_m_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_n_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_n_harfini_cizelim"
+            "path": "audio/soundd/hadi_n_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_o_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_o_harfini_cizelim"
+            "path": "audio/soundd/hadi_o_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_o-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_o-_harfini_cizelim"
+            "path": "audio/soundd/hadi_o-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_p_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_p_harfini_cizelim"
+            "path": "audio/soundd/hadi_p_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_r_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_r_harfini_cizelim"
+            "path": "audio/soundd/hadi_r_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_s_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_s_harfini_cizelim"
+            "path": "audio/soundd/hadi_s_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_s-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_s-_harfini_cizelim"
+            "path": "audio/soundd/hadi_s-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_t_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_t_harfini_cizelim"
+            "path": "audio/soundd/hadi_t_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_u_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_u_harfini_cizelim"
+            "path": "audio/soundd/hadi_u_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_u-_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_u-_harfini_cizelim"
+            "path": "audio/soundd/hadi_u-_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_v_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_v_harfini_cizelim"
+            "path": "audio/soundd/hadi_v_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_y_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_y_harfini_cizelim"
+            "path": "audio/soundd/hadi_y_harfini_cizelim.mp3"
         },
         {
             "name": "hadi_z_harfini_cizelim",
             "type": "audio",
-            "path": "audio/soundd/hadi_z_harfini_cizelim"
+            "path": "audio/soundd/hadi_z_harfini_cizelim.mp3"
+        },
+        {
+            "name": "kelimesi_a_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_a_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_b_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_b_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_c_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_c_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_c-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_c-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_d_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_d_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_e_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_e_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_f_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_f_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_g_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_g_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_g-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_g-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_h_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_h_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_i-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_i-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_i_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_i_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_j_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_j_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_k_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_k_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_l_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_l_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_m_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_m_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_n_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_n_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_o_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_o_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_o-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_o-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_p_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_p_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_r_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_r_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_s_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_s_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_s-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_s-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_t_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_t_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_u_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_u_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_u-_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_u-_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_v_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_v_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_y_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_y_harfi_ile_baslar.mp3"
+        },
+        {
+            "name": "kelimesi_z_harfi_ile_baslar",
+            "type": "audio",
+            "path": "audio/soundc/kelimesi_z_harfi_ile_baslar.mp3"
         }
     ],
     "game": {
@@ -1316,12 +1297,12 @@
         {
             "id": "a",
             "kind": "a",
-            "object": "Ayakkabı",
             "object_img": "a_item",
-            "audio": "ayakkabi_audio",
+            "audio": "a_item_audio",
             "image": "a_letter",
             "letter": "A",
-            "letter_audio": "big_a_audio",
+            "letter_audio": "a_audio",
+            "object": "Ayakkabı",
             "steps": [
                 [
                     {
