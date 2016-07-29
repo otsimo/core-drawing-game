@@ -61,8 +61,6 @@ export default class Hint {
      * Calls hint again with a delay of tween animations.
      */
 
-    //TODO: hard to edit hint func, simplify  
-
     hint() {
         if (this.flag == true || this.stars.length == 0) {
             return;
@@ -102,7 +100,7 @@ export default class Hint {
             },
             otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.Out, false
         );
-        
+
         //tweens for arrow move
         for (let i of this.stars) {
             // i is the last star & there are more multiple stars
@@ -139,14 +137,14 @@ export default class Hint {
                 this.tweenArr.push(t);
             }
         }
-        
+
         //last tween for scaling back
         this.lT = otsimo.game.add.tween(this.arrow.scale).to(
             {
-                x: 1,
-                y: 1
+                x: 0.8,
+                y: 0.8
             },
-            otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.Out, false, lTdelay
+            otsimo.kv.game.hint_hand_duration * 2.5, Phaser.Easing.Sinusoidal.In, false, lTdelay
         );
 
     }
