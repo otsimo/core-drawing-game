@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "homepage": "https://github.com/otsimo/core-drawing-game",
   "dependencies": {
-    "otsimo": "^1.0.0",
+    "otsimo": "^1.2.0",
     "phaser": "^2.6.1",
     "sprintf-js": "^1.0.3"
   },

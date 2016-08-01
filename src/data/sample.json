@@ -25,6 +25,38 @@
             }
         }
     },
+    "name_shadow": {
+        "x": 16,
+        "y": 16,
+        "color": "rgba(0,0,0,0.5)",
+        "blur": 15
+    },
+    "gameNameLayout": {
+        "anchor": {
+            "x": 0.5,
+            "y": 0.5
+        },
+        "x": {
+            "multiplier": 0.5,
+            "constant": 0
+        },
+        "y": {
+            "multiplier": 0.3,
+            "constant": 0
+        }
+    },
+    "gameNameTextStyle": {
+        "strokeThickness": 18,
+        "stroke": "#FFFFFF",
+        "font": "98px mfont",
+        "fill": "#00FF22",
+        "align": "center",
+        "maxLines": 2,
+        "wordWrap": true,
+        "wordWrapWidth": 960,
+        "boundsAlignH": "center",
+        "boundsAlignV": "top"
+    },
     "home_screen": {
         "background_color": "#18B9F2",
         "background_image": "background",
@@ -247,11 +279,6 @@
             "name": "hand",
             "type": "image",
             "path": "img/hand.png"
-        },
-        {
-            "name": "congratulations",
-            "type": "audio",
-            "path": "audio/tr/congratulations.wav"
         },
         {
             "name": "lets_draw_audio",
@@ -1197,7 +1224,7 @@
     ],
     "game": {
         "show_intro_drawing": true,
-        "session_step": 2,
+        "session_step": 5,
         "items": "alphabet",
         "scene_enter_duration": 500,
         "scene_leave_duration": 500,

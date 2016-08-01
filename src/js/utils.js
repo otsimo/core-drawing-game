@@ -19,7 +19,7 @@ function calculateConstraint(constraint) {
 }
 
 function gameVisibleName() {
-    let lang = otsimo.child.language || otsimo.manifest.default_language;
+    let lang =otsimo.manifest.default_language;
     if (lang.length > 2) {
         lang = lang.substring(0, 2)
     }

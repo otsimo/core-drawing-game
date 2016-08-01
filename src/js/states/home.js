@@ -32,13 +32,13 @@ export default class Home extends Phaser.State {
         let bp = calculateConstraint(otsimo.kv.game.back_btn_constraint)
         this.game.add.button(bp.x, bp.y, otsimo.kv.game.back_btn_image, this.quitGame, this);
 
-        /*let vn = gameVisibleName();
+        let vn = gameVisibleName();
         let q = calculateConstraint(otsimo.kv.gameNameLayout);
         let text = otsimo.game.add.text(q.x, q.y, vn, otsimo.kv.gameNameTextStyle);
         text.anchor.set(q.anchor.x, q.anchor.y);
         if (otsimo.kv.name_shadow) {
             text.setShadow(otsimo.kv.name_shadow.x, otsimo.kv.name_shadow.y, otsimo.kv.name_shadow.color, otsimo.kv.name_shadow.blur, true, false);
-        }*/
+        }
         if (otsimo.currentMusic) {
             otsimo.currentMusic.volume = otsimo.kv.game_music.volume_home_screen;
         }

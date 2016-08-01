@@ -151,7 +151,6 @@ export default class Paint extends Phaser.Group {
         if (this.session) {
             this.session.correctInput(this.stepGroup, this.sprite, this.hint.step);
         }
-        console.log("correct input steps: ", this.paintingStep);
         this.hint.removeTimer(false);
         this.hint.kill();
         this.hint.stars = [];
