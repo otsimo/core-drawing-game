@@ -6,7 +6,7 @@
     "loading_screen": {
         "text": "Yükleniyor...",
         "font": "60px mfont",
-        "background_color": "#18B9F2",
+        "background_color": "#3B653D",
         "text_color": "#fff",
         "image_path": "img/preloader.gif",
         "only_image": false,
@@ -26,10 +26,10 @@
         }
     },
     "name_shadow": {
-        "x": 16,
-        "y": 16,
-        "color": "rgba(0,0,0,0.5)",
-        "blur": 15
+        "x": 4,
+        "y": 4,
+        "color": "rgba(0,0,0,0.2)",
+        "blur": 4
     },
     "gameNameLayout": {
         "anchor": {
@@ -41,7 +41,7 @@
             "constant": 0
         },
         "y": {
-            "multiplier": 0.3,
+            "multiplier": 0.35,
             "constant": 0
         }
     },
@@ -49,7 +49,7 @@
         "strokeThickness": 18,
         "stroke": "#FFFFFF",
         "font": "98px mfont",
-        "fill": "#00FF22",
+        "fill": "#25CB8B",
         "align": "center",
         "maxLines": 2,
         "wordWrap": true,
@@ -58,7 +58,7 @@
         "boundsAlignV": "top"
     },
     "home_screen": {
-        "background_color": "#18B9F2",
+        "background_color": "#3B653D",
         "background_image": "background",
         "play_btn_constraint": {
             "anchor": {
@@ -70,13 +70,13 @@
                 "constant": 0
             },
             "y": {
-                "multiplier": 0.55,
+                "multiplier": 0.7,
                 "constant": 0
             }
         }
     },
     "play_screen": {
-        "background_color": "#18B9F2",
+        "background_color": "#3B653D",
         "background_image": "background",
         "intro": {
             "pages": [
@@ -261,7 +261,7 @@
         }
     },
     "over_screen": {
-        "background_color": "#18B9F2",
+        "background_color": "#3B653D",
         "background_image": "background"
     },
     "preload": [

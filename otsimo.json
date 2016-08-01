@@ -1,6 +1,6 @@
 {
     "unique_name": "core-drawing-game",
-    "version": "---",
+    "version": "0.0.3",
     "main": "index.html",
     "licence": "Apache 2",
     "languages": [
@@ -19,6 +19,7 @@
     "exclude": [],
     "settings": "settings.json",
     "kv_path": "data",
+    "loading_color": "#FAC51C",
     "metadata": [
         {
             "language": "en",
