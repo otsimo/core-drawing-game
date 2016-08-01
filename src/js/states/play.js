@@ -40,7 +40,7 @@ export default class Play extends Phaser.State {
 
     backAction(button) {
         this.game.state.start('Home');
-        this.scene.cleanup();
+        this.scene.cleanup({ isBack: true });
     }
 
     render() {

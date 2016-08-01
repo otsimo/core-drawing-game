@@ -65,7 +65,7 @@ export default class Session {
         this.previousInput = now;
         otsimo.customevent("game:success", payload);
     }
-    
+
     updateScore() {
         this.score += this.stepScore;
     }

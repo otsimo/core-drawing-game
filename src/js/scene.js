@@ -31,7 +31,7 @@ export default class Scene {
      */
     next() {
         this.step = this.step + 1;
-        if (this.step >= otsimo.kv.game.session_step) {
+        if (this.step > otsimo.kv.game.session_step) {
             return false;
         }
         this.random.next((item) => {
@@ -83,7 +83,6 @@ export default class Scene {
     }
 
     hideBasket() {
-        //console.log("hiding basket");
         let tween = otsimo.game.add.tween(this.bucket).to({ y: otsimo.game.height + this.bucket.height }, 300, Phaser.Easing.Cubic.In, true)
         tween.onChildComplete.addOnce(this.bucket.destroy, this.bucket);
     }
@@ -106,13 +105,13 @@ export default class Scene {
             }
         }, 2000);
         setTimeout(() => {
-            this.cleanup();
+            this.cleanup({ isBack: false });
         }, 1500);
     }
 
     onFinishDrawing() {
+        console.log(this.paint);
         this.session.updateScore();
-        //console.log("onFinishDrawing");
         if (otsimo.correctSound) {
             otsimo.correctSound.play(null, null, 0.5);
         }
@@ -123,7 +122,14 @@ export default class Scene {
         this.hint.removeTimer(true);
     }
 
-    cleanup() {
+    cleanup({isBack}) {
+        if (isBack) {
+            let sounds = this.intro.soundArr;
+            for (let i = 0; i < sounds.length; i++) {
+                sounds[i].stop();
+                delete sounds[i];
+            }
+        }
         if (this.paint) {
             this.paint.cleanup();
         }

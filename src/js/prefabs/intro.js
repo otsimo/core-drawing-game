@@ -57,9 +57,7 @@ export default class Introduction extends Phaser.Group {
         this.pageTweens = [itween];
 
         let count = 0;
-        console.log("intro pages: ", intro.pages);
         for (let i = 0; i < intro.pages.length; i++) {
-            console.log("intro.pages[i]: ", intro.pages[i]);
             let chain = null;
             let txts = [];
             let page = intro.pages[i];
@@ -78,7 +76,6 @@ export default class Introduction extends Phaser.Group {
                 // load sound of k
                 let sound = undefined;
                 if (t.audio) {
-                    console.log("txt.audio: ", txt.audio);
                     sound = otsimo.game.add.audio(txt.audio);
                     this.soundArr.push(sound);
                 }
@@ -121,22 +118,40 @@ export default class Introduction extends Phaser.Group {
     }
 
     startSound() {
-        let s1 = this.soundArr[0];
-        let s2 = this.soundArr[1];
-        let s3 = this.soundArr[2];
-        let dur1 = this.game.cache.getSoundData(s1.key).duration * 1000;
-        let dur2 = this.game.cache.getSoundData(s2.key).duration * 1000;
-        let dur3 = dur1 + dur2;
-        s1.play();
-        console.log("dur1 :", dur1, "dur2: ", dur2, "dur3: ", dur3);
-        console.log("dur1 should be: ", s1.duration);
-        setTimeout(() => {
-            s2.play();
-        }, dur1);
+        let sounds = this.soundArr;
+        let durations = [];
+        let first = sounds[0];
+        for (let i = 0; i < sounds.length; i++) {
+            let dur = this.game.cache.getSoundData(sounds[i].key).duration * 1000;
+            durations.push(dur);
+        }
+        if (otsimo.game.state.current) {
+            first.play();
+        }
+        for (let i = 0; i < sounds.length; i++) {
+            let sound = sounds[i];
+            let timeout = this.totalPreviousDur(sounds, i);
+            {
+                setTimeout(() => {
+                    if (otsimo.game.state.current == 'Play' && this.soundArr[i]) {
+                        sound.play()
+                    } else {
+                        delete this.soundArr[i];
+                    }
+                }, timeout);
+            }
+        }
+    }
 
-        setTimeout(() => {
-            s3.play();
-        }, dur1 + dur2);
+    totalPreviousDur(sounds, index) {
+        let totalDur = 0;
+        if (!index || sounds.length == 0 || index >= sounds.length) {
+            return totalDur;
+        }
+        for (let i = index - 1; i >= 0; i--) {
+            totalDur += this.game.cache.getSoundData(sounds[i].key).duration * 1000;
+        }
+        return totalDur;
     }
 
     hide() {

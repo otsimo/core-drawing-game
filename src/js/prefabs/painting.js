@@ -10,13 +10,14 @@ function is_touch_device() {
         || navigator.maxTouchPoints;       // works on IE10/11 and Surface
 };
 export class OtsimoPainting {
-    constructor({game, parent}) {
+    constructor({game, parent, paintingStep}) {
         this.game = game;
         this.parentGroup = parent;
         this.drawing = false;
         this.steps = [];
         this.onfinishdrawing = null;
         this.steps.push(newPaintingStep(parent));
+        this.paintingStep = paintingStep;
 
         if (is_touch_device()) {
             this.startup()
@@ -37,7 +38,6 @@ export class OtsimoPainting {
     }
 
     handleTouchStart(e) {
-        //console.log("touchstart")
         e.preventDefault();
         let touches = e.changedTouches;
         if (touches.length >= 1) {
@@ -100,8 +100,6 @@ export class OtsimoPainting {
     }
 
     onDown(pointer, x, y) {
-        //console.log("painting: ON DOWN");
-        //console.log("painting: remove timer and kill hint");
         this.hint.removeTimer(false);
         this.hint.kill();
         let step = this.getLastStep();
@@ -136,11 +134,12 @@ export class OtsimoPainting {
         }
 
         step.lastPoint = currentPoint;
+        for (let i of step.points) {
+            this.paintingStep.push(i);
+        }
     }
 
     onUp(pointer, x, y) {
-        //console.log("painting: ON UP");
-        //console.log("painting: call hint");
         this.hint.call(0);
         this.drawing = false;
         if (this.onfinishdrawing) {
