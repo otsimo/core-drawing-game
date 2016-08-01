@@ -80,28 +80,11 @@ export default class Introduction extends Phaser.Group {
                 if (t.audio) {
                     console.log("txt.audio: ", txt.audio);
                     sound = otsimo.game.add.audio(txt.audio);
-                    this.soundArr.push(sound);                    
-                }
-                /*if (i == 0) {
-                    if (s == 0) {
-                        sound = otsimo.game.add.audio(txt.audio);
-                        this.soundArr.push(sound);
-                    } else if (s == 1) {
-                        let tmp = "kelimesi_%s_harfi_ile_baslar";
-                        let fin = sprintf(tmp, this.question.id);
-                        sound = otsimo.game.add.audio(fin);
-                        this.soundArr.push(sound);
-                    }
-
-                } else if (i == 1 && s == 0) {
-                    let tmp = "hadi_%s_harfini_cizelim";
-                    let fin = sprintf(tmp, this.question.id);
-                    sound = otsimo.game.add.audio(fin);
                     this.soundArr.push(sound);
-                }*/
+                }
 
                 let tweenDur = intro.text_enter_duration;
-                let delay = intro.duration_each;
+                let delay = intro.duration_each + i * 300;
                 if (sound) {
                     let soundDur = this.game.cache.getSoundData(sound.key).duration * 1000;
                     if (soundDur > delay) {
@@ -109,8 +92,12 @@ export default class Introduction extends Phaser.Group {
                     }
                 }
 
+                if (t.audio) {
+                    var k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, delay * 0.35);
+                } else {
+                    var k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, 300);
+                }
 
-                let k = otsimo.game.add.tween(txt).to({ alpha: 1 }, tweenDur, Phaser.Easing.Cubic.Out, false, delay * 0.5);
 
                 if (chain) {
                     chain.chain(k);
