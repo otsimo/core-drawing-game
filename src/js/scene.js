@@ -110,7 +110,6 @@ export default class Scene {
     }
 
     onFinishDrawing() {
-        console.log(this.paint);
         this.session.updateScore();
         if (otsimo.correctSound) {
             otsimo.correctSound.play(null, null, 0.5);

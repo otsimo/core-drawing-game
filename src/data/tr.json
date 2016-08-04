@@ -818,16 +818,6 @@
             "path": "img/tr/item/g.png"
         },
         {
-            "name": "g-_letter",
-            "type": "image",
-            "path": "img/letter/g-.png"
-        },
-        {
-            "name": "g-_item",
-            "type": "image",
-            "path": "img/tr/item/g-.png"
-        },
-        {
             "name": "h_letter",
             "type": "image",
             "path": "img/letter/h.png"
@@ -1079,11 +1069,6 @@
             "path": "audio/soundd/hadi_g_harfini_cizelim.mp3"
         },
         {
-            "name": "hadi_g-_harfini_cizelim",
-            "type": "audio",
-            "path": "audio/soundd/hadi_g-_harfini_cizelim.mp3"
-        },
-        {
             "name": "hadi_h_harfini_cizelim",
             "type": "audio",
             "path": "audio/soundd/hadi_h_harfini_cizelim.mp3"
@@ -1222,11 +1207,6 @@
             "name": "kelimesi_g_harfi_ile_baslar",
             "type": "audio",
             "path": "audio/soundc/kelimesi_g_harfi_ile_baslar.mp3"
-        },
-        {
-            "name": "kelimesi_g-_harfi_ile_baslar",
-            "type": "audio",
-            "path": "audio/soundc/kelimesi_g-_harfi_ile_baslar.mp3"
         },
         {
             "name": "kelimesi_h_harfi_ile_baslar",

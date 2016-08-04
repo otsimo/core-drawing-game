@@ -25,7 +25,7 @@ export default class Session {
             success: this.correctAnswerTotal
         }
         otsimo.customevent("game:end", payload);
-        console.log("end session, post to analytics")
+        //console.log("end session, post to analytics")
     }
 
     startStep() {
@@ -34,11 +34,11 @@ export default class Session {
         this.stepScore = otsimo.kv.game.step_score;
         this.stepStartTime = Date.now();
         this.previousInput = Date.now();
-        console.log("start step");
+        //console.log("start step");
     }
 
     wrongInput(steps, item, hint_step) {
-        console.log("wrong input");
+        //console.log("wrong input");
         this.decrementScore();
         this.incrementHint(hint_step);
         let now = Date.now();
@@ -46,8 +46,6 @@ export default class Session {
         this.wrongAnswerTotal += 1;
         let payload = {
             item: item.id,
-            kind: item.kind,
-            steps: steps,
             hint_step: hint_step,
             time: now - this.stepStartTime,
             delta: now - this.previousInput
@@ -57,14 +55,12 @@ export default class Session {
     }
 
     correctInput(steps, item, hint_step) {
-        console.log("correct input");
+        //console.log("correct input");
         this.incrementHint(hint_step);
         let now = Date.now();
         this.correctAnswerTotal += 1;
         let payload = {
             item: item.id,
-            kind: item.kind,
-            steps: steps,
             hint_step: hint_step,
             time: now - this.stepStartTime,
             delta: now - this.previousInput
@@ -94,7 +90,6 @@ export default class Session {
 
     incrementHint(hintObjectStep) {
         let change = hintObjectStep - this.hintStep;
-        console.log("change: ", change);
         if (this.stepScore > 0) {
             this.stepScore -= change;
             if (this.stepScore < 0) {
