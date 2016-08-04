@@ -24,7 +24,8 @@ export default class Session {
             failure: this.wrongAnswerTotal,
             success: this.correctAnswerTotal
         }
-        //console.log("end session, post to analytics")
+        otsimo.customevent("game:end", payload);
+        console.log("end session, post to analytics")
     }
 
     startStep() {
@@ -33,7 +34,7 @@ export default class Session {
         this.stepScore = otsimo.kv.game.step_score;
         this.stepStartTime = Date.now();
         this.previousInput = Date.now();
-        console.log("start step")
+        console.log("start step");
     }
 
     wrongInput(steps, item, hint_step) {

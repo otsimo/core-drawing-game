@@ -86,7 +86,7 @@
     "play_screen": {
         "background_color": "#3B653D",
         "background_image": "background",
-        "intro": {
+        "intro_letter": {
             "pages": [
                 [
                     {

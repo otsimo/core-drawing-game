@@ -6,10 +6,11 @@ export default class Introduction extends Phaser.Group {
         this.onComplete = new Phaser.Signal();
         this.question = question;
         this.currentPage = 0;
+        this.intro_type = sprintf("intro_%s", otsimo.kv.game.type);        
     }
 
     _addOnPageCompleted(chain, txts) {
-        let intro = otsimo.kv.play_screen.intro;
+        let intro = otsimo.kv.play_screen[this.intro_type];
 
         chain.onComplete.addOnce(() => {
             let last = null;
@@ -30,25 +31,25 @@ export default class Introduction extends Phaser.Group {
 
     show() {
         if (!otsimo.kv.game.show_intro_drawing) {
-            otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 2.9;
-            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[0].length; i++) {
-                otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.5;
+            otsimo.kv.play_screen[this.intro_type].question_constraint.x.multiplier = 2.9;
+            for (let i = 0; i < otsimo.kv.play_screen[this.intro_type].pages[0].length; i++) {
+                otsimo.kv.play_screen[this.intro_type].pages[0][i].position.x.multiplier = 0.5;
             }
-            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[1].length; i++) {
-                otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.5;
+            for (let i = 0; i < otsimo.kv.play_screen[this.intro_type].pages[1].length; i++) {
+                otsimo.kv.play_screen[this.intro_type].pages[1][i].position.x.multiplier = 0.5;
             }
         } else {
-            otsimo.kv.play_screen.intro.question_constraint.x.multiplier = 0.9;
-            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[0].length; i++) {
-                otsimo.kv.play_screen.intro.pages[0][i].position.x.multiplier = 0.35;
+            otsimo.kv.play_screen[this.intro_type].question_constraint.x.multiplier = 0.9;
+            for (let i = 0; i < otsimo.kv.play_screen[this.intro_type].pages[0].length; i++) {
+                otsimo.kv.play_screen[this.intro_type].pages[0][i].position.x.multiplier = 0.35;
             }
-            for (let i = 0; i < otsimo.kv.play_screen.intro.pages[1].length; i++) {
-                otsimo.kv.play_screen.intro.pages[1][i].position.x.multiplier = 0.35;
+            for (let i = 0; i < otsimo.kv.play_screen[this.intro_type].pages[1].length; i++) {
+                otsimo.kv.play_screen[this.intro_type].pages[1][i].position.x.multiplier = 0.35;
             }
         }
         this.soundArr = [];
         let q = this.question;
-        let intro = otsimo.kv.play_screen.intro;
+        let intro = otsimo.kv.play_screen[this.intro_type];
         let qp = calculateConstraint(intro.question_constraint);
         let question_image = this.create(qp.x, -otsimo.game.height, q.object_img, q.object_frame);
         question_image.anchor.set(qp.anchor.x, qp.anchor.y);
@@ -169,10 +170,10 @@ export default class Introduction extends Phaser.Group {
         if (!otsimo.kv.game.show_intro_drawing) {
             return;
         }
-        let p = calculateConstraint(otsimo.kv.play_screen.intro.question_small_constraint);
+        let p = calculateConstraint(otsimo.kv.play_screen[this.intro_type].question_small_constraint);
         let img = this.objectImage;
 
-        let co = otsimo.kv.play_screen.intro.question_small_size
+        let co = otsimo.kv.play_screen[this.intro_type].question_small_size
         let xc = co.width.constant | 0;
         let yc = co.height.constant | 0;
         let mw = co.width.multiplier * otsimo.game.width + xc;
@@ -207,7 +208,7 @@ export default class Introduction extends Phaser.Group {
             return;
         }
         let q = this.question// otsimo.kv.alphabet[0] //this.question;
-        let intro = otsimo.kv.play_screen.intro;
+        let intro = otsimo.kv.play_screen[this.intro_type];
         let qp = calculateConstraint(intro.question_constraint);
         let img = this.objectImage;
 
