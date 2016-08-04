@@ -36,29 +36,35 @@ export default class Session {
         console.log("start step")
     }
 
-    wrongInput(item, amount, step) {
+    wrongInput(steps, item, hint_step) {
         console.log("wrong input");
         this.decrementScore();
-        this.incrementHint(step);
+        this.incrementHint(hint_step);
         let now = Date.now();
         this.wrongAnswerStep += 1;
         this.wrongAnswerTotal += 1;
         let payload = {
             item: item.id,
             kind: item.kind,
+            steps: steps,
+            hint_step: hint_step,
             time: now - this.stepStartTime,
             delta: now - this.previousInput
         }
+        this.previousInput = now;
+        otsimo.customevent("game:failure", payload);
     }
 
-    correctInput(item, answerItem, step) {
+    correctInput(steps, item, hint_step) {
         console.log("correct input");
-        this.incrementHint(step);
+        this.incrementHint(hint_step);
         let now = Date.now();
         this.correctAnswerTotal += 1;
         let payload = {
             item: item.id,
             kind: item.kind,
+            steps: steps,
+            hint_step: hint_step,
             time: now - this.stepStartTime,
             delta: now - this.previousInput
         }

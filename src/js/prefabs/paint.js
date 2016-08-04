@@ -117,7 +117,7 @@ export default class Paint extends Phaser.Group {
 
         if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
             if (this.session) {
-                this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step);
+                this.session.wrongInput(this.stepGroup, this.item, this.hint.step);
             }
             this.paint.clearCtx();
             this.paint.newStep();
@@ -126,7 +126,7 @@ export default class Paint extends Phaser.Group {
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
                 if (this.session) {
-                    this.session.wrongInput(this.stepGroup, this.sprite, this.hint.step);
+                    this.session.wrongInput(this.stepGroup, this.item, this.hint.step);
                 }
                 this.paint.clearCtx();
                 this.paint.newStep();
@@ -149,7 +149,7 @@ export default class Paint extends Phaser.Group {
 
     finishAnim() {
         if (this.session) {
-            this.session.correctInput(this.stepGroup, this.sprite, this.hint.step);
+            this.session.correctInput(this.stepGroup, this.item, this.hint.step);
         }
         this.hint.removeTimer(false);
         this.hint.kill();

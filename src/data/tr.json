@@ -1234,6 +1234,7 @@
         "show_intro_drawing": true,
         "session_step": 5,
         "items": "alphabet",
+        "type": "letter",
         "scene_enter_duration": 500,
         "scene_leave_duration": 500,
         "hint_hand_duration": 200,

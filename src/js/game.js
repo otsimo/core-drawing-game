@@ -4,6 +4,13 @@ otsimo.onSettingsChanged(function (settings, sound) {
     otsimo.game.sound.mute = !sound
 });
 
+/**
+ * GAME TYPES:
+ * letter
+ * number
+ * line
+ * word
+ */
 
 otsimo.run(function () {
     let game = new Phaser.Game(otsimo.width, otsimo.height, Phaser.CANVAS, 'gameContainer');
