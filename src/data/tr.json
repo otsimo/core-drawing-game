@@ -237,6 +237,105 @@
             "text_enter_duration": 100,
             "duration_each": 200
         },
+        "intro_line": {
+            "pages": [
+                [
+                    {
+                        "text": "Hadi",
+                        "audio": "hadi_%(id)s_cizelim",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.35
+                            },
+                            "y": {
+                                "multiplier": 0.3
+                            }
+                        }
+                    },
+                    {
+                        "text": "%(kind)s",
+                        "style": "sty1",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.35
+                            },
+                            "y": {
+                                "multiplier": 0.5
+                            }
+                        }
+                    },
+                    {
+                        "text": "çizelim",
+                        "style": "sty2",
+                        "position": {
+                            "x": {
+                                "multiplier": 0.35
+                            },
+                            "y": {
+                                "multiplier": 0.7
+                            }
+                        }
+                    }
+                ]
+            ],
+            "styles": {
+                "sty1": {
+                    "fill": "#0000FF",
+                    "font": "112px mfont",
+                    "align": "center",
+                    "strokeThickness": 13,
+                    "stroke": "#FFFFFF"
+                },
+                "sty2": {
+                    "fill": "#000000",
+                    "font": "72px mfont",
+                    "align": "center",
+                    "strokeThickness": 6,
+                    "stroke": "#FFFFFF"
+                }
+            },
+            "question_constraint": {
+                "anchor": {
+                    "x": 1,
+                    "y": 0.5
+                },
+                "x": {
+                    "multiplier": 0.9,
+                    "constant": 0
+                },
+                "y": {
+                    "multiplier": 0.5,
+                    "constant": 0
+                }
+            },
+            "question_small_constraint": {
+                "anchor": {
+                    "x": 1,
+                    "y": 0
+                },
+                "x": {
+                    "multiplier": 1,
+                    "constant": -25
+                },
+                "y": {
+                    "multiplier": 0,
+                    "constant": 35
+                }
+            },
+            "question_small_size": {
+                "width": {
+                    "multiplier": 0.2,
+                    "constant": 0
+                },
+                "height": {
+                    "multiplier": 0.7,
+                    "constant": 0
+                }
+            },
+            "text_enter_duration": 100,
+            "duration_each": 200
+        },
         "bucket_constraint": {
             "anchor": {
                 "x": 0,
