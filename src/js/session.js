@@ -1,4 +1,12 @@
 
+function makeid(length = 5) {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    for (var i = 0; i < length; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    return text;
+}
+
 export default class Session {
     constructor({state}) {
         this.score = 0
@@ -12,13 +20,27 @@ export default class Session {
         this.hintStep = 0;
         this.stepStartTime = Date.now();
         this.previousInput = Date.now();
+        this.id = makeid(10);
+        this.sessionStart();
+    }
+
+    sessionStart() {
+        let err_rate = otsimo.kv.game.error_ratio;
+        let payload = {
+            id: this.id,
+            difficulty: otsimo.settings.difficulty,
+            error_rate: err_rate
+        }
+        otsimo.customevent("game:start", payload);        
     }
 
     end() {
         let fin = Date.now();
         let delta = fin - this.startTime;
+        let err_rate = otsimo.kv.game.error_ratio;
 
         let payload = {
+            error_rate: err_rate,
             score: this.score,
             duration: delta,
             failure: this.wrongAnswerTotal,
@@ -44,11 +66,20 @@ export default class Session {
         let now = Date.now();
         this.wrongAnswerStep += 1;
         this.wrongAnswerTotal += 1;
+        let _difficulty = otsimo.settings.difficulty;
+        // item number is unnecesarry
+        let err_rate = otsimo.kv.game.error_ratio;
         let payload = {
             item: item.id,
+            stepScore: this.stepScore,
+            score: this.score,
             hint_step: hint_step,
             time: now - this.stepStartTime,
-            delta: now - this.previousInput
+            delta: now - this.previousInput,
+            wrongAnswerStep: this.wrongAnswerStep,
+            difficulty: _difficulty,
+            error_rate: err_rate,
+            id: this.id,
         }
         this.previousInput = now;
         otsimo.customevent("game:failure", payload);
@@ -59,11 +90,19 @@ export default class Session {
         this.incrementHint(hint_step);
         let now = Date.now();
         this.correctAnswerTotal += 1;
+        let _difficulty = otsimo.settings.difficulty;
+        let err_rate = otsimo.kv.game.error_ratio;
         let payload = {
             item: item.id,
+            stepScore: this.stepScore,
+            score: this.score,
             hint_step: hint_step,
             time: now - this.stepStartTime,
-            delta: now - this.previousInput
+            delta: now - this.previousInput,
+            wrongAnswerStep: this.wrongAnswerStep,            
+            difficulty: _difficulty,
+            error_rate: err_rate,
+            id: this.id
         }
         this.previousInput = now;
         otsimo.customevent("game:success", payload);

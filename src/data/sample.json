@@ -1224,7 +1224,7 @@
     ],
     "game": {
         "show_intro_drawing": true,
-        "session_step": 5,
+        "session_step": 2,
         "items": "alphabet",
         "scene_enter_duration": 500,
         "scene_leave_duration": 500,
@@ -1236,7 +1236,7 @@
             "luminosity": "bright"
         },
         "back_btn_image": "back",
-        "error_ratio": 0.2,
+        "error_ratio": 0.35,
         "end_star_width_ratio": 0.5,
         "end_star_height_ratio": 0.5,
         "back_btn_constraint": {

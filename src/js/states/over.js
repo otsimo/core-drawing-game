@@ -1,5 +1,28 @@
 import Balloon from '../prefabs/balloon'
-import {calculateConstraint} from '../utils'
+import { calculateConstraint } from '../utils'
+
+class BalloonCounter {
+    constructor() {
+        this.counter = 0;
+    }
+
+    /**
+     * add balloon pop
+     * @param {number} amount
+     * @memberOf BalloonCounter
+     */
+    add(amount) {
+        this.counter += amount;
+    }
+
+    /**
+     * send to server
+     * @memberOf BalloonCounter
+     */
+    send() {
+        otsimo.customevent('game:balloon:pop', { amount: this.counter })
+    }
+}
 
 export default class Over extends Phaser.State {
     create() {
@@ -15,7 +38,7 @@ export default class Over extends Phaser.State {
 
         //let bp = calculateConstraint(otsimo.kv.game.back_btn_constraint)
         //this.game.add.button(bp.x, bp.y, otsimo.kv.game.back_btn_image, this.backAction, this);
-        
+
         if (otsimo.currentMusic) {
             otsimo.currentMusic.volume = otsimo.kv.game_music.volume_over_screen;
         }
@@ -67,18 +90,20 @@ export default class Over extends Phaser.State {
             let cong = this.game.add.audio(otsimo.kv.ending_scene.victory_sound);
             cong.play();
         }, dur / 2);
-        
+
         //finish sound
         let fin = this.game.add.audio(otsimo.kv.ending_scene.finish_sound);
         fin.play();
 
-        Balloon.random();
+        this.counter = new BalloonCounter();
+        Balloon.random(this.counter);
     }
 
     playAction() {
         if (otsimo.clickSound) {
             otsimo.clickSound.play()
         }
+        this.counter.send();
         this.game.state.start('Play');
     }
 
@@ -86,6 +111,7 @@ export default class Over extends Phaser.State {
         if (otsimo.clickSound) {
             otsimo.clickSound.play()
         }
+        this.counter.send();        
         this.game.state.start('Home');
     }
 
