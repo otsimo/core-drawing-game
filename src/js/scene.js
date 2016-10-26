@@ -101,6 +101,7 @@ export default class Scene {
 
         setTimeout(() => {
             if (!this.next()) {
+                this.session.end();
                 otsimo.game.state.start('Over');
             }
         }, 2000);

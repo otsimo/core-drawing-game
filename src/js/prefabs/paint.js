@@ -118,12 +118,13 @@ export default class Paint extends Phaser.Group {
         for (let i = 0; i < this.stepGroup.length; i++) {
             let x = this.stepGroup[i].world.x;
             let y = this.stepGroup[i].world.y;
-            let tuple = (x, y);
+            let tuple = [x, y];
             stepXY.push(tuple);
         }
         if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
             if (this.session) {
-                this.session.wrongInput(stepXY, this.item, this.hint.step);
+                let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
+                this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
             }
             this.paint.clearCtx();
             this.paint.newStep();
@@ -132,7 +133,8 @@ export default class Paint extends Phaser.Group {
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
                 if (this.session) {
-                    this.session.wrongInput(stepXY, this.item, this.hint.step);
+                    let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
+                    this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
                 }
                 this.paint.clearCtx();
                 this.paint.newStep();

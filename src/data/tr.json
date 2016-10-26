@@ -1311,7 +1311,7 @@
     ],
     "game": {
         "show_intro_drawing": true,
-        "session_step": 2,
+        "session_step": 1,
         "items": "alphabet",
         "type": "letter",
         "scene_enter_duration": 500,

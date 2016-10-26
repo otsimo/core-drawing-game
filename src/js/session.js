@@ -38,13 +38,12 @@ export default class Session {
         let fin = Date.now();
         let delta = fin - this.startTime;
         let err_rate = otsimo.kv.game.error_ratio;
-
         let payload = {
             error_rate: err_rate,
             score: this.score,
             duration: delta,
-            failure: this.wrongAnswerTotal,
-            success: this.correctAnswerTotal
+            total_failure: this.wrongAnswerTotal,
+            steps: otsimo.kv.game.session_step 
         }
         otsimo.customevent("game:end", payload);
         //console.log("end session, post to analytics")
@@ -59,7 +58,7 @@ export default class Session {
         //console.log("start step");
     }
 
-    wrongInput(steps, item, hint_step) {
+    wrongInput(steps, item, hint_step, difference) {
         //console.log("wrong input");
         this.decrementScore();
         this.incrementHint(hint_step);
@@ -70,6 +69,7 @@ export default class Session {
         // item number is unnecesarry
         let err_rate = otsimo.kv.game.error_ratio;
         let payload = {
+            difference_ratio: difference,
             item: item.id,
             stepScore: this.stepScore,
             score: this.score,
@@ -85,7 +85,7 @@ export default class Session {
         otsimo.customevent("game:failure", payload);
     }
 
-    correctInput(steps, item, hint_step) {
+    correctInput(steps, item, hint_step, difference) {
         //console.log("correct input");
         this.incrementHint(hint_step);
         let now = Date.now();
@@ -93,6 +93,7 @@ export default class Session {
         let _difficulty = otsimo.settings.difficulty;
         let err_rate = otsimo.kv.game.error_ratio;
         let payload = {
+            difference_ratio: difference,            
             item: item.id,
             stepScore: this.stepScore,
             score: this.score,
