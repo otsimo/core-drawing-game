@@ -1,5 +1,8 @@
 
-import {Hint} from './hint'
+import { Hint } from './hint'
+
+//TODO: new paintingStep check doesn't get updated
+//TODO: first -> second : problem
 
 function copyTouch(touch) {
     return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
@@ -10,7 +13,7 @@ function is_touch_device() {
         || navigator.maxTouchPoints;       // works on IE10/11 and Surface
 };
 export class OtsimoPainting {
-    constructor({game, parent, paintingStep}) {
+    constructor({game, parent, paintingStep, checkPoints, visiblePos}) {
         this.game = game;
         this.parentGroup = parent;
         this.drawing = false;
@@ -18,6 +21,14 @@ export class OtsimoPainting {
         this.onfinishdrawing = null;
         this.steps.push(newPaintingStep(parent));
         this.paintingStep = paintingStep;
+        this.checkPoints = checkPoints;
+        this.visiblePos = visiblePos;
+        this.firstOrangeStarX = this.checkPoints[0].x + (this.visiblePos.x - this.parentGroup.sprite.width * 0.5);
+        this.firstOrangeStarY = this.checkPoints[0].y + (this.visiblePos.y - this.parentGroup.sprite.height * 0.5);
+        this.secondOrangeStarX = this.checkPoints[this.checkPoints.length - 1].x + (this.visiblePos.x - this.parentGroup.sprite.width * 0.5);
+        this.secondOrangeStarY = this.checkPoints[this.checkPoints.length - 1].y + (this.visiblePos.y - this.parentGroup.sprite.height * 0.5);
+        this.startWith = 0;
+        this.preparingnextstep = false;
 
         if (is_touch_device()) {
             this.startup()
@@ -75,6 +86,40 @@ export class OtsimoPainting {
     }
 
     input(pointer, x, y) {
+        // if active pointer collides with first star
+        if (pointer.isDown && this.firstCircleCollision(x, y)) {
+            console.log("firstCircleCollision");
+            if (this.startWith == 0) {
+                this.startWith = 1;
+            } else if (this.startWith == 2) {
+                this.preparingnextstep = true;
+                this.onfinishdrawing(this.getLastStep());
+                setTimeout(() => {
+                    this.preparingnextstep = false;
+                }, 300);
+                this.startWith = 0;
+            } else {
+                return;
+            }
+        }
+
+        // if active pointer collides with second star
+        if (pointer.isDown && this.secondCircleCollision(x, y)) {
+            console.log("secondCircleCollision");
+            if (this.startWith == 0) {
+                this.startWith = 2;
+            } else if (this.startWith == 1) {
+                this.preparingnextstep = true;
+                this.onfinishdrawing(this.getLastStep());
+                setTimeout(() => {
+                    this.preparingnextstep = false;
+                }, 300);
+                this.startWith = 0;
+            } else {
+                return;
+            }
+        }
+
         if (!this.drawing && pointer.isDown) {
             this.drawing = true;
             this.onDown(pointer, x, y);
@@ -108,6 +153,10 @@ export class OtsimoPainting {
     }
 
     onMove(pointer, x, y) {
+        if (this.preparingnextstep) {
+            console.log("preparingnextstep");
+            return;
+        }
         var step = this.getLastStep();
 
         var currentPoint = { x: x, y: y };
@@ -142,8 +191,9 @@ export class OtsimoPainting {
     onUp(pointer, x, y) {
         this.hint.call(0);
         this.drawing = false;
+        //console.log("onfinishdrawing:", this.onfinishdrawing);
         if (this.onfinishdrawing) {
-            this.onfinishdrawing(this.getLastStep())
+            this.onfinishdrawing(this.getLastStep());
         }
     }
 
@@ -155,6 +205,41 @@ export class OtsimoPainting {
             el.removeEventListener("touchcancel", this.htc, false);
             el.removeEventListener("touchmove", this.htm, false);
         }
+    }
+
+    updateCheckpoints(new_points) {
+        this.checkPoints = new_points;
+        this.firstOrangeStar = this.checkPoints[0];
+        this.secondOrangeStar = this.checkPoints[this.checkPoints.length - 1];
+        this.startWith = 0;
+    }
+
+    /**
+     * 
+     * @param {number} x
+     * @param {number} y
+     * @returns {boolean}
+     */
+    firstCircleCollision(x, y) {
+        //console.log("x: ", x, "y: ", y, "star's x:", this.firstOrangeStarX, "star's y:", this.firstOrangeStarY)
+        let diameter = 30;
+        let circle = new Phaser.Circle(this.firstOrangeStarX, this.firstOrangeStarY, diameter);
+        circle.radius = diameter / 2;
+        return Phaser.Circle.contains(circle, x, y);
+    }
+
+    /**
+     * 
+     * @param {number} x
+     * @param {number} y
+     * @returns {boolean}
+     */
+    secondCircleCollision(x, y) {
+        //console.log("x: ", x, "y: ", y, "star's x:", this.secondOrangeStarX, "star's y:", this.secondOrangeStarY)
+        let diameter = 30;
+        let circle = new Phaser.Circle(this.secondOrangeStarX, this.secondOrangeStarY, diameter);
+        circle.radius = diameter / 2;
+        return Phaser.Circle.contains(circle, x, y);
     }
 
     addHint(hint) {
@@ -197,4 +282,4 @@ function angleBetween(point1, point2) {
     return Math.atan2(point2.x - point1.x, point2.y - point1.y);
 }
 
-export {distanceBetween, angleBetween}
+export { distanceBetween, angleBetween }

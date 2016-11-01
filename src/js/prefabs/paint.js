@@ -1,6 +1,6 @@
-import {calculateConstraint} from '../utils'
-import {OtsimoPainting, angleBetween, distanceBetween} from './painting'
-import {Hint} from './hint'
+import { calculateConstraint } from '../utils'
+import { OtsimoPainting, angleBetween, distanceBetween } from './painting'
+import { Hint } from './hint'
 
 export default class Paint extends Phaser.Group {
     constructor({game, item, session}) {
@@ -26,7 +26,7 @@ export default class Paint extends Phaser.Group {
 
     init() {
         let self = this;
-        this.paint = new OtsimoPainting({ game: otsimo.game, parent: this, paintingStep: [] });
+        this.paint = new OtsimoPainting({ game: otsimo.game, parent: this, paintingStep: [], checkPoints: this.item.steps[this.currentStep], visiblePos: this.visiblePos });
         this.starArr = [];
         this.paint.onfinishdrawing = function (step) {
             self.checkDrawing(step);
@@ -88,6 +88,7 @@ export default class Paint extends Phaser.Group {
     }
 
     checkDrawing(step) {
+        console.log("check drawing");
         let checkPoints = this.item.steps[this.currentStep];
         let checking = [];
         let totDist = 0;
@@ -114,6 +115,7 @@ export default class Paint extends Phaser.Group {
                 }
             }
         }
+
         let stepXY = [];
         for (let i = 0; i < this.stepGroup.length; i++) {
             let x = this.stepGroup[i].world.x;
@@ -128,6 +130,7 @@ export default class Paint extends Phaser.Group {
             }
             this.paint.clearCtx();
             this.paint.newStep();
+            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
             return;
         }
         for (var k = 0; k < checkPoints.length; k++) {
@@ -138,19 +141,21 @@ export default class Paint extends Phaser.Group {
                 }
                 this.paint.clearCtx();
                 this.paint.newStep();
+                this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
                 return;
             }
         }
         this.finishStep();
     }
 
-    finishStep() {
+    finishStep() {                                              // the drawing is finished & true
         this.finishAnim();
-        if (this.currentStep + 1 < this.item.steps.length) {
+        if (this.currentStep + 1 < this.item.steps.length) {    // if the steps are not over
             this.paint.newStep();
             this.currentStep += 1;
+            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);            
             this.drawSteps();
-        } else {
+        } else {                                                // if the steps are over
             this.finishGame();
         }
     }
