@@ -1,9 +1,6 @@
 
 import { Hint } from './hint'
 
-//TODO: new paintingStep check doesn't get updated
-//TODO: first -> second : problem
-
 function copyTouch(touch) {
     return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
 }
@@ -92,11 +89,10 @@ export class OtsimoPainting {
             if (this.startWith == 0) {
                 this.startWith = 1;
             } else if (this.startWith == 2) {
-                this.preparingnextstep = true;
                 this.onfinishdrawing(this.getLastStep());
-                setTimeout(() => {
+                /*setTimeout(() => {
                     this.preparingnextstep = false;
-                }, 300);
+                }, 300);*/
                 this.startWith = 0;
             } else {
                 return;
@@ -109,11 +105,10 @@ export class OtsimoPainting {
             if (this.startWith == 0) {
                 this.startWith = 2;
             } else if (this.startWith == 1) {
-                this.preparingnextstep = true;
                 this.onfinishdrawing(this.getLastStep());
-                setTimeout(() => {
+                /*setTimeout(() => {
                     this.preparingnextstep = false;
-                }, 300);
+                }, 300);*/
                 this.startWith = 0;
             } else {
                 return;
@@ -132,7 +127,7 @@ export class OtsimoPainting {
 
     newStep() {
         this.steps.push(newPaintingStep(this.parentGroup));
-    };
+    }
 
     clearCtx() {
         var step = this.getLastStep();
@@ -162,6 +157,11 @@ export class OtsimoPainting {
         var currentPoint = { x: x, y: y };
         var dist = distanceBetween(step.lastPoint, currentPoint);
         var angle = angleBetween(step.lastPoint, currentPoint);
+
+        if (step.lastPoint.x == 0) {
+            step.lastPoint = currentPoint;
+            return;
+        }
 
         var ctx = step.ctx;
 
@@ -208,9 +208,13 @@ export class OtsimoPainting {
     }
 
     updateCheckpoints(new_points) {
+        console.log("checkPoints before: ", this.checkPoints);
+        console.log("updateCheckpoints: ", new_points);
         this.checkPoints = new_points;
-        this.firstOrangeStar = this.checkPoints[0];
-        this.secondOrangeStar = this.checkPoints[this.checkPoints.length - 1];
+        this.firstOrangeStarX = this.checkPoints[0].x + (this.visiblePos.x - this.parentGroup.sprite.width * 0.5);
+        this.firstOrangeStarY = this.checkPoints[0].y + (this.visiblePos.y - this.parentGroup.sprite.height * 0.5);
+        this.secondOrangeStarX = this.checkPoints[this.checkPoints.length - 1].x + (this.visiblePos.x - this.parentGroup.sprite.width * 0.5);
+        this.secondOrangeStarY = this.checkPoints[this.checkPoints.length - 1].y + (this.visiblePos.y - this.parentGroup.sprite.height * 0.5);
         this.startWith = 0;
     }
 

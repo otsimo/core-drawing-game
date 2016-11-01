@@ -7,7 +7,7 @@ export default class Paint extends Phaser.Group {
         super(game);
         this.item = item;
         this.session = session;
-        let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
+        let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint);
 
         let sprite = this.create(0, 0, item.image, item.frame);
         sprite.anchor.set(0.5, 0.5);
@@ -153,7 +153,7 @@ export default class Paint extends Phaser.Group {
         if (this.currentStep + 1 < this.item.steps.length) {    // if the steps are not over
             this.paint.newStep();
             this.currentStep += 1;
-            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);            
+            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
             this.drawSteps();
         } else {                                                // if the steps are over
             this.finishGame();
