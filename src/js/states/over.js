@@ -43,7 +43,7 @@ export default class Over extends Phaser.State {
             otsimo.currentMusic.volume = otsimo.kv.game_music.volume_over_screen;
         }
 
-        this.game.add.button(25, 35, 'back', this.backAction, this);
+        this.game.add.button(25, 25, 'back', this.backAction, this);
 
         //calculate text and button 
         let tc = calculateConstraint(otsimo.kv.ending_scene.text);
@@ -71,7 +71,7 @@ export default class Over extends Phaser.State {
 
 
         let t2 = otsimo.game.add.tween(text)
-            .to({ y: tc.y }, dur * 0.8, Phaser.Easing.Exponential.Out, false, (delay + dur * 0.2) - dur);
+            .to({ y: tc.y }, dur * 0.8, Phaser.Easing.Exponential.Out, false, delay);
 
         //start tween
         t1.chain(t2)
@@ -79,7 +79,7 @@ export default class Over extends Phaser.State {
 
         //enter button tween
         otsimo.game.add.tween(btn)
-            .to({ y: bc.y }, dur, Phaser.Easing.Exponential.Out, true, delay);
+            .to({ y: bc.y }, dur, Phaser.Easing.Exponential.Out, true, delay * 1.5);
 
         otsimo.game.add.tween(btn)
             .to({ alpha: 1 }, dur / 3, Phaser.Easing.Exponential.Out, true, delay);
