@@ -85,7 +85,8 @@ export class OtsimoPainting {
     input(pointer, x, y) {
         // if active pointer collides with first star
         if (pointer.isDown && this.firstCircleCollision(x, y)) {
-            console.log("firstCircleCollision");
+            console.log("---------------FIRSTCIRCLECOLLISION-------------")
+            console.log("firstCircleCollision, startWith: ", this.startWith);
             if (this.startWith == 0) {
                 this.startWith = 1;
             } else if (this.startWith == 2) {
@@ -97,11 +98,13 @@ export class OtsimoPainting {
             } else {
                 return;
             }
+            console.log("startWith changed to: ", this.startWith);
         }
 
         // if active pointer collides with second star
         if (pointer.isDown && this.secondCircleCollision(x, y)) {
-            console.log("secondCircleCollision");
+            console.log("---------------SECONDCIRCLECOLLISION-------------")            
+            console.log("secondCircleCollision, startWith:", this.startWith);
             if (this.startWith == 0) {
                 this.startWith = 2;
             } else if (this.startWith == 1) {
@@ -113,6 +116,7 @@ export class OtsimoPainting {
             } else {
                 return;
             }
+            console.log("startWith changed to: ", this.startWith);
         }
 
         if (!this.drawing && pointer.isDown) {
@@ -140,6 +144,8 @@ export class OtsimoPainting {
     }
 
     onDown(pointer, x, y) {
+        this.hint.kill();
+        this.hint.removeTimer();
         this.hint.removeTimer(false);
         this.hint.kill();
         let step = this.getLastStep();
@@ -148,6 +154,8 @@ export class OtsimoPainting {
     }
 
     onMove(pointer, x, y) {
+        this.hint.kill();
+        this.hint.removeTimer();
         if (this.preparingnextstep) {
             console.log("preparingnextstep");
             return;
@@ -208,6 +216,7 @@ export class OtsimoPainting {
     }
 
     updateCheckpoints(new_points) {
+        console.log("------------CHECKPOINTS UPDATED----------------")
         console.log("checkPoints before: ", this.checkPoints);
         console.log("updateCheckpoints: ", new_points);
         this.checkPoints = new_points;
@@ -226,7 +235,7 @@ export class OtsimoPainting {
      */
     firstCircleCollision(x, y) {
         //console.log("x: ", x, "y: ", y, "star's x:", this.firstOrangeStarX, "star's y:", this.firstOrangeStarY)
-        let diameter = 30;
+        let diameter = 10;
         let circle = new Phaser.Circle(this.firstOrangeStarX, this.firstOrangeStarY, diameter);
         circle.radius = diameter / 2;
         return Phaser.Circle.contains(circle, x, y);

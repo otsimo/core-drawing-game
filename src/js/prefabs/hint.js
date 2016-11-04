@@ -89,7 +89,6 @@ export default class Hint {
     }
 
     //add a tween to every star
-
     addTweensToStars(xC, yC, lTdelay) {
 
         // first tween for scaling

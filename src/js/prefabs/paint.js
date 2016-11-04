@@ -62,9 +62,15 @@ export default class Paint extends Phaser.Group {
         var points = this.item.steps[this.currentStep];
         this.stepGroup = [];
         this.stepDist = 0;
+        let initial_x = points[0].x - this.sprite.width / 2;
+        let initial_y = points[0].y - this.sprite.height / 2;
+        let delay = 0;
         for (var i = 0; i < points.length; ++i) {
             var x = points[i].x;
             var y = points[i].y;
+
+            let x_position = x - this.sprite.width / 2;
+            let y_position = y - this.sprite.height / 2;
             var img = "star_middle.png";
             if (i == 0 || i == points.length - 1) {
                 img = "start_end.png";
@@ -73,12 +79,14 @@ export default class Paint extends Phaser.Group {
                 let d = distanceBetween(points[i], points[i - 1]);
                 this.stepDist += d;
             }
-
-            var starImg = otsimo.game.add.sprite(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
+            var starImg = otsimo.game.add.sprite(initial_x, initial_y, "atlas", img, this);
+            let tween = otsimo.game.add.tween(starImg);
+            tween.to({ x: x_position, y: y_position }, 100, Phaser.Easing.Quadratic.Out, true, delay);
             starImg.anchor.set(0.5, 0.5);
-
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
+            delay += 300;
+
         } if (this.hint) {
             this.hint.stars = this.stepGroup;
             this.hint.kill();
@@ -148,7 +156,8 @@ export default class Paint extends Phaser.Group {
         this.finishStep();
     }
 
-    finishStep() {                                              // the drawing is finished & true
+    finishStep() {
+        console.log("finish step");                                           // the drawing is finished & true
         this.finishAnim();
         if (this.currentStep + 1 < this.item.steps.length) {    // if the steps are not over
             this.paint.newStep();
