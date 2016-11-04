@@ -1236,7 +1236,9 @@
             "luminosity": "bright"
         },
         "back_btn_image": "back",
-        "error_ratio": 0.35,
+        "error_ratio_easy": 0.50,
+        "error_ratio_medium": 0.35,
+        "error_ratio_hard": 0.20,        
         "end_star_width_ratio": 0.5,
         "end_star_height_ratio": 0.5,
         "back_btn_constraint": {

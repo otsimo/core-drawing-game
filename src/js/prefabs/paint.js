@@ -131,9 +131,22 @@ export default class Paint extends Phaser.Group {
             let tuple = [x, y];
             stepXY.push(tuple);
         }
-        if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
+        let err_rate = otsimo.kv.game.error_ratio_medium;
+        switch (otsimo.settings.difficulty) {
+            case "easy":
+                err_rate = otsimo.kv.game.error_ratio_easy;
+                break;
+            case "medium":
+                break;
+            case "hard":
+                err_rate = otsimo.kv.game.error_ratio_hard;
+                break;
+            default:
+                break;
+        }
+        if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * err_rate) {
             if (this.session) {
-                let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
+                let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * err_rate);
                 this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
             }
             this.paint.clearCtx();
@@ -144,7 +157,7 @@ export default class Paint extends Phaser.Group {
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
                 if (this.session) {
-                    let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
+                    let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * err_rate);
                     this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
                 }
                 this.paint.clearCtx();

@@ -7,6 +7,23 @@ function makeid(length = 5) {
     return text;
 }
 
+function findErrorRatio() {
+    let err_rate = otsimo.kv.game.error_ratio_medium;
+    switch (otsimo.settings.difficulty) {
+        case "easy":
+            err_rate = otsimo.kv.game.error_ratio_easy;
+            break;
+        case "medium":
+            break;
+        case "hard":
+            err_rate = otsimo.kv.game.error_ratio_hard;
+            break;
+        default:
+            break;
+    }
+    return err_rate;
+}
+
 export default class Session {
     constructor({state}) {
         this.score = 0
@@ -25,25 +42,25 @@ export default class Session {
     }
 
     sessionStart() {
-        let err_rate = otsimo.kv.game.error_ratio;
+        let err_rate = findErrorRatio();
         let payload = {
             id: this.id,
             difficulty: otsimo.settings.difficulty,
             error_rate: err_rate
         }
-        otsimo.customevent("game:start", payload);        
+        otsimo.customevent("game:start", payload);
     }
 
     end() {
         let fin = Date.now();
         let delta = fin - this.startTime;
-        let err_rate = otsimo.kv.game.error_ratio;
+        let err_rate = findErrorRatio();
         let payload = {
             error_rate: err_rate,
             score: this.score,
             duration: delta,
             total_failure: this.wrongAnswerTotal,
-            steps: otsimo.kv.game.session_step 
+            steps: otsimo.kv.game.session_step
         }
         otsimo.customevent("game:end", payload);
         //console.log("end session, post to analytics")
@@ -67,7 +84,7 @@ export default class Session {
         this.wrongAnswerTotal += 1;
         let _difficulty = otsimo.settings.difficulty;
         // item number is unnecesarry
-        let err_rate = otsimo.kv.game.error_ratio;
+        let err_rate = findErrorRatio();
         let payload = {
             difference_ratio: difference,
             item: item.id,
@@ -91,16 +108,16 @@ export default class Session {
         let now = Date.now();
         this.correctAnswerTotal += 1;
         let _difficulty = otsimo.settings.difficulty;
-        let err_rate = otsimo.kv.game.error_ratio;
+        let err_rate = findErrorRatio();
         let payload = {
-            difference_ratio: difference,            
+            difference_ratio: difference,
             item: item.id,
             stepScore: this.stepScore,
             score: this.score,
             hint_step: hint_step,
             time: now - this.stepStartTime,
             delta: now - this.previousInput,
-            wrongAnswerStep: this.wrongAnswerStep,            
+            wrongAnswerStep: this.wrongAnswerStep,
             difficulty: _difficulty,
             error_rate: err_rate,
             id: this.id
@@ -139,4 +156,6 @@ export default class Session {
         this.hintTotal += change;
         this.hintStep = hintObjectStep;
     }
+
 }
+
