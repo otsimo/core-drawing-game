@@ -31,6 +31,9 @@ export default class Introduction extends Phaser.Group {
     }
 
     show() {
+        if (otsimo.game.state.current != "Play") {
+            return;
+        }
         if (!otsimo.kv.game.show_intro_drawing) {
             otsimo.kv.play_screen[this.intro_type].question_constraint.x.multiplier = 2.9;
             for (let k = 0; k < otsimo.kv.play_screen[this.intro_type].pages.length; k++) {
