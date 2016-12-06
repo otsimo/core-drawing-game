@@ -79,14 +79,10 @@ export default class Paint extends Phaser.Group {
                 let d = distanceBetween(points[i], points[i - 1]);
                 this.stepDist += d;
             }
-            var starImg = otsimo.game.add.sprite(initial_x, initial_y, "atlas", img, this);
-            let tween = otsimo.game.add.tween(starImg);
-            tween.to({ x: x_position, y: y_position }, 100, Phaser.Easing.Quadratic.Out, true, delay);
+            var starImg = otsimo.game.add.sprite(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
             starImg.anchor.set(0.5, 0.5);
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
-            delay += 300;
-
         } if (this.hint) {
             this.hint.stars = this.stepGroup;
             this.hint.kill();
