@@ -93,6 +93,7 @@ export default class Paint extends Phaser.Group {
 
     checkDrawing(step) {
         console.log("check drawing");
+        console.log("step is: ", step);
         let checkPoints = this.item.steps[this.currentStep];
         let checking = [];
         let totDist = 0;
@@ -166,7 +167,7 @@ export default class Paint extends Phaser.Group {
     }
 
     finishStep() {
-        console.log("finish step");                                           // the drawing is finished & true
+        console.log("finish step");                             // the drawing is finished & true
         this.finishAnim();
         if (this.currentStep + 1 < this.item.steps.length) {    // if the steps are not over
             this.paint.newStep();
@@ -193,6 +194,8 @@ export default class Paint extends Phaser.Group {
     }
 
     finishGame() {
+        this.paint.removeListeners();
+        console.log("inputEnabled", this.inputEnabled, this.paint.inputEnabled);
         this.session = undefined;
         this.onFinishDrawing.dispatch();
         this.cleanup();
@@ -200,6 +203,7 @@ export default class Paint extends Phaser.Group {
 
     cleanup() {
         if (this.paint) {
+            this.paint.removeListeners();
             this.paint.cleanupEvents();
         }
     }

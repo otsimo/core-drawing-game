@@ -45,6 +45,19 @@ export class OtsimoPainting {
         el.addEventListener("touchmove", this.htm, false);
     }
 
+    removeListeners() {
+        if (is_touch_device()) {
+            var el = document.getElementsByTagName("canvas")[0];
+            el.removeEventListener("touchstart", this.hts);
+            el.removeEventListener("touchend", this.hte);
+            el.removeEventListener("touchcancel", this.htc);
+            el.removeEventListener("touchmove", this.htm);
+        } else {
+            this.game.input.destroy();
+        }
+
+    }
+
     handleTouchStart(e) {
         e.preventDefault();
         let touches = e.changedTouches;
@@ -90,7 +103,7 @@ export class OtsimoPainting {
             if (this.startWith == 0) {
                 this.startWith = 1;
             } else if (this.startWith == 2) {
-                this.onfinishdrawing(this.getLastStep());
+                this.parentGroup.checkDrawing(this.getLastStep());
                 /*setTimeout(() => {
                     this.preparingnextstep = false;
                 }, 300);*/
@@ -103,12 +116,12 @@ export class OtsimoPainting {
 
         // if active pointer collides with second star
         if (pointer.isDown && this.secondCircleCollision(x, y)) {
-            console.log("---------------SECONDCIRCLECOLLISION-------------")            
+            console.log("---------------SECONDCIRCLECOLLISION-------------")
             console.log("secondCircleCollision, startWith:", this.startWith);
             if (this.startWith == 0) {
                 this.startWith = 2;
             } else if (this.startWith == 1) {
-                this.onfinishdrawing(this.getLastStep());
+                this.parentGroup.checkDrawing(this.getLastStep());
                 /*setTimeout(() => {
                     this.preparingnextstep = false;
                 }, 300);*/
@@ -217,8 +230,6 @@ export class OtsimoPainting {
 
     updateCheckpoints(new_points) {
         console.log("------------CHECKPOINTS UPDATED----------------")
-        console.log("checkPoints before: ", this.checkPoints);
-        console.log("updateCheckpoints: ", new_points);
         this.checkPoints = new_points;
         this.firstOrangeStarX = this.checkPoints[0].x + (this.visiblePos.x - this.parentGroup.sprite.width * 0.5);
         this.firstOrangeStarY = this.checkPoints[0].y + (this.visiblePos.y - this.parentGroup.sprite.height * 0.5);

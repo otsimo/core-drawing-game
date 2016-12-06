@@ -1,6 +1,6 @@
-import {Randomizer} from './randomizer'
+import { Randomizer } from './randomizer'
 import Introduction from './prefabs/intro'
-import {calculateConstraint} from './utils'
+import { calculateConstraint } from './utils'
 import Paint from './prefabs/paint'
 import Hint from './prefabs/hint'
 
@@ -95,6 +95,9 @@ export default class Scene {
         this.hideBasket();
 
         setTimeout(() => {
+            if (otsimo.game.state.current != "Play") {
+                return false;
+            }
             this.paint.moveOut();
             this.intro.hide();
         }, 1500);
