@@ -1,13 +1,13 @@
-import { calculateConstraint } from '../utils'
-import { OtsimoPainting, angleBetween, distanceBetween } from './painting'
-import { Hint } from './hint'
+import {calculateConstraint} from '../utils'
+import {OtsimoPainting, angleBetween, distanceBetween} from './painting'
+import {Hint} from './hint'
 
 export default class Paint extends Phaser.Group {
     constructor({game, item, session}) {
         super(game);
         this.item = item;
         this.session = session;
-        let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint);
+        let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
 
         let sprite = this.create(0, 0, item.image, item.frame);
         sprite.anchor.set(0.5, 0.5);
@@ -26,7 +26,7 @@ export default class Paint extends Phaser.Group {
 
     init() {
         let self = this;
-        this.paint = new OtsimoPainting({ game: otsimo.game, parent: this, paintingStep: [], checkPoints: this.item.steps[this.currentStep], visiblePos: this.visiblePos });
+        this.paint = new OtsimoPainting({ game: otsimo.game, parent: this, paintingStep: [] });
         this.starArr = [];
         this.paint.onfinishdrawing = function (step) {
             self.checkDrawing(step);
@@ -62,15 +62,9 @@ export default class Paint extends Phaser.Group {
         var points = this.item.steps[this.currentStep];
         this.stepGroup = [];
         this.stepDist = 0;
-        let initial_x = points[0].x - this.sprite.width / 2;
-        let initial_y = points[0].y - this.sprite.height / 2;
-        let delay = 0;
         for (var i = 0; i < points.length; ++i) {
             var x = points[i].x;
             var y = points[i].y;
-
-            let x_position = x - this.sprite.width / 2;
-            let y_position = y - this.sprite.height / 2;
             var img = "star_middle.png";
             if (i == 0 || i == points.length - 1) {
                 img = "start_end.png";
@@ -79,8 +73,10 @@ export default class Paint extends Phaser.Group {
                 let d = distanceBetween(points[i], points[i - 1]);
                 this.stepDist += d;
             }
+
             var starImg = otsimo.game.add.sprite(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
             starImg.anchor.set(0.5, 0.5);
+
             this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         } if (this.hint) {
@@ -92,8 +88,6 @@ export default class Paint extends Phaser.Group {
     }
 
     checkDrawing(step) {
-        console.log("check drawing");
-        console.log("step is: ", step);
         let checkPoints = this.item.steps[this.currentStep];
         let checking = [];
         let totDist = 0;
@@ -120,7 +114,6 @@ export default class Paint extends Phaser.Group {
                 }
             }
         }
-
         let stepXY = [];
         for (let i = 0; i < this.stepGroup.length; i++) {
             let x = this.stepGroup[i].world.x;
@@ -128,38 +121,23 @@ export default class Paint extends Phaser.Group {
             let tuple = [x, y];
             stepXY.push(tuple);
         }
-        let err_rate = otsimo.kv.game.error_ratio_medium;
-        switch (otsimo.settings.difficulty) {
-            case "easy":
-                err_rate = otsimo.kv.game.error_ratio_easy;
-                break;
-            case "medium":
-                break;
-            case "hard":
-                err_rate = otsimo.kv.game.error_ratio_hard;
-                break;
-            default:
-                break;
-        }
-        if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * err_rate) {
+        if (this.stepDist && Math.abs(this.stepDist - totDist) > this.stepDist * otsimo.kv.game.error_ratio) {
             if (this.session) {
-                let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * err_rate);
+                let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
                 this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
             }
             this.paint.clearCtx();
             this.paint.newStep();
-            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
             return;
         }
         for (var k = 0; k < checkPoints.length; k++) {
             if (checking[k] === false) {
                 if (this.session) {
-                    let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * err_rate);
+                    let curr_ = (this.stepDist && Math.abs(this.stepDist - totDist)) / (this.stepDist * otsimo.kv.game.error_ratio);
                     this.session.wrongInput(stepXY, this.item, this.hint.step, curr_);
                 }
                 this.paint.clearCtx();
                 this.paint.newStep();
-                this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
                 return;
             }
         }
@@ -167,14 +145,12 @@ export default class Paint extends Phaser.Group {
     }
 
     finishStep() {
-        console.log("finish step");                             // the drawing is finished & true
         this.finishAnim();
-        if (this.currentStep + 1 < this.item.steps.length) {    // if the steps are not over
+        if (this.currentStep + 1 < this.item.steps.length) {
             this.paint.newStep();
             this.currentStep += 1;
-            this.paint.updateCheckpoints(this.item.steps[this.currentStep]);
             this.drawSteps();
-        } else {                                                // if the steps are over
+        } else {
             this.finishGame();
         }
     }
@@ -194,8 +170,6 @@ export default class Paint extends Phaser.Group {
     }
 
     finishGame() {
-        this.paint.removeListeners();
-        console.log("inputEnabled", this.inputEnabled, this.paint.inputEnabled);
         this.session = undefined;
         this.onFinishDrawing.dispatch();
         this.cleanup();
@@ -203,7 +177,6 @@ export default class Paint extends Phaser.Group {
 
     cleanup() {
         if (this.paint) {
-            this.paint.removeListeners();
             this.paint.cleanupEvents();
         }
     }
