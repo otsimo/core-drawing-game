@@ -42,5 +42,8 @@
             ]
         }
     ],
-    "loading_color": "#FAC51C"
+    "loading_color": "#FAC51C",
+    "labels": {
+        "categories": "core,drawing"
+    }
 }
