@@ -1,7 +1,9 @@
 export class Randomizer {
     constructor() {
         let kinds = new Set();
-        let itemList = otsimo.kv[otsimo.kv.game.items];
+        let itemList = otsimo.game.pool.map((i) => {
+            return i.item;
+        });
 
         for (let i of itemList) {
             kinds.add(i.kind)

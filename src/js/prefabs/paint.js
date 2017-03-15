@@ -6,7 +6,6 @@ export default class Paint extends Phaser.Group {
     constructor({game, item, session}) {
         super(game);
         this.item = item;
-        this.session = session;
         let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
 
         let sprite = this.create(0, 0, item.image, item.frame);
@@ -22,6 +21,17 @@ export default class Paint extends Phaser.Group {
         this.drawSteps();
 
         this.onFinishDrawing = new Phaser.Signal();
+    }
+
+    bindSession(session) {
+        this.session = session;
+    }
+
+    _destroy() {
+        for (let i = 0; i < this.children; i++) {
+
+            let a = this.children[0].destroy();
+        }
     }
 
     init() {

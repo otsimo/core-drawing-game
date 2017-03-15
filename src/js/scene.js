@@ -5,7 +5,7 @@ import Paint from './prefabs/paint'
 import Hint from './prefabs/hint'
 
 export default class Scene {
-    constructor({session, delegate}) {
+    constructor({ session, delegate }) {
         this.session = session;
         this.delegate = delegate;
         this._random = new Randomizer()
@@ -51,7 +51,10 @@ export default class Scene {
 
     show() {
         this.session.startStep();
-        let paint = new Paint({ game: otsimo.game, item: this.answerItem, session: this.session });
+        let paint = otsimo.game.pool.filter((i) => {
+            return i.item.kind == this.answerItem.kind;
+        })[0];
+        paint.bindSession(this.session);
         paint.init();
         paint.moveIn();
         paint.onFinishDrawing.addOnce(this.onFinishDrawing, this);
@@ -125,7 +128,7 @@ export default class Scene {
         this.hint.removeTimer(true);
     }
 
-    cleanup({isBack}) {
+    cleanup({ isBack }) {
         if (isBack) {
             let sounds = this.intro.soundArr;
             for (let i = 0; i < sounds.length; i++) {
@@ -135,6 +138,7 @@ export default class Scene {
         }
         if (this.paint) {
             this.paint.cleanup();
+            this.paint._destroy();
         }
         this.paint = undefined;
     }

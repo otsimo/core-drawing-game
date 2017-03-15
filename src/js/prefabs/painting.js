@@ -1,4 +1,4 @@
-import {Hint} from './hint'
+import { Hint } from './hint'
 
 function copyTouch(touch) {
     return { identifier: touch.identifier, pageX: touch.pageX, pageY: touch.pageY };
@@ -9,7 +9,7 @@ function is_touch_device() {
         || navigator.maxTouchPoints;       // works on IE10/11 and Surface
 };
 export class OtsimoPainting {
-    constructor({game, parent, paintingStep}) {
+    constructor({ game, parent, paintingStep }) {
         this.game = game;
         this.parentGroup = parent;
         this.drawing = false;
@@ -198,4 +198,4 @@ function angleBetween(point1, point2) {
     return Math.atan2(point2.x - point1.x, point2.y - point1.y);
 }
 
-export {distanceBetween, angleBetween}
+export { distanceBetween, angleBetween }

@@ -1,6 +1,7 @@
 import Session from '../session'
 import Scene from '../scene'
-import {calculateConstraint} from '../utils'
+import { calculateConstraint } from '../utils'
+import Paint from '../prefabs/paint'
 
 function starContainsPoint(point, p2) {
     var minx = p2.x - 30;
@@ -15,9 +16,23 @@ function starContainsPoint(point, p2) {
     return bRet;
 }
 
+function createPool() {
+    let itemList = otsimo.kv[otsimo.kv.game.items];
+    let pool = [];
+
+    for (let i = 0; i < itemList.length; i++) {
+        let item = new Paint({ game: otsimo.game, item: itemList[i]});
+        pool.push(item);
+    }
+    otsimo.game.pool = pool;
+}
+
+
 export default class Play extends Phaser.State {
 
     create() {
+        createPool();
+        
         let session = new Session({ state: this });
         let scene = new Scene({ delegate: this, session: session });
 
