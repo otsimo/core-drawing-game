@@ -28,17 +28,17 @@ export default class Paint extends Phaser.Group {
     }
 
     _destroy() {
-        for (let i = 0; i < this.children; i++) {
-
-            let a = this.children[0].destroy();
-        }
+        this.onFinishDrawing.dispose();
+        this.starArr.splice(0, this.starArr.length);
+        this.paint._destroy();
+        this.destroy();
     }
 
     init() {
         let self = this;
         this.paint = new OtsimoPainting({ game: otsimo.game, parent: this, paintingStep: [] });
         this.starArr = [];
-        this.paint.onfinishdrawing = function (step) {
+        this.paint.onfinishdrawing = (step) => {
             self.checkDrawing(step);
         }
         this.hint = undefined;

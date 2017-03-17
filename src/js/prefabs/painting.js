@@ -129,7 +129,7 @@ export class OtsimoPainting {
             radgrad.addColorStop(1, 'rgba(255,255,0,0)');
 
             ctx.fillStyle = radgrad;
-            console.log(50);
+            //console.log(50);
             // x - 30, y - 30, 60, 60 
             ctx.fillRect(x - 40, y - 40, 80, 80);
         }
@@ -160,6 +160,16 @@ export class OtsimoPainting {
 
     addHint(hint) {
         this.hint = hint;
+    }
+
+    _destroy() {
+        for (let i = 0; i < this.steps.length; i++) {
+            this.steps[i].bitmap.destroy();
+            this.steps.splice(i, 1);
+        }
+        delete this.steps;
+        this.paintingStep.splice(0, this.paintingStep.length);
+        delete this.paintingStep;
     }
 }
 

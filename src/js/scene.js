@@ -40,7 +40,7 @@ export default class Scene {
             this.intro = intro;
             intro.onComplete.addOnce(this.onIntroCompleted, this);
             intro.show();
-        })
+        });
         return true;
     }
 

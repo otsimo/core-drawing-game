@@ -7,7 +7,7 @@ export default class Introduction extends Phaser.Group {
         this.question = question;
         this.currentPage = 0;
         this.intro_type = sprintf("intro_%s", otsimo.kv.game.type);
-        console.log("intro_type: ", this.intro_type);
+        //console.log("intro_type: ", this.intro_type);
     }
 
     _addOnPageCompleted(chain, txts) {
