@@ -91,7 +91,11 @@ export class OtsimoPainting {
     clearCtx() {
         var step = this.getLastStep();
         clearStep(step);
-        this.steps.pop();
+        let last = this.steps.pop();
+        delete last.lastPoint;
+        last.bitmap.destroy();
+        last.points.splice(0, last.points.length);
+        this.paintingStep.splice(0, this.paintingStep.length);
     };
 
     clear() {
@@ -165,8 +169,8 @@ export class OtsimoPainting {
     _destroy() {
         for (let i = 0; i < this.steps.length; i++) {
             this.steps[i].bitmap.destroy();
-            this.steps.splice(i, 1);
         }
+        this.steps.splice(0, this.steps.length);
         delete this.steps;
         this.paintingStep.splice(0, this.paintingStep.length);
         delete this.paintingStep;
