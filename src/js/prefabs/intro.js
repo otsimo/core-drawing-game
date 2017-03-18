@@ -7,7 +7,6 @@ export default class Introduction extends Phaser.Group {
         this.question = question;
         this.currentPage = 0;
         this.intro_type = sprintf("intro_%s", otsimo.kv.game.type);
-        //console.log("intro_type: ", this.intro_type);
     }
 
     _addOnPageCompleted(chain, txts) {
@@ -53,7 +52,7 @@ export default class Introduction extends Phaser.Group {
         let q = this.question;
         let intro = otsimo.kv.play_screen[this.intro_type];
         let qp = calculateConstraint(intro.question_constraint);
-        let question_image = this.create(qp.x, -otsimo.game.height, q.object_img, q.object_frame);
+        let question_image = this.game.add.image(qp.x, -otsimo.game.height, "img-atlas", q.atlas_key);
         question_image.anchor.set(qp.anchor.x, qp.anchor.y);
         let itween = otsimo.game.add.tween(question_image).to({ y: qp.y }, 300, Phaser.Easing.Cubic.Out);
 

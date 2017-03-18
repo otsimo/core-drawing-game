@@ -93,7 +93,9 @@ export class OtsimoPainting {
         clearStep(step);
         let last = this.steps.pop();
         delete last.lastPoint;
+
         last.bitmap.destroy();
+        delete last.bitmap;
         last.points.splice(0, last.points.length);
         this.paintingStep.splice(0, this.paintingStep.length);
     };
@@ -133,8 +135,6 @@ export class OtsimoPainting {
             radgrad.addColorStop(1, 'rgba(255,255,0,0)');
 
             ctx.fillStyle = radgrad;
-            //console.log(50);
-            // x - 30, y - 30, 60, 60 
             ctx.fillRect(x - 40, y - 40, 80, 80);
         }
 

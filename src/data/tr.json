@@ -636,9 +636,16 @@
             "path": "img/letter/a.png"
         },
         {
-            "name": "a_item",
-            "type": "image",
-            "path": "img/tr/item/a.png"
+            "name": "img-atlas",
+            "type": "atlas",
+            "path": "img/tr/img-atlas.png",
+            "data": "img/tr/img-atlas.json"
+        },
+        {
+            "name": "atlas",
+            "type": "atlas",
+            "path": "img/tr/atlas.png",
+            "data": "img/tr/atlas.json"
         },
         {
             "name": "b_letter",
@@ -646,19 +653,9 @@
             "path": "img/letter/b.png"
         },
         {
-            "name": "b_item",
-            "type": "image",
-            "path": "img/tr/item/b.png"
-        },
-        {
             "name": "c_letter",
             "type": "image",
             "path": "img/letter/c.png"
-        },
-        {
-            "name": "c_item",
-            "type": "image",
-            "path": "img/tr/item/c.png"
         },
         {
             "name": "c-_letter",
@@ -666,19 +663,9 @@
             "path": "img/letter/c-.png"
         },
         {
-            "name": "c-_item",
-            "type": "image",
-            "path": "img/tr/item/c-.png"
-        },
-        {
             "name": "d_letter",
             "type": "image",
             "path": "img/letter/d.png"
-        },
-        {
-            "name": "d_item",
-            "type": "image",
-            "path": "img/tr/item/d.png"
         },
         {
             "name": "e_letter",
@@ -686,19 +673,9 @@
             "path": "img/letter/e.png"
         },
         {
-            "name": "e_item",
-            "type": "image",
-            "path": "img/tr/item/e.png"
-        },
-        {
             "name": "f_letter",
             "type": "image",
             "path": "img/letter/f.png"
-        },
-        {
-            "name": "f_item",
-            "type": "image",
-            "path": "img/tr/item/f.png"
         },
         {
             "name": "g_letter",
@@ -706,19 +683,9 @@
             "path": "img/letter/g.png"
         },
         {
-            "name": "g_item",
-            "type": "image",
-            "path": "img/tr/item/g.png"
-        },
-        {
             "name": "h_letter",
             "type": "image",
             "path": "img/letter/h.png"
-        },
-        {
-            "name": "h_item",
-            "type": "image",
-            "path": "img/tr/item/h.png"
         },
         {
             "name": "i-_letter",
@@ -726,19 +693,9 @@
             "path": "img/letter/i-.png"
         },
         {
-            "name": "i-_item",
-            "type": "image",
-            "path": "img/tr/item/i-.png"
-        },
-        {
             "name": "i_letter",
             "type": "image",
             "path": "img/letter/i.png"
-        },
-        {
-            "name": "i_item",
-            "type": "image",
-            "path": "img/tr/item/i.png"
         },
         {
             "name": "j_letter",
@@ -746,19 +703,9 @@
             "path": "img/letter/j.png"
         },
         {
-            "name": "j_item",
-            "type": "image",
-            "path": "img/tr/item/j.png"
-        },
-        {
             "name": "k_letter",
             "type": "image",
             "path": "img/letter/k.png"
-        },
-        {
-            "name": "k_item",
-            "type": "image",
-            "path": "img/tr/item/k.png"
         },
         {
             "name": "l_letter",
@@ -766,19 +713,9 @@
             "path": "img/letter/l.png"
         },
         {
-            "name": "l_item",
-            "type": "image",
-            "path": "img/tr/item/l.png"
-        },
-        {
             "name": "m_letter",
             "type": "image",
             "path": "img/letter/m.png"
-        },
-        {
-            "name": "m_item",
-            "type": "image",
-            "path": "img/tr/item/m.png"
         },
         {
             "name": "n_letter",
@@ -786,19 +723,9 @@
             "path": "img/letter/n.png"
         },
         {
-            "name": "n_item",
-            "type": "image",
-            "path": "img/tr/item/n.png"
-        },
-        {
             "name": "o_letter",
             "type": "image",
             "path": "img/letter/o.png"
-        },
-        {
-            "name": "o_item",
-            "type": "image",
-            "path": "img/tr/item/o.png"
         },
         {
             "name": "o-_letter",
@@ -806,19 +733,9 @@
             "path": "img/letter/o-.png"
         },
         {
-            "name": "o-_item",
-            "type": "image",
-            "path": "img/tr/item/o-.png"
-        },
-        {
             "name": "p_letter",
             "type": "image",
             "path": "img/letter/p.png"
-        },
-        {
-            "name": "p_item",
-            "type": "image",
-            "path": "img/tr/item/p.png"
         },
         {
             "name": "r_letter",
@@ -826,19 +743,9 @@
             "path": "img/letter/r.png"
         },
         {
-            "name": "r_item",
-            "type": "image",
-            "path": "img/tr/item/r.png"
-        },
-        {
             "name": "s_letter",
             "type": "image",
             "path": "img/letter/s.png"
-        },
-        {
-            "name": "s_item",
-            "type": "image",
-            "path": "img/tr/item/s.png"
         },
         {
             "name": "s-_letter",
@@ -846,19 +753,9 @@
             "path": "img/letter/s-.png"
         },
         {
-            "name": "s-_item",
-            "type": "image",
-            "path": "img/tr/item/s-.png"
-        },
-        {
             "name": "t_letter",
             "type": "image",
             "path": "img/letter/t.png"
-        },
-        {
-            "name": "t_item",
-            "type": "image",
-            "path": "img/tr/item/t.png"
         },
         {
             "name": "u_letter",
@@ -866,19 +763,9 @@
             "path": "img/letter/u.png"
         },
         {
-            "name": "u_item",
-            "type": "image",
-            "path": "img/tr/item/u.png"
-        },
-        {
             "name": "u-_letter",
             "type": "image",
             "path": "img/letter/u-.png"
-        },
-        {
-            "name": "u-_item",
-            "type": "image",
-            "path": "img/tr/item/u-.png"
         },
         {
             "name": "v_letter",
@@ -886,35 +773,14 @@
             "path": "img/letter/v.png"
         },
         {
-            "name": "v_item",
-            "type": "image",
-            "path": "img/tr/item/v.png"
-        },
-        {
             "name": "y_letter",
             "type": "image",
             "path": "img/letter/y.png"
         },
         {
-            "name": "y_item",
-            "type": "image",
-            "path": "img/tr/item/y.png"
-        },
-        {
             "name": "z_letter",
             "type": "image",
             "path": "img/letter/z.png"
-        },
-        {
-            "name": "z_item",
-            "type": "image",
-            "path": "img/tr/item/z.png"
-        },
-        {
-            "name": "atlas",
-            "type": "atlas",
-            "path": "img/tr/atlas.png",
-            "data": "img/tr/atlas.json"
         },
         {
             "name": "hadi_a_harfini_cizelim",
@@ -1308,6 +1174,7 @@
             "letter": "A",
             "letter_audio": "a_audio",
             "object": "Ayakkabı",
+            "atlas_key": "a.png",
             "steps": [
                 [
                     {
@@ -1410,6 +1277,7 @@
             "letter": "B",
             "letter_audio": "b_audio",
             "object": "Bardak",
+            "atlas_key": "b.png",
             "steps": [
                 [
                     {
@@ -1540,6 +1408,7 @@
             "letter_audio": "c_audio",
             "letter": "C",
             "object": "Ceviz",
+            "atlas_key": "c.png",
             "steps": [
                 [
                     {
@@ -1606,6 +1475,7 @@
             "letter_audio": "c-_audio",
             "letter": "Ç",
             "object": "Çiçek",
+            "atlas_key": "c-.png",
             "steps": [
                 [
                     {
@@ -1678,6 +1548,7 @@
             "letter_audio": "d_audio",
             "letter": "D",
             "object": "Dolap",
+            "atlas_key": "d.png",
             "steps": [
                 [
                     {
@@ -1782,6 +1653,7 @@
             "letter_audio": "e_audio",
             "letter": "E",
             "object": "Eldiven",
+            "atlas_key": "e.png",
             "steps": [
                 [
                     {
@@ -1890,6 +1762,7 @@
             "letter_audio": "f_audio",
             "letter": "F",
             "object": "Fırça",
+            "atlas_key": "f.png",
             "steps": [
                 [
                     {
@@ -1972,6 +1845,7 @@
             "letter_audio": "g_audio",
             "letter": "G",
             "object": "Gemi",
+            "atlas_key": "g.png",
             "steps": [
                 [
                     {
@@ -2062,6 +1936,7 @@
             "letter_audio": "h_audio",
             "letter": "H",
             "object": "Halı",
+            "atlas_key": "h.png",
             "steps": [
                 [
                     {
@@ -2164,6 +2039,7 @@
             "letter_audio": "i-_audio",
             "letter": "I",
             "object": "Islak Mendil",
+            "atlas_key": "i-.png",
             "steps": [
                 [
                     {
@@ -2210,6 +2086,7 @@
             "letter_audio": "i_audio",
             "letter": "İ",
             "object": "İnek",
+            "atlas_key": "i.png",
             "steps": [
                 [
                     {
@@ -2262,6 +2139,7 @@
             "letter_audio": "j_audio",
             "letter": "J",
             "object": "Jilet",
+            "atlas_key": "j.png",
             "steps": [
                 [
                     {
@@ -2328,6 +2206,7 @@
             "letter_audio": "k_audio",
             "letter": "K",
             "object": "Kitap",
+            "atlas_key": "k.png",
             "steps": [
                 [
                     {
@@ -2430,6 +2309,7 @@
             "letter_audio": "l_audio",
             "letter": "L",
             "object": "Lale",
+            "atlas_key": "l.png",
             "steps": [
                 [
                     {
@@ -2494,6 +2374,7 @@
             "letter_audio": "m_audio",
             "letter": "M",
             "object": "Masa",
+            "atlas_key": "m.png",
             "steps": [
                 [
                     {
@@ -2630,6 +2511,7 @@
             "letter_audio": "n_audio",
             "letter": "N",
             "object": "Nehir",
+            "atlas_key": "n.png",
             "steps": [
                 [
                     {
@@ -2740,6 +2622,7 @@
             "letter_audio": "o_audio",
             "letter": "O",
             "object": "Orman",
+            "atlas_key": "o.png",
             "steps": [
                 [
                     {
@@ -2838,6 +2721,7 @@
             "letter_audio": "o-_audio",
             "letter": "Ö",
             "object": "Örgü",
+            "atlas_key": "o-.png",
             "steps": [
                 [
                     {
@@ -2936,6 +2820,7 @@
             "letter_audio": "p_audio",
             "letter": "P",
             "object": "Patates",
+            "atlas_key": "p.png",
             "steps": [
                 [
                     {
@@ -3024,6 +2909,7 @@
             "letter_audio": "r_audio",
             "letter": "R",
             "object": "Resim",
+            "atlas_key": "r.png",
             "steps": [
                 [
                     {
@@ -3130,6 +3016,7 @@
             "letter_audio": "s_audio",
             "letter": "S",
             "object": "Sarımsak",
+            "atlas_key": "s.png",
             "steps": [
                 [
                     {
@@ -3212,6 +3099,7 @@
             "letter_audio": "s-_audio",
             "letter": "Ş",
             "object": "Şort",
+            "atlas_key": "s-.png",
             "steps": [
                 [
                     {
@@ -3300,6 +3188,7 @@
             "letter_audio": "t_audio",
             "letter": "T",
             "object": "Tekerlek",
+            "atlas_key": "t.png",
             "steps": [
                 [
                     {
@@ -3372,6 +3261,7 @@
             "letter_audio": "u_audio",
             "letter": "U",
             "object": "Uçak",
+            "atlas_key": "u.png",
             "steps": [
                 [
                     {
@@ -3454,6 +3344,7 @@
             "letter_audio": "u-_audio",
             "letter": "Ü",
             "object": "Ütü",
+            "atlas_key": "u-.png",
             "steps": [
                 [
                     {
@@ -3548,6 +3439,7 @@
             "letter_audio": "v_audio",
             "letter": "V",
             "object": "Vazo",
+            "atlas_key": "v.png",
             "steps": [
                 [
                     {
@@ -3628,6 +3520,7 @@
             "letter_audio": "y_audio",
             "letter": "Y",
             "object": "Yumurta",
+            "atlas_key": "y.png",
             "steps": [
                 [
                     {
@@ -3702,6 +3595,7 @@
             "letter_audio": "z_audio",
             "letter": "Z",
             "object": "Zarf",
+            "atlas_key": "z.png",
             "steps": [
                 [
                     {
