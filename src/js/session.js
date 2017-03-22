@@ -62,7 +62,7 @@ export default class Session {
             total_failure: this.wrongAnswerTotal,
             steps: otsimo.kv.game.session_step
         }
-        otsimo.customevent("game:end", payload);
+        otsimo.customevent("game:session:end", payload);
         //console.log("end session, post to analytics")
     }
 
