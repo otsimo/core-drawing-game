@@ -1,9 +1,9 @@
-import {calculateConstraint} from '../utils'
-import {OtsimoPainting, angleBetween, distanceBetween} from './painting'
-import {Hint} from './hint'
+import { calculateConstraint } from '../utils'
+import { OtsimoPainting, angleBetween, distanceBetween } from './painting'
+import { Hint } from './hint'
 
 export default class Paint extends Phaser.Group {
-    constructor({game, item, session}) {
+    constructor({ game, item, session }) {
         super(game);
         this.item = item;
         let p = calculateConstraint(otsimo.kv.play_screen.paint_constraint)
@@ -28,10 +28,16 @@ export default class Paint extends Phaser.Group {
     }
 
     _destroy() {
+        this.paint._destroy();
+        this.paint.cleanupEvents();
+        this.paint.onfinishdrawing = null;
+        this.paint.paintingStep = [];
+        this.paint.steps = [];
+        this.paint.potentialStep = [];
+        delete this.paint;
+
         this.onFinishDrawing.dispose();
         this.starArr.splice(0, this.starArr.length);
-        this.paint._destroy();
-        this.destroy();
     }
 
     init() {
@@ -151,6 +157,7 @@ export default class Paint extends Phaser.Group {
                 return;
             }
         }
+        this.paint.potentialStep = [];
         this.finishStep();
     }
 

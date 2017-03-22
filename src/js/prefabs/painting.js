@@ -17,11 +17,12 @@ export class OtsimoPainting {
         this.onfinishdrawing = null;
         this.steps.push(newPaintingStep(parent));
         this.paintingStep = paintingStep;
+        this.potentialStep = [];
 
         if (is_touch_device()) {
             this.startup()
         } else {
-            this.game.input.addMoveCallback(this.input.bind(this));
+            this.game.input.addMoveCallback(this.input, this);
         }
     }
     startup() {
@@ -92,16 +93,22 @@ export class OtsimoPainting {
         var step = this.getLastStep();
         clearStep(step);
         let last = this.steps.pop();
-        delete last.lastPoint;
 
         last.bitmap.destroy();
-        delete last.bitmap;
         last.points.splice(0, last.points.length);
+
+        for (let i = 0; i < this.potentialStep.length; i++) {
+            this.potentialStep[i].bitmap.destroy();
+        }
+
+        this.potentialStep.splice(0, this.potentialStep.length);
+        this.potentialStep = [];
+
         this.paintingStep.splice(0, this.paintingStep.length);
     };
 
     clear() {
-        this.game.input.deleteMoveCallback(this.input);
+        this.game.input.deleteMoveCallback(this.input, this);
     }
 
     onDown(pointer, x, y) {
@@ -142,6 +149,7 @@ export class OtsimoPainting {
         for (let i of step.points) {
             this.paintingStep.push(i);
         }
+        this.potentialStep.push(step);
     }
 
     onUp(pointer, x, y) {
@@ -167,13 +175,12 @@ export class OtsimoPainting {
     }
 
     _destroy() {
+        this.game.input.deleteMoveCallback(this.input, this);
+        this.cleanupEvents();
         for (let i = 0; i < this.steps.length; i++) {
             this.steps[i].bitmap.destroy();
         }
-        this.steps.splice(0, this.steps.length);
-        delete this.steps;
         this.paintingStep.splice(0, this.paintingStep.length);
-        delete this.paintingStep;
     }
 }
 
