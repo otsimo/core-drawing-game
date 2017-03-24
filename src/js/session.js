@@ -42,11 +42,8 @@ export default class Session {
     }
 
     sessionStart() {
-        let err_rate = findErrorRatio();
         let payload = {
-            id: this.id,
-            difficulty: otsimo.settings.difficulty,
-            error_rate: err_rate
+            id: this.id
         }
         otsimo.customevent("game:start", payload);
     }
@@ -107,10 +104,9 @@ export default class Session {
         this.incrementHint(hint_step);
         let now = Date.now();
         this.correctAnswerTotal += 1;
-        let _difficulty = otsimo.settings.difficulty;
-        let err_rate = findErrorRatio();
+        //let _difficulty = otsimo.settings.difficulty;
+        //let err_rate = findErrorRatio();
         let payload = {
-            difference_ratio: difference,
             item: item.id,
             stepScore: this.stepScore,
             score: this.score,
@@ -118,8 +114,6 @@ export default class Session {
             time: now - this.stepStartTime,
             delta: now - this.previousInput,
             wrongAnswerStep: this.wrongAnswerStep,
-            difficulty: _difficulty,
-            error_rate: err_rate,
             id: this.id
         }
         this.previousInput = now;

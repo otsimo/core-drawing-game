@@ -5,6 +5,14 @@ export class Randomizer {
             return i.item;
         });
 
+        // The game will only select the item if following part is commented out
+
+        /* 
+        let itemID = "s";
+        filterSingleItem(itemID, itemList);
+        */
+
+
         for (let i of itemList) {
             kinds.add(i.kind)
         }
@@ -45,5 +53,21 @@ export class Randomizer {
 
         let correct = this.randomItemOfKind(this.itemList, s, []);
         return callback(correct);
+    }
+
+    /**
+     * For debugging purposes, the game only selects single item for every scene
+     * @param {string} itemID - the id that will be seen
+     * @param {list} itemList - the list to be filtered
+     * @returns {list} filtered list
+     * 
+     * @memberOf Randomizer
+     */
+    filterSingleItem(itemID, itemList) {
+        console.log("game will only select items for id: ", itemID);
+
+        return itemList.filter((i) => {
+            return i["id"] == itemID;
+        });
     }
 }
