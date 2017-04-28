@@ -187,6 +187,7 @@ export class OtsimoPainting {
 function newPaintingStep(parent) {
     let myBitmap = otsimo.game.add.bitmapData(otsimo.game.width, otsimo.game.height);
     let sprite = otsimo.game.add.sprite(0, 0, myBitmap, null, parent);
+    sprite.bringToTop();
     sprite.anchor.set(0.5, 0.5);
 
     let ctx = myBitmap.context;

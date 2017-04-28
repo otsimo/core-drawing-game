@@ -93,7 +93,6 @@ export default class Paint extends Phaser.Group {
             var starImg = otsimo.game.add.sprite(x - this.sprite.width / 2, y - this.sprite.height / 2, "atlas", img, this);
             starImg.anchor.set(0.5, 0.5);
 
-            this.bringToTop(starImg);
             this.stepGroup.push(starImg);
         } if (this.hint) {
             this.hint.stars = this.stepGroup;
