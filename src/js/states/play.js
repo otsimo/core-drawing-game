@@ -21,7 +21,7 @@ function createPool() {
     let pool = [];
 
     for (let i = 0; i < itemList.length; i++) {
-        let item = new Paint({ game: otsimo.game, item: itemList[i]});
+        let item = new Paint({ game: otsimo.game, item: itemList[i] });
         pool.push(item);
     }
     otsimo.game.pool = pool;
@@ -32,7 +32,7 @@ export default class Play extends Phaser.State {
 
     create() {
         createPool();
-        
+
         let session = new Session({ state: this });
         let scene = new Scene({ delegate: this, session: session });
 
@@ -42,11 +42,14 @@ export default class Play extends Phaser.State {
             this.game.stage.backgroundColor = otsimo.kv.play_screen.background_color;
         }
         if (otsimo.kv.play_screen.background_image) {
-            let back = this.game.add.image(this.game.world.centerX, this.game.world.centerY, otsimo.kv.play_screen.background_image)
-            back.anchor.set(0.5, 0.5);
+            let bg = this.game.add.image(this.game.world.centerX, this.game.world.centerY, otsimo.kv.play_screen.background_image)
+            bg.anchor.set(0.5, 0.5);
+            bg.scale.set(otsimo.game.height / 768);
         }
         this.initDecoration();
-        this.game.add.button(25, 25, 'back', this.backAction, this);
+        let back = this.game.add.button(25, 25, 'back', this.backAction, this);
+        back.scale.set(otsimo.game.height / 768);
+        
         if (otsimo.currentMusic) {
             otsimo.currentMusic.volume = otsimo.kv.game_music.volume_play_screen;
         }

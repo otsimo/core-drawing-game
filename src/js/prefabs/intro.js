@@ -53,6 +53,7 @@ export default class Introduction extends Phaser.Group {
         let intro = otsimo.kv.play_screen[this.intro_type];
         let qp = calculateConstraint(intro.question_constraint);
         let question_image = this.game.add.image(qp.x, -otsimo.game.height, "img-atlas", q.atlas_key);
+        question_image.scale.set(qp.scale);
         question_image.anchor.set(qp.anchor.x, qp.anchor.y);
         let itween = otsimo.game.add.tween(question_image).to({ y: qp.y }, 300, Phaser.Easing.Cubic.Out);
 
@@ -70,6 +71,7 @@ export default class Introduction extends Phaser.Group {
                 let style = intro.styles[t.style];
 
                 let txt = otsimo.game.add.text(pos.x, pos.y, text, style, this);
+                txt.scale.set(pos.scale);
 
                 txt.audio = sprintf(t.audio, q);
                 txt.anchor.set(0.5, 0.5);

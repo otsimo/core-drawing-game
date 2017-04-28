@@ -11,10 +11,14 @@ function calculateConstraint(constraint) {
     let yc = constraint.y.constant | 0;
     let x = constraint.x.multiplier * otsimo.game.width + xc;
     let y = constraint.y.multiplier * otsimo.game.height + yc;
+    //const xScale = otsimo.game.width / 1024;
+    const yScale = otsimo.game.height / 768;
+    //const midScale = yScale / xScale;
     return {
         x: x,
         y: y,
-        anchor: constraint.anchor
+        anchor: constraint.anchor,
+        scale: yScale
     };
 }
 
@@ -34,4 +38,4 @@ function gameVisibleName() {
 }
 
 
-export {gameVisibleName , setConstraint, calculateConstraint}
+export { gameVisibleName, setConstraint, calculateConstraint }

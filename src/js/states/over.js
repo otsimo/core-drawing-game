@@ -43,7 +43,8 @@ export default class Over extends Phaser.State {
             otsimo.currentMusic.volume = otsimo.kv.game_music.volume_over_screen;
         }
 
-        this.game.add.button(25, 25, 'back', this.backAction, this);
+        let backbtn = this.game.add.button(25, 25, 'back', this.backAction, this);
+        backbtn.scale.set(otsimo.game.height / 768);
 
         //calculate text and button 
         let tc = calculateConstraint(otsimo.kv.ending_scene.text);
