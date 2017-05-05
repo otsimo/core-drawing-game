@@ -1064,6 +1064,7 @@
         }
     ],
     "game": {
+        "show_home_screen": false,
         "show_intro_drawing": true,
         "session_step": 10,
         "items": "alphabet",

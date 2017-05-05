@@ -1,5 +1,5 @@
 import Balloon from '../prefabs/balloon'
-import {gameVisibleName, calculateConstraint} from '../utils'
+import { gameVisibleName, calculateConstraint } from '../utils'
 
 let defaultPlayButton = {
     anchor: {
@@ -18,6 +18,10 @@ let defaultPlayButton = {
 export default class Home extends Phaser.State {
 
     create() {
+        if (!otsimo.kv.game.show_home_screen) {
+            this.game.state.start('Play');
+            return;
+        }
         if (otsimo.kv.home_screen.background_color) {
             this.game.stage.backgroundColor = otsimo.kv.home_screen.background_color;
         }
