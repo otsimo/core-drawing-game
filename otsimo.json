@@ -1,6 +1,6 @@
 {
     "unique_name": "otsimo-drawing-game",
-    "version": "1.1.11",
+    "version": "1.1.14",
     "main": "index.html",
     "licence": "GPL-3.0",
     "languages": [
