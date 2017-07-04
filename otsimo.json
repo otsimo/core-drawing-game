@@ -1,6 +1,6 @@
 {
     "unique_name": "otsimo-drawing-game",
-    "version": "1.1.14",
+    "version": "1.1.17",
     "main": "index.html",
     "licence": "GPL-3.0",
     "languages": [
@@ -44,6 +44,7 @@
     ],
     "loading_color": "#FAC51C",
     "labels": {
-        "categories": "core,drawing"
+        "categories": "core,drawing",
+        "analytics": "playing-duration"
     }
 }
